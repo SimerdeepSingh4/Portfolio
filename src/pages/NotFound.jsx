@@ -1,6 +1,5 @@
 import React from "react";
 import { Navbar } from "../components/Navbar";
-import { ThemeToggle } from "../components/ThemeToggle";
 import { StarBackground } from "@/components/StarBackground";
 import { Footer } from "../components/Footer";
 import { Link } from "react-router-dom";
@@ -8,9 +7,6 @@ import { Link } from "react-router-dom";
 export const NotFound = () => {
   return (
     <div className="min-h-screen bg-background text-foreground relative overflow-hidden flex flex-col">
-      {/* Theme Toggle */}
-      <ThemeToggle />
-
       {/* Background Effects */}
       <StarBackground />
 
