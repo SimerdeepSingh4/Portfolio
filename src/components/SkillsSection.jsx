@@ -5,7 +5,6 @@ import { useInView } from "@/hooks/useInView";
 const skills = [
   // Frontend
   { name: "HTML/CSS", level: 90, category: "frontend" },
-  { name: "JavaScript", level: 85, category: "frontend" },
   { name: "React.js", level: 80, category: "frontend" },
   { name: "Angular", level: 65, category: "frontend" },
   { name: "Tailwind CSS", level: 75, category: "frontend" },
@@ -14,18 +13,25 @@ const skills = [
   { name: "Node.js", level: 80, category: "backend" },
   { name: "Express.js", level: 75, category: "backend" },
   { name: "MongoDB", level: 70, category: "backend" },
-  { name: "PHP", level: 70, category: "backend" },
+  { name: "Firebase", level: 70, category: "backend" },
   { name: "MySQL", level: 65, category: "backend" },
-  { name: "C# (.NET)", level: 60, category: "backend" },
 
   // Tools
   { name: "Git & GitHub", level: 85, category: "tools" },
   { name: "Postman", level: 80, category: "tools" },
   { name: "VS Code", level: 90, category: "tools" },
   { name: "Docker (Learning)", level: 50, category: "tools" },
+
+  // Programming Languages
+  { name: "Java", level: 90, category: "languages" },
+  { name: "Python", level: 70, category: "languages" },
+  { name: "JavaScript", level: 85, category: "languages" },
+  { name: "C#", level: 50, category: "languages" },
+  { name: "PHP", level: 60, category: "languages" },
+    
 ];
 
-const categories = ["all", "frontend", "backend", "tools"];
+const categories = ["all", "frontend", "backend", "tools", "languages"];
 
 export const SkillsSection = () => {
   const [activeCategory, setActiveCategory] = useState("all");
