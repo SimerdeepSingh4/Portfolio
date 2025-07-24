@@ -8,6 +8,17 @@
     <link rel="shortcut icon" href="/favicon.ico">
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Simerdeep Portfolio</title>
+    <script>
+      (function() {
+        // Check for a saved theme in localStorage.
+        const theme = localStorage.getItem('theme');
+        // If the theme is not 'light', default to dark mode.
+        // This makes 'dark' the default for first-time visitors (when theme is null).
+        if (theme !== 'light') {
+          document.documentElement.classList.add('dark');
+        }
+      })();
+    </script>
   </head>
   <body>
     <div id="root"></div>
