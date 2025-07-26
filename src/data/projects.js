@@ -58,11 +58,13 @@ export const projects = [
       },
     ],
     tech: [
-      "React.js",
+      "React",
       "Vite",
       "Redux",
+      "Shadcn UI",
+      "Stripe",
       "Node.js",
-      "Express.js",
+      "Express",
       "MongoDB",
       "JWT",
       "Cloudinary",
@@ -100,8 +102,6 @@ export const projects = [
       "Whisper API",
       "Firebase",
       "Google Cloud Speech API",
-      "Emotion AI",
-      "AWS",
     ],
   },
   {
@@ -131,13 +131,13 @@ export const projects = [
       "/projects/project3A.png", "/projects/project3B.png", "/projects/project3C.png"
     ],
     tech: [
-      "React 19",
+      "React",
       "Vite",
       "PrismJS",
       "React Markdown",
       "Node.js",
       "Express",
-      "Google Gemini API",
+      "Google Generative AI (Gemini)",
       "Axios"
     ],
   }

@@ -2,34 +2,125 @@ import { useState } from "react";
 import { cn } from "@/lib/utils";
 import { useInView } from "@/hooks/useInView";
 
+
 const skills = [
-  // Frontend
-  { name: "HTML/CSS", level: 90, category: "frontend" },
-  { name: "React.js", level: 80, category: "frontend" },
-  { name: "Angular", level: 65, category: "frontend" },
-  { name: "Tailwind CSS", level: 75, category: "frontend" },
+  // Frontend
+  {
+    name: "HTML/CSS",
+    level: 90,
+    category: "frontend",
+    icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg",
+  },
+  {
+    name: "React.js",
+    level: 80,
+    category: "frontend",
+    icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg",
+  },
+  {
+    name: "Angular",
+    level: 65,
+    category: "frontend",
+    icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/angularjs/angularjs-original.svg",
+  },
+  {
+    name: "Tailwind CSS",
+    level: 75,
+    category: "frontend",
+    icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/tailwindcss/tailwindcss-original.svg",
+  },
 
-  // Backend
-  { name: "Node.js", level: 80, category: "backend" },
-  { name: "Express.js", level: 75, category: "backend" },
-  { name: "MongoDB", level: 70, category: "backend" },
-  { name: "Firebase", level: 70, category: "backend" },
-  { name: "MySQL", level: 65, category: "backend" },
+  // Backend
+  {
+    name: "Node.js",
+    level: 80,
+    category: "backend",
+    icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg",
+  },
+  {
+    name: "Express.js",
+    level: 75,
+    category: "backend",
+    icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/express/express-original.svg",
+  },
+  {
+    name: "MongoDB",
+    level: 70,
+    category: "backend",
+    icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mongodb/mongodb-original.svg",
+  },
+  {
+    name: "Firebase",
+    level: 70,
+    category: "backend",
+    icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/firebase/firebase-plain.svg",
+  },
+  {
+    name: "MySQL",
+    level: 65,
+    category: "backend",
+    icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg",
+  },
 
-  // Tools
-  { name: "Git & GitHub", level: 85, category: "tools" },
-  { name: "Postman", level: 80, category: "tools" },
-  { name: "VS Code", level: 90, category: "tools" },
-  { name: "Docker (Learning)", level: 50, category: "tools" },
+  // Tools
+  {
+    name: "Git & GitHub",
+    level: 85,
+    category: "tools",
+    icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg",
+  },
+  {
+    name: "Postman",
+    level: 80,
+    category: "tools",
+    icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postman/postman-original.svg",
+  },
+  {
+    name: "VS Code",
+    level: 90,
+    category: "tools",
+    icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vscode/vscode-original.svg",
+  },
+  {
+    name: "Docker (Learning)",
+    level: 50,
+    category: "tools",
+    icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/docker/docker-original.svg",
+  },
 
-  // Programming Languages
-  { name: "Java", level: 90, category: "languages" },
-  { name: "Python", level: 70, category: "languages" },
-  { name: "JavaScript", level: 85, category: "languages" },
-  { name: "C#", level: 50, category: "languages" },
-  { name: "PHP", level: 60, category: "languages" },
-    
+  // Programming Languages
+  {
+    name: "Java",
+    level: 90,
+    category: "languages",
+    icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/java/java-original.svg",
+  },
+  {
+    name: "Python",
+    level: 70,
+    category: "languages",
+    icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg",
+  },
+  {
+    name: "JavaScript",
+    level: 85,
+    category: "languages",
+    icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg",
+  },
+  {
+    name: "C#",
+    level: 50,
+    category: "languages",
+    icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/csharp/csharp-original.svg",
+  },
+  {
+    name: "PHP",
+    level: 60,
+    category: "languages",
+    icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/php/php-original.svg",
+  },
 ];
+
 
 const categories = ["all", "frontend", "backend", "tools", "languages"];
 
@@ -56,7 +147,7 @@ export const SkillsSection = () => {
                 "px-5 py-2 rounded-full transition-colors duration-300 capitalize",
                 activeCategory === category
                   ? "bg-primary text-primary-foreground"
-                  : "bg-secondary/70 text-forefround hover:bd-secondary"
+                  : "bg-secondary/70 text-foreground hover:bg-secondary"
               )}
             >
               {category}
@@ -70,13 +161,20 @@ export const SkillsSection = () => {
               key={key}
               className="bg-card p-6 rounded-lg shadow-xs card-hover"
             >
-              <div className="text-left mb-4">
-                <h3 className="font-semibold text-lg"> {skill.name}</h3>
-              </div>
+<div className="flex justify-between items-center mb-4">
+  <h3 className="font-semibold text-lg">{skill.name}</h3>
+  <img
+    src={skill.icon}
+    alt={skill.name}
+    title={skill.name}
+    className="w-7 h-7 object-contain bounce-on-hover"
+  />
+</div>
+
               <div className="w-full bg-secondary/50 h-2 rounded-full overflow-hidden">
                 <div
                   className="bg-primary h-2 rounded-full origin-left animate-[grow_1.5s_ease-out]"
-                  style={{ width: skill.level + "%" }}
+                  style={{ width: `${skill.level}%` }}
                 />
               </div>
 
