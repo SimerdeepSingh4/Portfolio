@@ -37,18 +37,18 @@ export const ProjectDetail = () => {
   };
   return (
     <div className="min-h-screen bg-background text-foreground relative overflow-hidden flex flex-col">
-
-
       {/* Background Effects */}
       <StarBackground />
 
       {/* Navbar */}
       <Navbar />
 
+
+
       {/* Main Content */}
-      <main className="flex-grow flex flex-col items-center justify-center text-center px-4">
+      <main className="flex-grow flex flex-col items-center justify-center text-center px-4 pt-24 md:pt-20">
         <div className="p-6 md:p-12 max-w-5xl mx-auto">
-          <h1 className="text-3xl font-bold mb-4">{project.title}</h1>
+          <h1 className="text-3xl font-bold mb-8">{project.title}</h1>
           <p className="text-muted-foreground mb-8">{project.description}</p>
 
           <h2 className="text-2xl font-semibold mt-8 mb-2 text-primary">Features</h2>
