@@ -97,7 +97,7 @@ export const projects = [
       "/projects/project2A.png", "/projects/project2B.png", "/projects/project2C.png"
     ],
     tech: [
-      "React.js",
+      "React",
       "Node.js",
       "Whisper API",
       "Firebase",

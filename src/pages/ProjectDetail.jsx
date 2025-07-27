@@ -31,7 +31,8 @@ export const ProjectDetail = () => {
     "PrismJS": "https://prismjs.com/assets/logo.svg",
     "Cloudinary": "https://us.v-cdn.net/6036703/uploads/623ZP60L4HP4/cloudinary-cloud-glyph-blue-png.png",
     "Axios": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/axios/axios-plain.svg",
-    "Redux": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/redux/redux-original.svg"
+    "Redux": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/redux/redux-original.svg",
+    "Whisper API":"https://www.svgrepo.com/show/306500/openai.svg",
 
 
   };
