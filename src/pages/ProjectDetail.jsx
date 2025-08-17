@@ -32,7 +32,7 @@ export const ProjectDetail = () => {
     "Cloudinary": "https://us.v-cdn.net/6036703/uploads/623ZP60L4HP4/cloudinary-cloud-glyph-blue-png.png",
     "Axios": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/axios/axios-plain.svg",
     "Redux": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/redux/redux-original.svg",
-    "Whisper API":"https://www.svgrepo.com/show/306500/openai.svg",
+    "Whisper API": "https://www.svgrepo.com/show/306500/openai.svg",
 
 
   };
@@ -162,6 +162,17 @@ export const ProjectDetail = () => {
 
         </div>
       </main>
+      {/* Extra Note for project 3 */}
+      {project.id === "3" && (
+        <div className="mt-8 mx-auto max-w-2xl rounded-xl border border-border bg-muted/50 p-4 shadow-sm text-center">
+          <p className="text-base text-muted-foreground">
+            ⚠️ <span className="font-medium text-primary">Note:</span> This project's backend is hosted on
+            Render's free tier server. The first response may be delayed due to server cold start.
+          </p>
+        </div>
+      )}
+
+
       <Footer />
     </div>
   );

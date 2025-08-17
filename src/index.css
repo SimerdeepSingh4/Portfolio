@@ -322,3 +322,37 @@ html:not(.dark) .section-divider {
 .float-lr {
   animation: float-lr 7s ease-in-out infinite;
 }
+
+/* Chrome, Edge, Safari (WebKit/Blink) */
+html::-webkit-scrollbar,
+body::-webkit-scrollbar {
+  width: 8px;
+}
+
+html::-webkit-scrollbar-track,
+body::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+html::-webkit-scrollbar-thumb,
+body::-webkit-scrollbar-thumb {
+  background: rgba(0, 0, 0, 0.15);  /* faint but visible */
+  border-radius: 12px;
+  transition: background 0.3s ease;
+}
+
+html::-webkit-scrollbar-thumb:hover,
+body::-webkit-scrollbar-thumb:hover {
+  background: rgba(0, 0, 0, 0.4);   /* clearer on hover */
+}
+
+/* Firefox */
+html, body {
+  scrollbar-width: thin; /* makes it slim */
+  scrollbar-color: rgba(0,0,0,0.15) transparent; /* faint thumb */
+}
+
+/* On hover (Firefox trick: needs a wrapper/hover) */
+body:hover {
+  scrollbar-color: rgba(0,0,0,0.4) transparent; /* clearer on hover */
+}
