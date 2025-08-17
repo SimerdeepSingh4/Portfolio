@@ -1,93 +1,201 @@
 /* NotFoundPage.css */
 
-body, html {
-    margin: 0;
-    padding: 0;
-    font-family: Arial, sans-serif;
-    background-color: #1c1c1c;
-    color: #fff;
-    overflow: hidden;
+body,
+html {
+  margin: 0;
+  padding: 0;
+  font-family: Arial, sans-serif;
+  background-color: #1c1c1c;
+  color: #fff;
+  overflow: hidden;
+}
+
+.container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  height: 100vh;
+  position: relative;
+}
+
+.text-container {
+  z-index: 2;
+  color: #ffba08;
+}
+
+.text-container h1 {
+  font-size: 1.5rem;
+  margin-bottom: 10px;
+}
+
+.text-container h2 {
+  font-size: 6rem;
+  margin: 0;
+  color: #fff;
+}
+
+.text-container p {
+  margin: 5px 0;
+}
+
+.learn-more {
+  background-color: #ffba08;
+  color: #1c1c1c;
+  border: none;
+  padding: 10px 20px;
+  font-size: 1rem;
+  border-radius: 20px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.learn-more:hover {
+  background-color: #ffa500;
+}
+
+.astronaut-container {
+  position: absolute;
+  bottom: 20px;
+  right: 20px;
+  z-index: 1;
+}
+
+.astronaut {
+  width: 150px;
+}
+
+.dots-container {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  overflow: hidden;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.dot {
+  position: absolute;
+  background-color: white;
+  border-radius: 50%;
+  animation: fadeInOut 3s infinite;
+}
+
+@keyframes fadeInOut {
+
+  0%,
+  100% {
+    opacity: 0;
   }
-  
-  .container {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    height: 100vh;
-    position: relative;
+
+  50% {
+    opacity: 0.8;
   }
-  
-  .text-container {
-    z-index: 2;
-    color: #ffba08;
+}
+
+/* NotFoundPage-light.css */
+
+body,
+html {
+  margin: 0;
+  padding: 0;
+  font-family: Arial, sans-serif;
+  background-color: #f9f9f9;
+  /* Light background */
+  color: #1c1c1c;
+  /* Dark text */
+  overflow: hidden;
+}
+
+.container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  height: 100vh;
+  position: relative;
+}
+
+.text-container {
+  z-index: 2;
+  color: #d97706;
+  /* Warm yellow-orange */
+}
+
+.text-container h1 {
+  font-size: 1.5rem;
+  margin-bottom: 10px;
+  color: #d97706;
+}
+
+.text-container h2 {
+  font-size: 6rem;
+  margin: 0;
+  color: #1c1c1c;
+}
+
+.text-container p {
+  margin: 5px 0;
+  color: #333;
+}
+
+.learn-more {
+  background-color: #ffba08;
+  color: #ffffff;
+  border: none;
+  padding: 10px 20px;
+  font-size: 1rem;
+  border-radius: 20px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.learn-more:hover {
+  background-color: #f59e0b;
+  transform: scale(1.05);
+}
+
+.astronaut-container {
+  position: absolute;
+  bottom: 20px;
+  right: 20px;
+  z-index: 1;
+}
+
+.astronaut {
+  width: 150px;
+  opacity: 0.9;
+}
+
+.dots-container {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  overflow: hidden;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.dot {
+  position: absolute;
+  background-color: rgba(0, 0, 0, 0.3);
+  /* Softer contrast for light mode */
+  border-radius: 50%;
+  animation: fadeInOut 3s infinite;
+}
+
+@keyframes fadeInOut {
+
+  0%,
+  100% {
+    opacity: 0;
   }
-  
-  .text-container h1 {
-    font-size: 1.5rem;
-    margin-bottom: 10px;
+
+  50% {
+    opacity: 0.6;
   }
-  
-  .text-container h2 {
-    font-size: 6rem;
-    margin: 0;
-    color: #fff;
-  }
-  
-  .text-container p {
-    margin: 5px 0;
-  }
-  
-  .learn-more {
-    background-color: #ffba08;
-    color: #1c1c1c;
-    border: none;
-    padding: 10px 20px;
-    font-size: 1rem;
-    border-radius: 20px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-  }
-  
-  .learn-more:hover {
-    background-color: #ffa500;
-  }
-  
-  .astronaut-container {
-    position: absolute;
-    bottom: 20px;
-    right: 20px;
-    z-index: 1;
-  }
-  
-  .astronaut {
-    width: 150px;
-  }
-  
-  .dots-container {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    top: 0;
-    left: 0;
-    overflow: hidden;
-    pointer-events: none;
-    z-index: 0;
-  }
-  
-  .dot {
-    position: absolute;
-    background-color: white;
-    border-radius: 50%;
-    animation: fadeInOut 3s infinite;
-  }
-  
-  @keyframes fadeInOut {
-    0%, 100% {
-      opacity: 0;
-    }
-    50% {
-      opacity: 0.8;
-    }
-  }
-  
+}
