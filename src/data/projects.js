@@ -23,6 +23,7 @@ export const projects = [
       { label: "Live Demo", url: "#" },
       { label: "GitHub", url: "https://github.com/SimerdeepSingh4/Mentora-LMS-" }
     ],
+    videoUrl: "https://www.youtube.com/embed/-I4z4gpVaCg?si=ayuFSUS0g3ueKWoY",
     sections: [
       {
         title: "Student Dashboard",
@@ -127,6 +128,7 @@ export const projects = [
       { label: "Live Demo", url: "https://code-review-theta.vercel.app/" },
       { label: "GitHub", url: "https://github.com/SimerdeepSingh4/Code-Reviewer" }
     ],
+    videoUrl: "https://www.youtube.com/embed/037fjQBPv5c?si=uqN1i2PVHrmi2TKo",
     images: [
       "/projects/project3A.png", "/projects/project3B.png", "/projects/project3C.png"
     ],

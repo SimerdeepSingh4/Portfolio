@@ -13,6 +13,7 @@ const projects = [
 
     demoUrl: "#",
     githubUrl: "https://github.com/SimerdeepSingh4/Mentora-LMS-",
+    videoUrl: "https://youtu.be/TTx7Y3a7EmA?si=E7N5qydJKF1I7O0T" 
   },
   {
     id: 2,
@@ -22,6 +23,7 @@ const projects = [
     tags: ["React", "Node.js", "Firebase", "Google Cloud Speech API"],
     demoUrl: "#",
     githubUrl: "https://github.com/SimerdeepSingh4/V.O.L.T",
+    videoUrl: "https://youtu.be/TTx7Y3a7EmA?si=E7N5qydJKF1I7O0T"
   },
   {
     id: 3,
@@ -31,6 +33,7 @@ const projects = [
     tags: ["React", "Vite", "Node.js", "PrismJS", "Express", "React Markdown", "Axios", "Google Generative AI (Gemini)"],
     demoUrl: "#",
     githubUrl: "https://github.com/SimerdeepSingh4/Code-Reviewer",
+    videoUrl: "https://youtu.be/TTx7Y3a7EmA?si=E7N5qydJKF1I7O0T"
   },
 ];
 

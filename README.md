@@ -1,114 +1,83 @@
-# Build a Modern Portfolio Website with React & TailwindCSS
+# Beautiful Portfolio
 
+A personal portfolio website built with React and Tailwind CSS to showcase projects and skills.
 
+## Live Demo
 
-## 📋 Table of Contents
+[Live Demo](https://simerdeep-portfolio.vercel.app/)
 
-1. [Introduction](#-introduction)
-2. [Tech Stack](#-tech-stack)
-3. [Features](#-features)
-4. [Quick Start](#-quick-start)
-5. [Screenshots](#-screenshots)
-6. [Deployment](#-deployment)
+## Screenshot
 
----
+![Portfolio Screenshot](banner.png)
 
-## 🚀 Introduction
+## Features
 
-In this tutorial, you'll learn how to build a modern portfolio website using **React**, **TailwindCSS**, **Vite**, and **Lucide Icons**. From dark mode support to responsive animations and deployable project showcases, this video walks you through every step—perfect for developers looking to level up their frontend skills or apply for jobs.
+- **Hero Section:** A welcoming section with a brief introduction.
+- **About Section:** A section to describe yourself, your background, and your passion.
+- **Skills Section:** A section to list your skills and technologies you are proficient in.
+- **Projects Section:** A section to showcase your projects with links to the code and live demos.
+- **Contact Section:** A contact form to get in touch with you.
+- **Theme Toggle:** A button to toggle between light and dark mode.
+- **Responsive Design:** The website is fully responsive and looks great on all devices.
 
-🎥 Watch the full tutorial: [YouTube](https://youtu.be/YOUR_VIDEO_ID)
+## Technologies Used
 
----
+- **Frontend:**
+  - [React](https://reactjs.org/)
+  - [Vite](https://vitejs.dev/)
+  - [Tailwind CSS](https://tailwindcss.com/)
+  - [React Router](https://reactrouter.com/)
+- **Forms:**
+  - [Formspree](https://formspree.io/)
+- **UI Components:**
+  - [Radix UI](https://www.radix-ui.com/)
+  - [Lucide React](https://lucide.dev/guide/packages/lucide-react)
+  - [React Icons](https://react-icons.github.io/react-icons/)
 
-## ⚙️ Tech Stack
+## Getting Started
 
-* **React** – Component-based UI development
-* **Vite** – Lightning-fast build tool
-* **TailwindCSS** – Utility-first CSS for styling
-* **Lucide Icons** – Clean and beautiful icon pack
-* **Radix UI** – Accessible component primitives
-* **TypeScript (optional)** – Type safety and tooling
-* **GitHub & Vercel** – Deployment
-
----
-
-## ⚡️ Features
-
-* 🌑 **Light/Dark Mode Toggle**
-  Save theme preference in local storage with beautiful transitions
-
-* 💫 **Animated Backgrounds**
-  Stars, meteors, scroll effects, and glowing UI elements
-
-* 📱 **Responsive Navigation**
-  Desktop and mobile menus with glassmorphism
-
-* 👨‍💻 **Hero & About Sections**
-  Showcase who you are with smooth intro animations and buttons
-
-* 📊 **Skills Grid**
-  Filterable progress bars and categories with animated width
-
-* 🖼️ **Projects Showcase**
-  Display screenshots, tech stacks, and GitHub/demo links
-
-* 📩 **Contact Section**
-  Social icons + responsive contact form with toast notifications
-
-* 🚀 **One-Click Deployment**
-  Easily host your site with Vercel and GitHub
-
----
-
-## 👌 Quick Start
+To get a local copy up and running follow these simple steps.
 
 ### Prerequisites
 
-* [Node.js](https://nodejs.org/)
-* [Git](https://git-scm.com/)
+- [Node.js](https://nodejs.org/en/) installed on your machine.
 
-### Clone and Run
+### Installation
 
-```bash
-git clone https://github.com/yourusername/react-tailwind-portfolio.git
-cd react-tailwind-portfolio
-npm install
-npm run dev
+1. Clone the repo
+   ```sh
+   git clone https://github.com/SimerdeepSingh4/Portfolio.git
+   ```
+2. Install NPM packages
+   ```sh
+   npm install
+   ```
+3. Run the development server
+   ```sh
+   npm run dev
+   ```
+   Open [http://localhost:5173](http://localhost:5173) to view it in the browser.
+
+## Building for Production
+
+To create a production build, run the following command:
+
+```sh
+npm run build
 ```
 
-Your app will be available at: [http://localhost:5173](http://localhost:5173)
+This will create a `dist` folder with the optimized and minified files for deployment.
+
+## 🙋‍♂️ Author
+
+**Simerdeep Singh Gandhi**
+
+- Portfolio: [https://simerdeep-portfolio.vercel.app/](https://simerdeep-portfolio.vercel.app/)
+- GitHub: [@SimerdeepSingh4](https://github.com/SimerdeepSingh4)
+- LinkedIn: [Simerdeep Singh Gandhi](https://www.linkedin.com/in/simerdeep-singh-gandhi/)
 
 ---
 
-## 🖼️ Screenshots
+## ✨ Show Your Support
 
-> 📸 Add screenshots of your Hero section, Projects grid, and Contact form here to show off your site.
-
----
-
-## ☁️ Deployment
-
-### Deploy on Vercel
-
-1. Push your code to GitHub
-2. Go to [vercel.com](https://vercel.com)
-3. Import your repository
-4. Click **Deploy**
-
-Your live website will be hosted on a custom subdomain (e.g. `https://your-name.vercel.app`)
-
----
-
-## 🔗 Useful Links
-
-* [React Documentation](https://reactjs.org/)
-* [Tailwind CSS Docs](https://tailwindcss.com/)
-* [Lucide Icons](https://lucide.dev/)
-* [Radix UI](https://www.radix-ui.com/)
-* [Vite](https://vitejs.dev/)
-* [Vercel](https://vercel.com/)
-
----
-
-Let me know if you'd like me to generate a version with your actual GitHub repo, YouTube URL, or a banner image suggestion!
+Give a ⭐️ if this project helped you!

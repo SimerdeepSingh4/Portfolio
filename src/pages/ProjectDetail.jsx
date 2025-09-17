@@ -70,6 +70,23 @@ export const ProjectDetail = () => {
               </ul>
             </>
           )}
+          {/* YouTube Demo Video */}
+{project.videoUrl && (
+  <div className="mb-12">
+    <h2 className="text-2xl font-semibold mb-4 text-primary">Project Video Demo</h2>
+    <div className="aspect-w-16 aspect-h-9">
+      <iframe
+        className="w-full h-96 rounded-lg shadow-lg"
+        src={project.videoUrl}
+        title={`${project.title} Demo Video`}
+        frameBorder="0"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+        allowFullScreen
+      />
+    </div>
+  </div>
+)}
+
           {/* Project Links/Buttons or Error Message */}
           <div className="flex flex-col items-center gap-4 mb-8">
             {!isDemoAvailable && !isGithubAvailable && (
