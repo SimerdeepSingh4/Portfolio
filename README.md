@@ -9,7 +9,7 @@ A personal portfolio website built with React and Tailwind CSS to showcase proje
 ## Screenshot
 
 ![Portfolio Screenshot](public/og-image.png)
-)
+
 
 ## Features
 
