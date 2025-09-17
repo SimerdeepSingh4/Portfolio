@@ -7,9 +7,8 @@ A personal portfolio website built with React and Tailwind CSS to showcase proje
 [Live Demo](https://simerdeep-portfolio.vercel.app/)
 
 ## Screenshot
+![Portfolio Screenshot](public/og-image.png)
 
-![Portfolio Screenshot](![Portfolio Screenshot](public/og-image.png)
-)
 
 ## Features
 
