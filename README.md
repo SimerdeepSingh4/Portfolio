@@ -1,4 +1,4 @@
-# Beautiful Portfolio
+#Portfolio
 
 A personal portfolio website built with React and Tailwind CSS to showcase projects and skills.
 
@@ -8,7 +8,7 @@ A personal portfolio website built with React and Tailwind CSS to showcase proje
 
 ## Screenshot
 
-![Portfolio Screenshot](banner.png)
+![Portfolio Screenshot](public\og-image.png)
 
 ## Features
 
