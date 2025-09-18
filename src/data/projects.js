@@ -23,7 +23,7 @@ export const projects = [
       { label: "Live Demo", url: "#" },
       { label: "GitHub", url: "https://github.com/SimerdeepSingh4/Mentora-LMS-" }
     ],
-    videoUrl: "https://www.youtube.com/embed/-I4z4gpVaCg?si=ayuFSUS0g3ueKWoY",
+    videoUrl: "https://www.youtube.com/embed/HVTNYHJv_FI?si=dNcgc6hexCAfoSAG",
     sections: [
       {
         title: "Student Dashboard",
