@@ -3,6 +3,7 @@ import { Home } from "./pages/Home";
 import { ProjectDetail } from "./pages/ProjectDetail";
 import { NotFound } from "./pages/NotFound";
 import { Toaster } from "@/components/ui/toaster";
+import { Analytics } from "@vercel/analytics/next";
 
 function App() {
   return (
@@ -15,6 +16,7 @@ function App() {
           <Route path="/project/:id" element={<ProjectDetail />} />
         </Routes>
       </BrowserRouter>
+      <Analytics />
     </>
   );
 }
