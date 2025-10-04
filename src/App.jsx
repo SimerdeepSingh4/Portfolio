@@ -3,7 +3,8 @@ import { Home } from "./pages/Home";
 import { ProjectDetail } from "./pages/ProjectDetail";
 import { NotFound } from "./pages/NotFound";
 import { Toaster } from "@/components/ui/toaster";
-import { Analytics } from "@vercel/analytics/next";
+import { Analytics } from "@vercel/analytics/react"; 
+import { SpeedInsights } from "@vercel/speed-insights/react";
 
 function App() {
   return (
@@ -17,6 +18,7 @@ function App() {
         </Routes>
       </BrowserRouter>
       <Analytics />
+      <SpeedInsights />
     </>
   );
 }
