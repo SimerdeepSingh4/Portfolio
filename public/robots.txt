@@ -1,0 +1,10 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://simerdeep-portfolio.vercel.app/sitemap.xml
+
+# Allow major bots
+User-agent: Googlebot
+Allow: /
+User-agent: Bingbot
+Allow: /
