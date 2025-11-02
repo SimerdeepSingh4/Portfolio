@@ -107,7 +107,7 @@ export const AboutSection = () => {
               <div className="absolute left-4 top-0 bottom-0 w-0.5 bg-gradient-to-b from-primary via-secondary to-primary/20"></div>
               <ol className="relative ml-8 space-y-8">
                 <motion.li 
-                  className="relative group"
+                  className="relative group "
                   initial={{ opacity: 0, x: -50 }}
                   animate={inView ? { opacity: 1, x: 0 } : { opacity: 0, x: -50 }}
                   transition={{ delay: 0.2, duration: 0.6 }}

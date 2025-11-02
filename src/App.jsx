@@ -36,7 +36,10 @@ function App() {
             <Route path="*" element={<NotFound />} />
           </Routes>
 
-        <FloatingActionButton />
+          <div className="hidden sm:block">
+            <FloatingActionButton />
+          </div>
+        
       </BrowserRouter>
       <Analytics />
       <SpeedInsights />

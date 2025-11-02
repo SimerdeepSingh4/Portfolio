@@ -4,7 +4,9 @@ import { MessageCircle, X, Mail, Github, Linkedin } from "lucide-react";
 
 export const FloatingActionButton = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const [isDesktop, setIsDesktop] = useState(false);
 
+  
 
   const socialLinks = [
     {
@@ -22,7 +24,7 @@ export const FloatingActionButton = () => {
     {
       icon: Linkedin,
       label: "LinkedIn",
-      href: "https://linkedin.com/in/simerdeepsingh",
+      href: "https://www.linkedin.com/in/simerdeep-singh-gandhi/",
       color: "bg-blue-600 hover:bg-blue-700",
     },
   ];
