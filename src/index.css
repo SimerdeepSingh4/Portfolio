@@ -17,7 +17,30 @@
   --animate-fade-in-delay-2: fade-in 0.7s ease-out 0.4s forwards;
   --animate-fade-in-delay-3: fade-in 0.7s ease-out 0.6s forwards;
   --animate-fade-in-delay-4: fade-in 0.7s ease-out 0.8s forwards;
-  --animate-meteor: meteor 5s linear infinite;
+  --animate-meteor: meteor 1s linear infinite;
+  
+  /* Enhanced theme background animations */
+  --animate-gradient-shift: gradient-shift 8s ease-in-out infinite;
+  --animate-float-gentle: float-gentle 12s ease-in-out infinite;
+  --animate-rotate-gentle: rotate-gentle 20s linear infinite;
+  --animate-float-particle: float-particle 8s ease-in-out infinite;
+  --animate-pulse-slow: pulse-slow 6s ease-in-out infinite;
+  --animate-draw-lines: draw-lines 10s ease-in-out infinite;
+  --animate-nebula-drift: nebula-drift 25s ease-in-out infinite;
+  --animate-twinkle-normal: twinkle-normal 3s ease-in-out infinite;
+  --animate-twinkle-bright: twinkle-bright 2s ease-in-out infinite;
+  --animate-twinkle-dim: twinkle-dim 4s ease-in-out infinite;
+  --animate-twinkle-giant: twinkle-giant 3.5s ease-in-out infinite;
+  --animate-twinkle-binary: twinkle-binary 1.5s ease-in-out infinite;
+  --animate-meteor-enhanced: meteor-enhanced 1s linear infinite;
+  --animate-constellation-fade: constellation-fade 8s ease-in-out infinite;
+  --animate-dust-drift: dust-drift 30s linear infinite;
+  
+  /* Light space theme animations */
+
+  --animate-light-comet: light-comet 2s linear infinite;
+  --animate-dust-drift-gentle: dust-drift-gentle 5s ease-in-out infinite;
+  --animate-gas-flow: gas-flow 5s ease-in-out infinite; 
 
   @keyframes float {
     0%,
@@ -51,6 +74,7 @@
     0% {
       transform: rotate(215deg) translateX(0);
       opacity: 1;
+      
     }
     70% {
       opacity: 1;
@@ -60,34 +84,338 @@
       opacity: 0;
     }
   }
+
+  /* Light theme animations */
+  @keyframes gradient-shift {
+    0%, 100% {
+      background-position: 0% 50%;
+    }
+    50% {
+      background-position: 100% 50%;
+    }
+  }
+
+  @keyframes float-gentle {
+    0%, 100% {
+      transform: translateY(0px) translateX(0px);
+      
+    }
+    25% {
+      transform: translateY(-15px) translateX(10px);
+
+    }
+    50% {
+      transform: translateY(-5px) translateX(-5px);
+
+    }
+    75% {
+      transform: translateY(-20px) translateX(15px);
+
+    }
+  }
+
+
+
+  @keyframes pulse-slow {
+    0%, 100% {
+      opacity: 0.3;
+    }
+    50% {
+      opacity: 0.8;
+    }
+  }
+
+
+
+  /* Dark theme animations */
+  @keyframes nebula-drift {
+    0% {
+      transform: translateX(10px) translateY(-5px) scale(1.02);
+    }
+    25% {
+      transform: translateX(30px) translateY(-20px) scale(1.1);
+    }
+    50% {
+      transform: translateX(-15px) translateY(15px) scale(0.95);
+    }
+    75% {
+      transform: translateX(20px) translateY(25px) scale(1.05);
+    }
+    100% {
+      transform: translateX(-5px) translateY(10px) scale(0.98);
+    }
+  }
+
+  @keyframes twinkle-normal {
+    0% {
+      opacity: 0.8;
+      transform: scale(1);
+    }
+    25% {
+      opacity: 0.8;
+      transform: scale(1);
+    }
+    50% {
+      opacity: 0.3;
+      transform: scale(0.9);
+    }
+    75% {
+      opacity: 0.7;
+      transform: scale(1.05);
+    }
+    100% {
+      opacity: 0.5;
+      transform: scale(0.95);
+    }
+  }
+
+  @keyframes twinkle-bright {
+    0% {
+      opacity: 1;
+      transform: scale(1);
+      filter: brightness(1);
+    }
+    25% {
+      opacity: 0.6;
+      transform: scale(1.2);
+      filter: brightness(1.5);
+    }
+    50% {
+      opacity: 0.4;
+      transform: scale(0.8);
+      filter: brightness(0.8);
+    }
+    75% {
+      opacity: 1;
+      transform: scale(1);
+      filter: brightness(1);
+    }
+    100% {
+      opacity: 0.8;
+      transform: scale(1.05);
+      filter: brightness(1.2);
+    }
+  }
+
+  @keyframes twinkle-dim {
+    0% {
+      opacity: 0.4;
+    }
+    25% {
+      opacity: 0.4;
+    }
+    50% {
+      opacity: 0.1;
+    }
+    75% {
+      opacity: 0.3;
+    }
+    100% {
+      opacity: 0.2;
+    }
+  }
+
+  @keyframes twinkle-giant {
+    0% {
+      opacity: 0.9;
+      transform: scale(1) rotate(0deg);
+    }
+    25% {
+      opacity: 0.6;
+      transform: scale(1.3) rotate(90deg);
+    }
+    50% {
+      opacity: 0.3;
+      transform: scale(0.7) rotate(180deg);
+    }
+    75% {
+      opacity: 0.9;
+      transform: scale(1) rotate(0deg);
+    }
+    100% {
+      opacity: 0.75;
+      transform: scale(1.05) rotate(315deg);
+    }
+  }
+
+  @keyframes twinkle-binary {
+    0% {
+      opacity: 0.8;
+    }
+    25% {
+      opacity: 0.2;
+    }
+    50% {
+      opacity: 0.9;
+    }
+    75% {
+      opacity: 0.1;
+    }
+    100% {
+      opacity: 0.6;
+    }
+  }
+
+
+
+  @keyframes meteor-enhanced {
+    0% {
+      transform: translate(0, 0) rotate(225deg);
+      opacity: 0;
+    }
+    10% {
+      opacity: 1;
+    }
+    90% {
+      opacity: 1;
+    }
+    100% {
+      transform: translate(80vw, 80vw) rotate(225deg);
+      opacity: 0;
+    }
+  }
+
+  @keyframes constellation-fade {
+    0% {
+      opacity: 0.15;
+    }
+    50% {
+      opacity: 0.6;
+    }
+    100% {
+      opacity: 0.08;
+    }
+  }
+
+  @keyframes dust-drift {
+    0% {
+      transform: translateX(-100px) translateY(-100px);
+      opacity: 0.1;
+      
+    }
+    50% {
+      opacity: 0.3;
+    }
+    100% {
+      transform: translateX(100vw) translateY(100vh);
+      opacity: 0.1;
+    }
+  }
+
+  /* Light space theme keyframes */
+
+
+  @keyframes light-comet {
+    0% {
+      transform: translate(0, 0) rotate(225deg);
+      opacity: 0;
+    }
+    10% {
+      opacity: 1;
+    }
+    90% {
+      opacity: 1;
+      
+    }
+    100% {
+      transform: translate(80vw, 80vw) rotate(225deg);
+      opacity: 0;
+    }
+  }
+
+
+
+  @keyframes dust-drift-gentle {
+    0% {
+      transform: translateX(5px) translateY(-5px) rotate(45deg);
+      opacity: 0.4;
+      z-index: 0;
+    }
+    25% {
+      transform: translateX(15px) translateY(-10px) rotate(90deg);
+      opacity: 0.5;
+      z-index: 0;
+    }
+    50% {
+      transform: translateX(-10px) translateY(20px) rotate(180deg);
+      opacity: 0.3;
+      z-index: 0;
+    }
+    75% {
+      transform: translateX(20px) translateY(5px) rotate(270deg);
+      opacity: 0.5;
+      z-index: 0;
+    }
+    100% {
+      transform: translateX(-5px) translateY(10px) rotate(315deg);
+      opacity: 0.4;
+      z-index: 0;
+    }
+  }
+
+  @keyframes gas-flow {
+    0% {
+      transform: translateX(10px) translateY(-10px) scaleX(1.05) scaleY(0.95);
+      opacity: 0.4;
+      z-index: 0;
+    }
+    25% {
+      transform: translateX(30px) translateY(-20px) scaleX(1.2) scaleY(0.8);
+      opacity: 0.5;
+      z-index: 0;
+    }
+    50% {
+      transform: translateX(-20px) translateY(30px) scaleX(0.9) scaleY(1.3);
+      opacity: 0.4;
+      z-index: 0;
+    }
+    75% {
+      transform: translateX(25px) translateY(10px) scaleX(1.1) scaleY(0.9);
+      opacity: 0.3;
+      z-index: 0;
+    }
+    100% {
+      transform: translateX(-5px) translateY(15px) scaleX(0.98) scaleY(1.1);
+      opacity: 0.35;
+      z-index: 0;
+    }
+  }
 }
 
 @layer base {
   :root {
     --background: 210 40% 98%;
-    --foreground: 222 47% 11%;
+    --foreground: 222 47% 10%;
     --card: 0 0% 100%;
     --primary: 250 47% 60%;
     --primary-foreground: 210 40% 98%;
-    --border: 214 32% 91%;
+    --border: 214 32% 88%;
     --accent: 220 100% 96%;
     --shadow: 0 4px 24px rgba(80, 80, 120, 0.08);
     --pastel1: #f8fafc;
     --pastel2: #e0e7ff;
     --pastel3: #fcd34d;
     --pastel4: #a5b4fc;
+    
   }
 
   .dark {
     --background: 222 47% 4%;
-    --foreground: 213 31% 91%;
+    --foreground: 213 31% 95%; /* Brighter foreground for better readability */
     --card: 222 47% 8%;
-    --primary: 250 65% 65%;
-    --primary-foreground: 213 31% 91%;
-    --border: 217 33% 20%;
+    --primary: 250 65% 70%; /* Slightly brighter primary */
+    --primary-foreground: 213 31% 95%;
+    --border: 217 33% 25%; /* Slightly brighter borders */
   }
 
-  * {
+  /* Avoid applying borders to every element (very expensive for paint/layout).
+     Apply borders only to components that need them to reduce repaints. */
+  .bg-card,
+  .card,
+  input,
+  textarea,
+  select,
+  .btn-gradient {
     @apply border-border;
   }
 
@@ -96,73 +424,167 @@
   }
 
   body {
-    @apply bg-background text-foreground transition-colors duration-300;
+    @apply bg-background text-foreground;
     font-feature-settings: "rlig" 1, "calt" 1;
+    transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out;
   }
 }
 
 html:not(.dark) body {
-  background: linear-gradient(135deg, var(--pastel1) 0%, var(--pastel2) 60%, #fdf6e3 100%);
+  background: #f8fafc;
   position: relative;
 }
 
-html:not(.dark) body::before,
-html:not(.dark) body::after {
-  content: '';
-  position: fixed;
-  z-index: 0;
-  pointer-events: none;
-  border-radius: 50%;
-  opacity: 0.18;
-}
-
-@keyframes float-blob-1 {
-  0%, 100% {
-    transform: translate(0, 0) scale(1);
-  }
-  50% {
-    transform: translate(40px, 30px) scale(1.08);
-  }
-}
-@keyframes float-blob-2 {
-  0%, 100% {
-    transform: translate(0, 0) scale(1);
-  }
-  50% {
-    transform: translate(-30px, -40px) scale(1.12);
-  }
-}
-
-html:not(.dark) body::before {
-  width: 600px;
-  height: 600px;
-  left: -200px;
-  top: -200px;
-  background: radial-gradient(circle at 30% 30%, #a5b4fc 0%, #fcd34d 100%);
-  animation: float-blob-1 12s ease-in-out infinite;
-}
-
-html:not(.dark) body::after {
-  width: 500px;
-  height: 500px;
-  right: -150px;
-  bottom: -150px;
-  background: radial-gradient(circle at 70% 70%, #fca5a5 0%, #fcd34d 100%);
-  animation: float-blob-2 14s ease-in-out infinite;
-}
+/* Removed old blob backgrounds - now using space-themed background component */
 
 html:not(.dark) .bg-card {
-  background: #fff;
+  background: rgba(255,255,255,0.95);
   border-radius: 1rem;
   box-shadow: var(--shadow);
-  border: 1px solid #e0e7ef;
+  border: 1px solid #d1d5db;
 }
 
 html:not(.dark) .cosmic-button {
   background: linear-gradient(90deg, var(--pastel4) 0%, var(--pastel3) 100%);
-  color: #222;
+  color: #1f2937;
+  font-weight: 600;
   box-shadow: 0 2px 8px rgba(165, 180, 252, 0.15);
 }
+
+/* Strengthen light theme muted foreground for readability over bright background */
+html:not(.dark) .text-muted-foreground {
+  color: #32435d !important; /* A darker, more readable gray */
+}
+
+.dark .text-muted-foreground {
+  color: #eaedf3 !important; /* Lighter gray for better contrast in dark mode */
+}
+
+/* Enhanced text readability in light mode */
+html:not(.dark) h1,
+html:not(.dark) h2,
+html:not(.dark) h3,
+html:not(.dark) h4,
+html:not(.dark) h5,
+html:not(.dark) h6 {
+  text-shadow: 0 1px 2px rgba(255, 255, 255, 0.8);
+}
+
+html:not(.dark) p,
+html:not(.dark) .text-slate-700 {
+  text-shadow: 0 0.5px 1px rgba(255, 255, 255, 0.6);
+}
+
+/* Enhanced text readability in dark mode */
+.dark h1,
+.dark h2,
+.dark h3,
+.dark h4,
+.dark h5,
+.dark h6 {
+  color: #f9fafb; /* Very light gray for headings */
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+}
+
+.dark p {
+  color: #d1d5db; /* Light gray for paragraph text */
+}
+
+/* Override for specific sections in light/dark mode */
+
+
+.dark .text-black {
+  color: #ffffff !important;
+}
+
+/* Feature and challenge text colors */
+.feature-text,
+.challenge-text {
+  color: #000000; /* Black in light mode */
+}
+
+.dark .feature-text,
+.dark .challenge-text {
+  color: #ffffff !important; /* White in dark mode */
+}
+
+/* PrismJS logo background fix for both light and dark modes */
+img[alt="PrismJS"] {
+  background-color: #000000;
+  border-radius: 4px;
+  padding: 2px;
+}
+
+/* Express logo background fix for both light and dark modes */
+img[alt="Express"],
+img[alt="Express.js"] {
+  background-color: #ffffff;
+  border-radius: 4px;
+  padding: 2px;
+}
+
+/* Synchronized theme transitions */
+html.changing-theme * {
+  transition: none !important;
+}
+
+/* Prevent staggered theme transitions */
+html.changing-theme *,
+html.changing-theme *::before,
+html.changing-theme *::after {
+  transition-delay: 0s !important;
+  animation-delay: 0s !important;
+}
+
+/* Force immediate theme changes */
+.dark,
+html:not(.dark) {
+  transition: none !important;
+}
+
+.dark *,
+html:not(.dark) * {
+  transition-delay: 0s !important;
+}
+
+.dark .text-foreground {
+  color: #f9fafb !important;
+}
+
+/* Improve contrast for specific dark mode elements */
+.dark .text-primary {
+  color: hsl(250, 85%, 75%) !important;
+  font-weight: 700;
+}
+
+/* Ensure gradient backgrounds have proper text contrast */
+html:not(.dark) .bg-gradient-to-r {
+  --tw-text-opacity: 1;
+}
+
+/* Force white text on SOLID primary/secondary gradients in light mode */
+html:not(.dark) .bg-gradient-to-r.from-primary:not([class*="/"]),
+html:not(.dark) .bg-gradient-to-r[class*="from-primary"]:not([class*="from-primary/"]),
+html:not(.dark) .bg-gradient-to-r.from-indigo-600,
+html:not(.dark) .bg-gradient-to-r.from-purple-600 {
+  color: white !important;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+}
+
+/* Increase contrast for text-primary in light mode */
+html:not(.dark) .text-primary {
+  color: hsl(250, 80%, 35%) !important;
+  font-weight: 700;
+  text-shadow: 0 1px 2px rgba(255, 255, 255, 0.8);
+}
+
+/* Ensure text-primary is visible on light gradient backgrounds */
+html:not(.dark) .bg-gradient-to-r[class*="/10"] .text-primary,
+html:not(.dark) .bg-gradient-to-r[class*="/20"] .text-primary {
+  color: hsl(250, 80%, 30%) !important;
+  font-weight: 700 !important;
+}
+
 
 html:not(.dark) .section-divider {
   border-top: 1px solid #e0e7ef;
@@ -237,6 +659,85 @@ html:not(.dark) .section-divider {
   box-shadow: 0 0 10px 5px rgba(255, 255, 255, 0.3);
 }
 
+/* Light theme utilities */
+@utility bg-gradient-mesh {
+  background: 
+    radial-gradient(circle at 25% 25%, #a5b4fc 0%, transparent 50%),
+    radial-gradient(circle at 75% 75%, #fcd34d 0%, transparent 50%),
+    radial-gradient(circle at 75% 25%, #fca5a5 0%, transparent 50%),
+    radial-gradient(circle at 25% 75%, #93c5fd 0%, transparent 50%),
+    linear-gradient(135deg, #f8fafc 0%, #e0e7ff 50%, #fdf6e3 100%);
+  background-size: 800px 800px, 600px 600px, 700px 700px, 500px 500px, 100% 100%;
+}
+
+@utility geometric-shape {
+  @apply border border-purple-300/20;
+  background: linear-gradient(135deg, rgba(139, 92, 246, 0.1), rgba(59, 130, 246, 0.05));
+  backdrop-filter: blur(2px);
+}
+
+@utility geometric-triangle {
+  clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
+}
+
+@utility geometric-square {
+  border-radius: 8px;
+}
+
+@utility geometric-hexagon {
+  clip-path: polygon(25% 0%, 75% 0%, 100% 50%, 75% 100%, 25% 100%, 0% 50%);
+}
+
+@utility geometric-diamond {
+  clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%);
+}
+
+/* Dark theme utilities */
+@utility meteor-enhanced {
+  @apply absolute rounded-full;
+  background: linear-gradient(to right, 
+    rgba(255, 255, 255, 0.9) 0%,
+    rgba(255, 255, 255, 0.8) 20%,
+    rgba(135, 206, 250, 0.6) 40%,
+    rgba(135, 206, 250, 0.3) 70%,
+    transparent 100%
+  );
+  box-shadow: 
+    0 0 20px rgba(255, 255, 255, 0.8),
+    0 0 40px rgba(135, 206, 250, 0.4),
+    0 0 80px rgba(135, 206, 250, 0.2);
+}
+
+@utility cosmic-dust {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100px;
+  height: 100px;
+  background: radial-gradient(circle, 
+    rgba(255, 255, 255, 0.1) 0%, 
+    rgba(135, 206, 250, 0.05) 30%, 
+    transparent 50%
+  );
+  border-radius: 50%;
+  filter: blur(2px);
+}
+
+/* Light space theme utilities */
+
+@utility light-comet {
+  @apply absolute rounded-full;
+  background: linear-gradient(to right, 
+    rgba(255, 215, 0, 0.8) 0%,
+    rgba(255, 215, 0, 0.6) 30%,
+    rgba(255, 165, 0, 0.4) 60%,
+    transparent 100%
+  );
+  box-shadow: 
+    0 0 15px rgba(255, 215, 0, 0.6),
+    0 0 30px rgba(255, 165, 0, 0.3);
+}
+
 @keyframes fadeInUp {
   0% {
     opacity: 0;
@@ -264,6 +765,7 @@ html:not(.dark) .section-divider {
   margin: 0 auto;
   padding: 0;
   text-align: center;
+  /* user-select:none; */
 }
 
 @keyframes float-rotate {
@@ -356,3 +858,217 @@ html, body {
 body:hover {
   scrollbar-color: rgba(0,0,0,0.4) transparent; /* clearer on hover */
 }
+
+/* Scoped immediate animation start
+   - Avoid global !important rules which are expensive and interfere with optimizations.
+   - To force-start animations for a specific background, add the class `bg-animated--active` on
+     the background container (e.g. the star/nebula component root). This keeps rules scoped
+     and reduces global repaints. */
+.bg-animated--active .animate-twinkle-normal,
+.bg-animated--active .animate-twinkle-bright,
+.bg-animated--active .animate-twinkle-dim,
+.bg-animated--active .animate-twinkle-giant,
+.bg-animated--active .animate-twinkle-binary,
+.bg-animated--active .animate-solar-pulse,
+.bg-animated--active .animate-meteor-enhanced,
+.bg-animated--active .animate-light-comet {
+  animation-play-state: running;
+  animation-fill-mode: both;
+}
+
+/* Scoped visibility helpers for twinkle/meteors */
+.bg-animated--active [style*="twinkle-"] {
+  animation-play-state: running;
+  opacity: 0.5;
+  transform: scale(1);
+}
+
+.bg-animated--active .meteor-enhanced,
+.bg-animated--active .light-comet {
+  animation-play-state: running;
+  animation-iteration-count: infinite;
+  animation-timing-function: linear;
+}
+
+/* Enhanced Accessibility */
+.focus-visible {
+  outline: 2px solid hsl(var(--primary));
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+/* Focus indicators for interactive elements */
+button:focus-visible,
+a:focus-visible,
+[role="button"]:focus-visible,
+input:focus-visible,
+textarea:focus-visible,
+select:focus-visible {
+  outline: 2px solid hsl(var(--primary));
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+/* Reduced motion support */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+  /* Hide decorative animations entirely when reduced-motion is enabled */
+  .animate-nebula-drift,
+  .animate-constellation-fade,
+  .animate-light-comet,
+
+  .animate-dust-drift-gentle,
+  .animate-gas-flow
+{
+    display: none !important;
+  }
+}
+
+/* High contrast mode support */
+@media (prefers-contrast: high) {
+  .bg-card {
+    border: 2px solid hsl(var(--border));
+  }
+  
+  .text-muted-foreground {
+    color: hsl(var(--foreground));
+    opacity: 0.8;
+  }
+}
+
+/* Glass morphism effects */
+.glass {
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+}
+
+.dark .glass {
+  background: rgba(0, 0, 0, 0.2);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* Enhanced gradient text */
+.gradient-text {
+  background: linear-gradient(135deg, hsl(var(--primary)), #8b5cf6, #06b6d4);
+  background-size: 200% 200%;
+  animation: gradient-shift 3s ease infinite;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Stronger gradient for LIGHT mode for better contrast */
+html:not(.dark) .gradient-text {
+  background: linear-gradient(135deg, #1e1b4b, #4c1d95, #1e40af);
+  background-size: 200% 200%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  text-shadow: 0 0 0 transparent; /* ensure no residual color fill */
+}
+
+/* Brighter gradient colors for DARK mode */
+.dark .gradient-text {
+  background: linear-gradient(135deg, #a78bfa, #c084fc, #60a5fa);
+  background-size: 200% 200%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+
+/* gradient-shift is defined earlier inside @theme; duplicate removed to avoid duplication */
+
+/* Loading skeleton */
+@utility skeleton {
+  @apply animate-pulse;
+  background: linear-gradient(90deg, hsl(var(--secondary)/.5), hsl(var(--secondary)), hsl(var(--secondary)/.5));
+  background-size: 200% 100%;
+  animation: shimmer 1.5s infinite linear;
+}
+
+@keyframes shimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+
+/* Image lazy loading blur effect */
+.image-blur {
+  filter: blur(5px);
+  transition: filter 0.3s ease;
+}
+
+.image-loaded {
+  filter: blur(0);
+}
+
+/* Enhanced button styles */
+.btn-gradient {
+  background: linear-gradient(135deg, hsl(var(--primary)), #8b5cf6);
+  background-size: 200% 200%;
+  animation: gradient-shift 3s ease infinite;
+  position: relative;
+  overflow: hidden;
+}
+
+.btn-gradient::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+  transition: left 0.5s;
+}
+
+.btn-gradient:hover::before {
+  left: 100%;
+}
+
+/* Touch-friendly interactions */
+@media (hover: none) and (pointer: coarse) {
+  .card-hover:hover {
+    transform: none;
+  }
+  
+  .card-hover:active {
+    transform: scale(0.98);
+  }
+  
+  .cosmic-button:hover {
+    transform: none;
+  }
+  
+  .cosmic-button:active {
+    transform: scale(0.95);
+  }
+}
+
+/* Print styles */
+@media print {
+  .no-print {
+    display: none !important;
+  }
+  
+  body {
+    background: white !important;
+    color: black !important;
+  }
+  
+  .bg-card {
+    background: white !important;
+    border: 1px solid #ccc !important;
+    box-shadow: none !important;
+  }
+}
+/* Removed duplicate/unused pulse-sloww animation to reduce bundle size */

@@ -1,7 +1,7 @@
 import * as React from "react";
 
-const TOAST_LIMIT = 1;
-const TOAST_REMOVE_DELAY = 1000000;
+const TOAST_LIMIT = 3; // allow a few toasts at once (optional)
+const TOAST_REMOVE_DELAY = 5000; // 5s remove delay to free DOM nodes faster
 
 let count = 0;
 
