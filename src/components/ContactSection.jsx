@@ -88,7 +88,7 @@ export default function ContactSection (){
         setCopiedPhone(true);
         setTimeout(() => setCopiedPhone(false), 2000);
       }
-      toast.success(`${type === 'email' ? 'Email' : 'Phone'} copied to clipboard!`);
+      toast.success(`${type === 'email' ? 'Email' : 'Phone Number'} copied to clipboard!`);
     } catch (err) {
       toast.error('Failed to copy to clipboard');
     }
@@ -271,7 +271,7 @@ export default function ContactSection (){
                     icon: Github, 
                     href: "https://github.com/SimerdeepSingh4", 
                     label: "GitHub", 
-                    brandColor: "#333333"
+                    brandColor: "#5b6abf"
                   },
                 ].map((social, index) => {
                   const [isHovered, setIsHovered] = useState(false);
