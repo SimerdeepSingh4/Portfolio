@@ -9,21 +9,21 @@ export const Footer = () => {
     {
       name: "GitHub",
       icon: Github,
-      href: "https://github.com/simerdeep567",
-      color: "hover:text-gray-900 dark:hover:text-white"
+      href: "https://github.com/SimerdeepSingh4",
+      color: "#0077B5",
     },
     {
       name: "LinkedIn",
       icon: Linkedin,
-      href: "https://linkedin.com/in/simerdeepsingh567",
-      color: "hover:text-blue-600"
+      href: "https://www.linkedin.com/in/simerdeep-singh-gandhi/",
+      color: "#1DA1F2",
     },
     {
       name: "Email",
       icon: Mail,
       href: "mailto:simerdeepsingh567@gmail.com",
-      color: "hover:text-red-500"
-    }
+      color: "#5b6abf",
+    },
   ];
 
   return (
@@ -33,12 +33,13 @@ export const Footer = () => {
 
       <div className="py-3 sm:py-4 px-4 sm:px-8">
         <div className="flex flex-col sm:flex-row sm:justify-between sm:items-center gap-4 sm:gap-6 text-center sm:text-left max-w-6xl mx-auto w-full">
-          
           {/* Left section */}
           <div className="flex flex-col sm:flex-row sm:items-center justify-center sm:justify-start gap-2 sm:gap-4 w-full sm:w-auto">
             <div className="text-xs sm:text-sm text-muted-foreground ">
               © {new Date().getFullYear()} Designed & Developed by{" "}
-              <span className="text-primary font-medium">Simerdeep Singh Gandhi</span>
+              <span className="text-primary font-medium">
+                Simerdeep Singh Gandhi
+              </span>
             </div>
 
             {/* Social Icons */}
@@ -63,10 +64,9 @@ export const Footer = () => {
 
           {/* Right section */}
           <div className="flex items-center justify-center sm:justify-end gap-2 sm:gap-4 w-full sm:w-auto">
-            
             <div className="text-[10px] sm:text-xs text-muted-foreground">
-              Built with <span className="text-primary font-medium">React</span> &{" "}
-              <span className="text-primary font-medium">Tailwind CSS</span>
+              Built with <span className="text-primary font-medium">React</span>{" "}
+              & <span className="text-primary font-medium">Tailwind CSS</span>
             </div>
 
             <button
@@ -76,15 +76,8 @@ export const Footer = () => {
             >
               <ArrowUp className="w-4 h-4 sm:w-5 sm:h-5 transition-transform duration-300 group-hover:-translate-y-1" />
             </button>
-
           </div>
         </div>
-      </div>
-
-      {/* Glow background */}
-      <div className="absolute inset-0 pointer-events-none opacity-20">
-        <div className="absolute bottom-1 left-4 w-12 h-12 bg-primary/10 rounded-full blur-2xl"></div>
-        <div className="absolute bottom-1 right-4 w-10 h-10 bg-primary/5 rounded-full blur-xl"></div>
       </div>
     </footer>
   );

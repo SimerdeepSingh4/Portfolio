@@ -113,7 +113,6 @@ export const HeroSection = () => {
                   "I'm a Full-Stack Web Developer passionate about building seamless digital experiences",
 "I build responsive, scalable, user-friendly web apps",
 "I love turning ideas into elegant, functional solutions through code",
-"I specialize in the MERN stack — React, Node.js, Express, and MongoDB",
                 ],
                 autoStart: true,
                 loop: true,

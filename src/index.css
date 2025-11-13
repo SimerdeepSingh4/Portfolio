@@ -1071,4 +1071,4 @@ html:not(.dark) .gradient-text {
     box-shadow: none !important;
   }
 }
-/* Removed duplicate/unused pulse-sloww animation to reduce bundle size */
+

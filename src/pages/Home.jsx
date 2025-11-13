@@ -21,7 +21,6 @@ export const Home = () => {
         <HeroSection />
         <AboutSection />
         <SkillsSection />
-         {/* Lazy-loaded sections with fallback */}
           <ProjectsSection />
 
 
