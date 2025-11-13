@@ -767,7 +767,31 @@ html:not(.dark) .section-divider {
   text-align: center;
   user-select:none;
 }
+/* Dark mode selection */
+.dark ::selection {
+  background: #8535d4; /* violet glow */
+  color: #ffffff;
+  text-shadow: 0 0 5px rgba(23, 2, 43, 0.8);
+}
 
+.dark ::-moz-selection {
+  background: rgba(168, 85, 247, 0.35);
+  color: #ffffff;
+  text-shadow: 0 0 5px rgba(168, 85, 247, 0.8);
+}
+
+/* Light mode selection */
+::selection {
+  background: rgba(255, 204, 77, 0.45); /* warm golden highlight */
+  color: #1b1b28; /* dark text */
+  text-shadow: 0 0 3px rgba(255, 184, 4, 0.6);
+}
+
+::-moz-selection {
+  background: rgba(255, 204, 77, 0.45);
+  color: #1e1e2a;
+  text-shadow: 0 0 3px rgba(255, 204, 77, 0.6);
+}
 @keyframes float-rotate {
   0% {
     transform: translateY(0) rotate(-8deg);
