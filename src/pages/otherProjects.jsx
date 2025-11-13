@@ -644,7 +644,7 @@ const Projects = () => {
                 viewport={{ once: true }}
                 transition={{ delay: 0.4, duration: 0.6 }}
               >
-                I'm currently working on several exciting frontend and full-stack projects using MERN, Next.js, and other modern frameworks. Stay tuned for innovative solutions that blend creativity with technology — powered by Next.js, MERN, AI/ML, Mobile Apps, and DevOps.
+                I'm currently working on several exciting frontend and full-stack projects using MERN, Next.js, and other modern frameworks. Stay tuned for innovative solutions that blend creativity with technology powered by Next.js, MERN, AI/ML, Mobile Apps, and DevOps.
               </motion.p>
               
               <motion.div 

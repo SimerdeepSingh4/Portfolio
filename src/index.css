@@ -765,7 +765,7 @@ html:not(.dark) .section-divider {
   margin: 0 auto;
   padding: 0;
   text-align: center;
-  /* user-select:none; */
+  user-select:none;
 }
 
 @keyframes float-rotate {
