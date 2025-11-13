@@ -782,7 +782,7 @@ html:not(.dark) .section-divider {
 
 /* Light mode selection */
 ::selection {
-  background: rgba(255, 204, 77, 0.45); /* warm golden highlight */
+  background: rgba(255, 204, 77, 0.45); 
   color: #1b1b28; /* dark text */
   text-shadow: 0 0 3px rgba(255, 184, 4, 0.6);
 }
