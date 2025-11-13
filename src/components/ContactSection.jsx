@@ -265,7 +265,7 @@ export default function ContactSection (){
                     icon: Twitter, 
                     href: "https://x.com/simerdeep4848", 
                     label: "Twitter", 
-                    brandColor: "#000000"
+                    brandColor: "#1DA1F2"
                   },
                   { 
                     icon: Github, 
