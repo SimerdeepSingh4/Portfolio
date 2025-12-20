@@ -35,13 +35,13 @@ export const NotFound = () => {
 
         {/* Astronaut Images */}
         <img
-          src="/projects/astronaut.svg"
+          src="https://res.cloudinary.com/dyfjy8kmv/image/upload/v1765220082/astronaut_pszgpe.svg"
           alt="Illustration of astronaut floating in space"
           loading="lazy"
           className="absolute bottom-0 sm:bottom-5 right-0 w-40 sm:w-60 md:w-80 opacity-90 pointer-events-none animate-float"
         />
         <img
-          src="/projects/astronaut2.svg"
+          src="https://res.cloudinary.com/dyfjy8kmv/image/upload/v1765220082/astronaut2_vt7li5.svg"
           alt="Illustration of astronaut in top left corner"
           loading="lazy"
           className="absolute top-16 sm:top-20 left-0 w-32 sm:w-48 md:w-72 opacity-90 pointer-events-none animate-float-slow"

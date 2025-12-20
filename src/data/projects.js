@@ -30,11 +30,11 @@ export const projects = [
         content:
           "Students can browse and enroll in courses, attempt quizzes and assignments, and track their learning progress. The system also uses AI to suggest personalized learning paths.",
         images: [
-          "/projects/Project1A.png",
-          "/projects/Project1B.png",
-          "/projects/Project1C.png",
-          "/projects/Project1D.png",
-          "/projects/Project1E.png",
+          "https://res.cloudinary.com/dyfjy8kmv/image/upload/v1765220081/Project1A_om4mrq.png",
+          "https://res.cloudinary.com/dyfjy8kmv/image/upload/v1765220083/Project1B_jghrsf.png",
+          "https://res.cloudinary.com/dyfjy8kmv/image/upload/v1765220082/Project1C_rsaxfo.png",
+          "https://res.cloudinary.com/dyfjy8kmv/image/upload/v1765220081/Project1D_piiuss.png",
+          "https://res.cloudinary.com/dyfjy8kmv/image/upload/v1765220081/Project1E_ihqbi9.png",
         ],
       },
       {
@@ -42,9 +42,9 @@ export const projects = [
         content:
           "Teachers can create and manage courses, organize content, track student performance, and conduct assessments through an intuitive interface.",
         images: [
-          "/projects/Project1F.png",
-          "/projects/Project1G.png",
-          "/projects/Project1H.png",
+          "https://res.cloudinary.com/dyfjy8kmv/image/upload/v1765220081/Project1F_ge3bg4.png",
+          "https://res.cloudinary.com/dyfjy8kmv/image/upload/v1765220082/Project1G_l6rhho.png",
+          "https://res.cloudinary.com/dyfjy8kmv/image/upload/v1765220082/Project1H_gqudkj.png",
         ],
       },
       {
@@ -52,9 +52,9 @@ export const projects = [
         content:
           "Admins oversee platform operations, manage users, approve instructor applications, and monitor performance and transactions. They ensure the platform runs smoothly.",
         images: [
-          "/projects/Project1I.png",
-          "/projects/Project1K.png",
-          "/projects/Project1L.png",
+          "https://res.cloudinary.com/dyfjy8kmv/image/upload/v1765220082/Project1I_yinbuj.png",
+          "https://res.cloudinary.com/dyfjy8kmv/image/upload/v1765220083/Project1K_zj9dye.png",
+          "https://res.cloudinary.com/dyfjy8kmv/image/upload/v1765220083/Project1L_lxsh9c.png",
         ],
       },
     ],
@@ -95,7 +95,9 @@ export const projects = [
       { label: "GitHub", url: "#" }
     ],
     images: [
-      "/projects/project2A.png", "/projects/project2B.png", "/projects/project2C.png"
+      "https://res.cloudinary.com/dyfjy8kmv/image/upload/v1765220084/project2A_soifsp.png",
+      "https://res.cloudinary.com/dyfjy8kmv/image/upload/v1765220085/project2B_sz0pka.png",
+      "https://res.cloudinary.com/dyfjy8kmv/image/upload/v1765220085/project2C_mnkfa2.png"
     ],
     tech: [
       "React",
@@ -122,15 +124,17 @@ export const projects = [
       "Ensuring accurate and actionable feedback",
       "Maintaining performance with large code snippets"
     ],
-    demoUrl: "https://code-review-theta.vercel.app/",
+    demoUrl: "#",
     githubUrl: "https://github.com/SimerdeepSingh4/Code-Reviewer",
     links: [
-      { label: "Live Demo", url: "https://code-review-theta.vercel.app/" },
+      { label: "Live Demo", url: "#" },
       { label: "GitHub", url: "https://github.com/SimerdeepSingh4/Code-Reviewer" }
     ],
     videoUrl: "https://www.youtube.com/embed/037fjQBPv5c?si=uqN1i2PVHrmi2TKo",
     images: [
-      "/projects/project3A.png", "/projects/project3B.png", "/projects/project3C.png"
+      "https://res.cloudinary.com/dyfjy8kmv/image/upload/v1765220085/project3A_ndnsro.png",
+      "https://res.cloudinary.com/dyfjy8kmv/image/upload/v1765220085/project3B_mk1oxo.png", 
+      "https://res.cloudinary.com/dyfjy8kmv/image/upload/v1765220085/project3C_wtbzvg.png"
     ],
     tech: [
       "React",
@@ -143,4 +147,4 @@ export const projects = [
       "Axios"
     ],
   }
-]; 
+];
