@@ -84,9 +84,11 @@ export const ProjectDetail = () => {
 
   const isDemoAvailable = project.demoUrl && project.demoUrl !== "#";
   const isGithubAvailable = project.githubUrl && project.githubUrl !== "#";
-  const isFeatured = project.id === '1' || project.id === '2';
+  const isFeatured = !!project.featured;
 
   const tagIcons = {
+    "Local Storage": "https://img.icons8.com/?size=96&id=13057&format=png",
+    "Vanilla JS": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg",
     "React": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg",
     "Node.js": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg",
     "MongoDB": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mongodb/mongodb-original.svg",
@@ -103,7 +105,18 @@ export const ProjectDetail = () => {
     "Cloudinary": "https://us.v-cdn.net/6036703/uploads/623ZP60L4HP4/cloudinary-cloud-glyph-blue-png.png",
     "Axios": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/axios/axios-plain.svg",
     "Redux": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/redux/redux-original.svg",
-    "Whisper API": "https://www.svgrepo.com/show/306500/openai.svg"
+    "Whisper API": "https://www.svgrepo.com/show/306500/openai.svg",
+    "HTML": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg",
+    "CSS": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg",
+    "Tailwind CSS": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/tailwindcss/tailwindcss-original.svg",
+    "EJS": "https://www.svgrepo.com/show/373574/ejs.svg",
+    "Leaflet.js":"https://leafletjs.com/docs/images/logo.png",
+    "Geolocation API":"https://uxwing.com/wp-content/themes/uxwing/download/location-travel-map/location-icon.png",
+    "Chess.js":"https://images.chesscomfiles.com/uploads/v1/user/33.862d5ff1.160x160o.578dc76c0662@2x.png",
+    "Socket.IO":"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQyHzBsoRkOcXuYBYEz7AT6E0J_84Qe3u3hFA&s",
+    "GSAP": "https://avatars.githubusercontent.com/u/2386673?v=4",
+    "Model Context Protocol (MCP)": "https://registry.npmmirror.com/@lobehub/icons-static-png/latest/files/light/mcp.png",
+    "Framer Motion": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRPznwv7OeqDgGjrlZfT28XyX4J9oJyZ9TYwg&s",
   };
 
   const getDifficultyColor = (difficulty) => {
@@ -119,12 +132,7 @@ export const ProjectDetail = () => {
     }
   };
 
-  const getDurationFromId = (id) => {
-    if (id === '1') return '3 months';
-    if (id === '2') return '2 months';
-    if (id === '3') return '2.5 months';
-    return 'Unknown';
-  };
+  
 
   const openLightbox = (src, alt, title, imageIndex = null, imageArray = null) => {
     setLightboxImage({ 
@@ -229,13 +237,6 @@ export const ProjectDetail = () => {
                       Featured Project
                     </motion.div>
                   )}
-                  <span className={`px-3 py-1 text-xs font-medium border rounded-full ${getDifficultyColor('Advanced')}`}>
-                    Advanced
-                  </span>
-                  <span className="flex items-center gap-1 px-3 py-1 text-xs font-medium border rounded-full bg-blue-100 dark:bg-secondary/20 text-blue-800 dark:text-secondary-foreground border-blue-200 dark:border-border">
-                    <Clock size={12} />
-                    {getDurationFromId(project.id)}
-                  </span>
                   {isDemoAvailable && (
                     <span className="flex items-center gap-1 px-3 py-1 text-xs font-medium border rounded-full bg-green-100 dark:bg-green-900/30 text-green-500 dark:text-green-800 border-green-300 dark:border-green-700">
                       <div className="w-2 h-2 rounded-full bg-green-500 animate-pulse" />
@@ -248,7 +249,7 @@ export const ProjectDetail = () => {
                   {project.title}
                 </h1>
                 
-                <p className="text-lg leading-relaxed mb-8 max-w-4xl text-gray-700 dark:text-muted-foreground">
+                <p className="text-lg leading-relaxed mb-8 max-w-4xl text-gray-700 dark:text-muted-foreground mx-auto text-center">
                   {project.description}
                 </p>
 
@@ -297,6 +298,35 @@ export const ProjectDetail = () => {
               </div>
             </div>
           </motion.div>
+
+          {/* Sneak Peek Inline Preview (renders automatically for trusted small demos) */}
+          {project.sneakPeek && isDemoAvailable && (
+            <motion.div 
+              className="mb-12"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.25 }}
+            >
+              <div className="text-center mb-6">
+                <h2 className="text-3xl font-bold mb-2 gradient-text">Live Preview</h2>
+                <p className="text-gray-600 dark:text-muted-foreground max-w-2xl mx-auto">Interactive sneak peek of the live demo — embedded directly below.</p>
+              </div>
+              <div className="relative bg-white/90 dark:bg-card/50 backdrop-blur-sm rounded-2xl p-4 border border-gray-200 dark:border-primary/10 shadow-xl">
+                <div className="aspect-video rounded-xl overflow-hidden shadow-2xl">
+                  <iframe
+                    className="w-full h-full"
+                    src={project.demoUrl}
+                    title={`Preview: ${project.title}`}
+                    loading="lazy"
+                    sandbox="allow-scripts allow-same-origin"
+                  />
+                </div>
+                <div className="mt-3 text-sm text-muted-foreground">
+                  If the preview is blocked by the browser or server, <a href={project.demoUrl} target="_blank" rel="noreferrer" className="text-primary underline">open the demo in a new tab</a>.
+                </div>
+              </div>
+            </motion.div>
+          )}
 
           {/* Features & Challenges Grid */}
           <motion.div 
@@ -597,7 +627,7 @@ export const ProjectDetail = () => {
                     transition={{ delay: i * 0.05 }}
                     whileHover={{ scale: 1.05 }}
                   >
-                    <div className="flex flex-col items-center gap-3">
+                    <div className="flex flex-col justify-center items-center gap-3">
                       {tagIcons[tag] && (
                         <motion.img
                           src={tagIcons[tag]}
@@ -625,7 +655,7 @@ export const ProjectDetail = () => {
         </div>
         
         {/* Special Note for project 3 */}
-        {project.id === "3" && (
+        {project.id === "4" && (
           <motion.div 
             className="container mx-auto px-4 max-w-4xl mb-8"
             initial={{ opacity: 0, y: 20 }}

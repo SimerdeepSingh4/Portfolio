@@ -1,52 +1,24 @@
-import { ArrowRight, ExternalLink, Github, Star, Clock, Eye } from "lucide-react";
+import { ArrowRight, ExternalLink, Github, Star, Eye } from "lucide-react";
 import { Link } from "react-router-dom";
 import { useInView } from "@/hooks/useInView";
 import { useState } from "react";
 import { motion } from "framer-motion";
 import Tilt from "react-parallax-tilt";
 import { ImageLightbox } from "./ImageLightbox";
+import { projects as projectsData } from "@/data/projects";
 
-const projects = [
-  {
-    id: 1,
-    title: "Mentora LMS",
-    description: "A full-featured Learning Management System built using MERN stack with role-based dashboards for students, teachers, and admins.",
-    image: "https://res.cloudinary.com/dyfjy8kmv/image/upload/v1765220083/Project1B_jghrsf.png",
-    tags: ["React", "Vite", "Node.js", "Express", "Redux", "JWT", "MongoDB", "Shadcn UI", "Cloudinary", "Stripe"],
-    difficulty: "Advanced",
-    duration: "3 months",
-    featured: true,
-    demoUrl: "#",
-    githubUrl: "https://github.com/SimerdeepSingh4/Mentora-LMS-",
-    videoUrl: "https://youtu.be/TTx7Y3a7EmA?si=E7N5qydJKF1I7O0T" 
-  },
-  {
-    id: 2,
-    title: "V.O.L.T (Voice-to-Output Language Transcription)",
-    description: "An intelligent multilingual speech-to-text app that provides real-time transcription along with emotion detection and tone transformation.",
-    image: "https://res.cloudinary.com/dyfjy8kmv/image/upload/v1765220085/project2C_mnkfa2.png",
-    tags: ["React", "Node.js", "Firebase", "Google Cloud Speech API"],
-    difficulty: "Intermediate",
-    duration: "2 months",
-    featured: true,
-    demoUrl: "#",
-    githubUrl: "https://github.com/SimerdeepSingh4/V.O.L.T",
-    videoUrl: "https://youtu.be/TTx7Y3a7EmA?si=E7N5qydJKF1I7O0T"
-  },
-  {
-    id: 3,
-    title: "AI-Powered Code Review Platform",
-    description: "An intelligent code review app that uses Google's Gemini AI to provide real-time feedback on prewritten code with syntax highlighting and markdown-based insights.",
-    image: "https://res.cloudinary.com/dyfjy8kmv/image/upload/v1765220085/project3A_ndnsro.png",
-    tags: ["React", "Vite", "Node.js", "PrismJS", "Express", "React Markdown", "Axios", "Google Generative AI (Gemini)"],
-    difficulty: "Advanced",
-    duration: "2.5 months",
-    featured: false,
-    demoUrl: "#",
-    githubUrl: "https://github.com/SimerdeepSingh4/Code-Reviewer",
-    videoUrl: "https://youtu.be/TTx7Y3a7EmA?si=E7N5qydJKF1I7O0T"
-  },
-];
+// Dynamically pick featured projects from central data and normalize fields
+const projects = projectsData
+  .filter((p) => p.featured)
+  .map((p) => ({
+    ...p,
+    // image prefers thumbnail, then first image, then existing image field
+    image: p.thumbnail || (Array.isArray(p.images) ? p.images[0] : p.image),
+    // unify tags/tech naming
+    tags: p.tags ?? p.tech ?? [],
+    // ensure duration exists for UI (empty string if not provided)
+    duration: p.duration ?? "",
+  }));
 
   const tagIcons = {
     "React": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg",
@@ -59,14 +31,21 @@ const projects = [
     "Stripe": "https://img.icons8.com/?size=512&id=21246&format=png",
     "JWT": "https://img.icons8.com/?size=512&id=rHpveptSuwDz&format=png",
     "Google Cloud Speech API": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/googlecloud/googlecloud-original.svg",
-    "Google Generative AI (Gemini)": "https://img.icons8.com/?size=512&id=rnK88i9FvAFO&format=png",
+    "Google Gemini": "https://img.icons8.com/?size=512&id=rnK88i9FvAFO&format=png",
     "React Markdown": "https://www.svgrepo.com/show/446620/markdown.svg",
     "PrismJS": "https://prismjs.com/assets/logo.svg",
     "Cloudinary": "https://us.v-cdn.net/6036703/uploads/623ZP60L4HP4/cloudinary-cloud-glyph-blue-png.png",
     "Axios": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/axios/axios-plain.svg",
-    "Redux": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/redux/redux-original.svg"
-
-
+    "Redux": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/redux/redux-original.svg",
+    "HTML": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg",
+    "CSS": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg",
+    "Tailwind CSS": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/tailwindcss/tailwindcss-original.svg",
+    "EJS": "https://www.svgrepo.com/show/373574/ejs.svg",
+    "Leaflet.js":"https://leafletjs.com/docs/images/logo.png",
+    "Geolocation API":"https://uxwing.com/wp-content/themes/uxwing/download/location-travel-map/location-icon.png",
+    "Chess.js":"https://images.chesscomfiles.com/uploads/v1/user/33.862d5ff1.160x160o.578dc76c0662@2x.png",
+    "Socket.IO":"https://socket.io/images/logo-dark.svg",
+    "Model Context Protocol (MCP)": "https://registry.npmmirror.com/@lobehub/icons-static-png/latest/files/light/mcp.png",
   };
 
 export default function ProjectsSection() {
@@ -93,18 +72,7 @@ export default function ProjectsSection() {
     setLightboxImage(null);
   };
 
-  const getDifficultyColor = (difficulty) => {
-    switch (difficulty.toLowerCase()) {
-      case 'beginner':
-        return 'bg-green-100 text-green-800 border-green-200';
-      case 'intermediate':
-        return 'bg-yellow-100 text-yellow-800 border-yellow-200';
-      case 'advanced':
-        return 'bg-red-100 text-red-800 border-red-200';
-      default:
-        return 'bg-gray-100 text-gray-800 border-gray-200';
-    }
-  };
+
 
   const containerVariants = {
     hidden: { opacity: 0 },
@@ -196,16 +164,7 @@ export default function ProjectsSection() {
                     </div>
 
                     <div className="p-6">
-                      {/* Project Meta Information */}
-                      <div className="flex items-center gap-2 mb-4">
-                        <span className={`px-2 py-1 text-xs font-medium border rounded-full ${getDifficultyColor(project.difficulty)}`}>
-                          {project.difficulty}
-                        </span>
-                        <span className="flex items-center gap-1 px-2 py-1 text-xs font-medium border rounded-full bg-secondary text-secondary-foreground">
-                          <Clock size={12} />
-                          {project.duration}
-                        </span>
-                      </div>
+
                       
                       {/* Tech Stack Tags */}
                       <div className="flex flex-wrap gap-2 mb-4">
@@ -262,11 +221,11 @@ export default function ProjectsSection() {
                         animate={{ opacity: 1 }}
                         transition={{ delay: 0.3 }}
                       >
-                        {project.description}
+                        {project.shortDescription ?? project.description}
                       </motion.p>
 
                       <div className="flex justify-between items-center">
-                        <div className="flex space-x-3">
+                        <div className="flex space-x-3 items-center">
                           <motion.div whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.9 }}>
                             <Link
                               to={`/project/${project.id}`}
@@ -280,12 +239,29 @@ export default function ProjectsSection() {
                             <a
                               href={project.githubUrl}
                               target="_blank"
+                              rel="noopener noreferrer"
                               className="text-foreground/80 hover:text-primary transition-colors duration-300"
                               aria-label={`View ${project.title} on GitHub`}
                             >
                               <Github size={20} />
                             </a>
                           </motion.div>
+
+                          {project.demoUrl && project.demoUrl !== "#" && (
+                            <motion.div whileHover={{ scale: 1.02 }}>
+                              <a
+                                href={project.demoUrl}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                aria-label={`Open live demo for ${project.title}`}
+                                onClick={(e) => e.stopPropagation()}
+                                className="flex items-center gap-1 px-2 py-1 text-xs font-medium border rounded-full bg-green-100 text-green-800 border-green-200"
+                              >
+                                <div className="w-2 h-2 rounded-full bg-green-500 animate-pulse" />
+                                Live
+                              </a>
+                            </motion.div>
+                          )}
                         </div>
                       </div>
                     </div>

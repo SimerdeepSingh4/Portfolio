@@ -1,13 +1,12 @@
 import React, { useState, useEffect, lazy, Suspense } from "react";
 import { Link } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
-import { 
-  ExternalLink, 
-  Github, 
-  Star, 
-  Clock, 
-  Eye, 
-  Filter, 
+import {
+  ExternalLink,
+  Github,
+  Star,
+  Eye,
+  Filter,
   Search,
   Grid3X3,
   List,
@@ -29,16 +28,18 @@ const Projects = () => {
   const [filteredProjects, setFilteredProjects] = useState(projects);
   const [searchTerm, setSearchTerm] = useState("");
   const [selectedTech, setSelectedTech] = useState("");
-  const [sortBy, setSortBy] = useState("featured"); // featured, title, duration
+  const [sortBy, setSortBy] = useState("featured"); // featured, title
   const [sortOrder, setSortOrder] = useState("desc"); // asc, desc
   const [viewMode, setViewMode] = useState("grid"); // grid, list
   const [lightboxImage, setLightboxImage] = useState(null);
-  const [expandedTags, setExpandedTags] = useState({});
+  
 
   // Get all unique technologies
   const allTechnologies = [...new Set(projects.flatMap(project => project.tech))].sort();
 
   const tagIcons = {
+    "Local Storage": "https://img.icons8.com/?size=96&id=13057&format=png",
+    "Vanilla JS": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg",
     "React": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg",
     "Node.js": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg",
     "MongoDB": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mongodb/mongodb-original.svg",
@@ -49,13 +50,24 @@ const Projects = () => {
     "Stripe": "https://img.icons8.com/?size=512&id=21246&format=png",
     "JWT": "https://img.icons8.com/?size=512&id=rHpveptSuwDz&format=png",
     "Google Cloud Speech API": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/googlecloud/googlecloud-original.svg",
-    "Google Generative AI (Gemini)": "https://img.icons8.com/?size=512&id=rnK88i9FvAFO&format=png",
+    "Google Gemini": "https://img.icons8.com/?size=512&id=rnK88i9FvAFO&format=png",
     "React Markdown": "https://www.svgrepo.com/show/446620/markdown.svg",
     "PrismJS": "https://prismjs.com/assets/logo.svg",
     "Cloudinary": "https://us.v-cdn.net/6036703/uploads/623ZP60L4HP4/cloudinary-cloud-glyph-blue-png.png",
     "Axios": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/axios/axios-plain.svg",
     "Redux": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/redux/redux-original.svg",
-    "Whisper API": "https://www.svgrepo.com/show/306500/openai.svg"
+    "Whisper API": "https://www.svgrepo.com/show/306500/openai.svg",
+    "HTML": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg",
+    "CSS": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg",
+    "Tailwind CSS": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/tailwindcss/tailwindcss-original.svg",
+    "EJS": "https://www.svgrepo.com/show/373574/ejs.svg",
+    "Leaflet.js":"https://leafletjs.com/docs/images/logo.png",
+    "Geolocation API":"https://uxwing.com/wp-content/themes/uxwing/download/location-travel-map/location-icon.png",
+    "Chess.js":"https://images.chesscomfiles.com/uploads/v1/user/33.862d5ff1.160x160o.578dc76c0662@2x.png",
+    "Socket.IO":"https://socket.io/images/logo-dark.svg",
+    "GSAP": "https://avatars.githubusercontent.com/u/2386673?v=4",
+    "Model Context Protocol (MCP)": "https://registry.npmmirror.com/@lobehub/icons-static-png/latest/files/light/mcp.png",
+    "Framer Motion": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRPznwv7OeqDgGjrlZfT28XyX4J9oJyZ9TYwg&s",
   };
 
   // Scroll to top when component mounts
@@ -67,7 +79,7 @@ const Projects = () => {
   useEffect(() => {
     let filtered = projects.filter(project => {
       const matchesSearch = project.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
-                           project.description.toLowerCase().includes(searchTerm.toLowerCase());
+        project.description.toLowerCase().includes(searchTerm.toLowerCase());
       const matchesTech = selectedTech === "" || project.tech.includes(selectedTech);
       return matchesSearch && matchesTech;
     });
@@ -75,58 +87,34 @@ const Projects = () => {
     // Sort projects
     filtered.sort((a, b) => {
       let comparison = 0;
-      
+
       switch (sortBy) {
         case "featured":
           // Get featured projects first, then by ID
-          const aFeatured = (a.id === '1' || a.id === '2') ? 1 : 0;
-          const bFeatured = (b.id === '1' || b.id === '2') ? 1 : 0;
+          const aFeatured = a.featured ? 1 : 0;
+          const bFeatured = b.featured ? 1 : 0;
           comparison = bFeatured - aFeatured || parseInt(a.id) - parseInt(b.id);
           break;
         case "title":
           comparison = a.title.localeCompare(b.title);
           break;
-        case "duration":
-          const getDurationValue = (id) => {
-            if (id === '1') return 3;
-            if (id === '2') return 2;
-            if (id === '3') return 2.5;
-            return 0;
-          };
-          comparison = getDurationValue(b.id) - getDurationValue(a.id);
-          break;
+        
         default:
           comparison = 0;
       }
-      
+
       return sortOrder === "asc" ? comparison : -comparison;
     });
 
     setFilteredProjects(filtered);
   }, [searchTerm, selectedTech, sortBy, sortOrder]);
 
-  const getDifficultyColor = (difficulty) => {
-    switch (difficulty?.toLowerCase()) {
-      case 'beginner':
-        return 'bg-green-100 text-green-800 border-green-200 dark:bg-green-900 dark:text-green-300 dark:border-green-800';
-      case 'intermediate':
-        return 'bg-yellow-100 text-yellow-800 border-yellow-200 dark:bg-yellow-900 dark:text-yellow-300 dark:border-yellow-800';
-      case 'advanced':
-        return 'bg-red-100 text-red-800 border-red-200 dark:bg-red-900 dark:text-red-300 dark:border-red-800';
-      default:
-        return 'bg-gray-100 text-gray-800 border-gray-200 dark:bg-gray-800 dark:text-gray-300 dark:border-gray-700';
-    }
-  };
 
-  const toggleTags = (id) => {
-    setExpandedTags((prev) => ({
-      ...prev,
-      [id]: !prev[id],
-    }));
-  };
+
+  
 
   const openLightbox = (project) => {
-    const imageUrl = project.sections?.[0]?.images?.[0] || project.images?.[0] || (project.id === '1' ? '/projects/Project1B.png' : project.id === '2' ? '/projects/project2C.png' : '/projects/project3A.png');
+    const imageUrl = project.thumbnail || project.images?.[0] || project.sections?.[0]?.images?.[0];
     setLightboxImage({
       src: imageUrl,
       alt: `Screenshot of ${project.title}`,
@@ -170,11 +158,11 @@ const Projects = () => {
   };
 
   const ProjectCard = ({ project, index }) => {
-    const showAll = expandedTags[project.id];
+    const [showAll, setShowAll] = useState(false);
     const visibleTags = showAll ? project.tech : project.tech.slice(0, 4);
     const hiddenCount = project.tech.length - 4;
-    const imageUrl = project.sections?.[0]?.images?.[0] || project.images?.[0] || (project.id === '1' ? '/projects/Project1B.png' : project.id === '2' ? '/projects/project2C.png' : '/projects/project3A.png');
-    const isFeatured = project.id === '1' || project.id === '2';
+    const imageUrl = project.thumbnail || project.images?.[0] || project.sections?.[0]?.images?.[0];
+    const isFeatured = !!project.featured;
 
     if (viewMode === "list") {
       return (
@@ -194,7 +182,7 @@ const Projects = () => {
                 whileHover={{ scale: 1.05 }}
               />
               {isFeatured && (
-                <motion.div 
+                <motion.div
                   key={`featured-list-${project.id}`}
                   className="absolute top-3 left-3 bg-primary text-primary-foreground px-2 py-1 rounded-full text-xs font-medium flex items-center gap-1"
                   initial={{ scale: 0 }}
@@ -208,21 +196,7 @@ const Projects = () => {
             </div>
             <div className="md:w-2/3 p-6 flex flex-col justify-between">
               <div>
-                <div className="flex items-center gap-2 mb-3">
-                  <span className={`px-2 py-1 text-xs font-medium border rounded-full ${getDifficultyColor('Advanced')}`}>
-                    Advanced
-                  </span>
-                  <span className="flex items-center gap-1 px-2 py-1 text-xs font-medium border rounded-full bg-secondary text-secondary-foreground">
-                    <Clock size={12} />
-                    {project.id === '1' ? '3 months' : project.id === '2' ? '2 months' : '2.5 months'}
-                  </span>
-                  {isLiveProject(project) && (
-                    <span className="flex items-center gap-1 px-2 py-1 text-xs font-medium border rounded-full bg-green-100 text-green-800 border-green-200">
-                      <div className="w-2 h-2 rounded-full bg-green-500 animate-pulse" />
-                      Live
-                    </span>
-                  )}
-                </div>
+
                 <h3 className="text-xl font-semibold mb-2">{project.title}</h3>
                 <p className="text-muted-foreground text-sm mb-4 line-clamp-2">{project.description}</p>
                 <div className="flex flex-wrap gap-2 mb-4">
@@ -239,7 +213,10 @@ const Projects = () => {
                   ))}
                   {project.tech.length > 4 && (
                     <button
-                      onClick={() => toggleTags(project.id)}
+                      type="button"
+                      onMouseDown={(e) => e.preventDefault()}
+                      onClick={(e) => { e.stopPropagation(); setShowAll(prev => !prev); }}
+                      onKeyDown={(e) => { if (e.key === 'Enter' || e.key === ' ') { e.stopPropagation(); setShowAll(prev => !prev); } }}
                       className="px-2 py-1 text-xs font-medium border rounded-full bg-muted text-muted-foreground hover:bg-muted/70 transition cursor-pointer"
                     >
                       {showAll ? "Show less" : `+${hiddenCount}`}
@@ -248,7 +225,7 @@ const Projects = () => {
                 </div>
               </div>
               <div className="flex justify-between items-center">
-                <div className="flex space-x-3">
+                <div className="flex space-x-3 items-center">
                   <Link
                     to={`/project/${project.id}`}
                     className="text-foreground/80 hover:text-primary transition-colors duration-300"
@@ -262,6 +239,19 @@ const Projects = () => {
                       className="text-foreground/80 hover:text-primary transition-colors duration-300"
                     >
                       <Github size={20} />
+                    </a>
+                  )}
+                  {isLiveProject(project) && (
+                    <a
+                      href={project.demoUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      aria-label={`Open live demo for ${project.title}`}
+                      onClick={(e) => e.stopPropagation()}
+                      className="flex items-center gap-1 px-2 py-1 text-xs font-medium border rounded-full bg-green-100 text-green-800 border-green-200"
+                    >
+                      <div className="w-2 h-2 rounded-full bg-green-500 animate-pulse" />
+                      Live
                     </a>
                   )}
                 </div>
@@ -285,7 +275,7 @@ const Projects = () => {
         >
           <div className="bg-card rounded-lg overflow-hidden shadow-sm border border-border card-hover relative h-full flex flex-col">
             {isFeatured && (
-              <motion.div 
+              <motion.div
                 key={`featured-grid-${project.id}`}
                 className="absolute top-3 left-3 z-10 bg-primary text-primary-foreground px-2 py-1 rounded-full text-xs font-medium flex items-center gap-1"
                 initial={{ scale: 0 }}
@@ -296,7 +286,7 @@ const Projects = () => {
                 Featured
               </motion.div>
             )}
-            
+
             <div className="h-48 overflow-hidden relative">
               <motion.img
                 src={imageUrl}
@@ -318,22 +308,8 @@ const Projects = () => {
             </div>
 
             <div className="p-6 flex-grow flex flex-col">
-              <div className="flex items-center gap-2 mb-4">
-                <span className={`px-2 py-1 text-xs font-medium border rounded-full ${getDifficultyColor('Advanced')}`}>
-                  Advanced
-                </span>
-                <span className="flex items-center gap-1 px-2 py-1 text-xs font-medium border rounded-full bg-secondary text-secondary-foreground">
-                  <Clock size={12} />
-                  {project.id === '1' ? '3 months' : project.id === '2' ? '2 months' : '2.5 months'}
-                </span>
-                {isLiveProject(project) && (
-                  <span className="flex items-center gap-1 px-2 py-1 text-xs font-medium border rounded-full bg-green-100 text-green-800 border-green-200">
-                    <div className="w-2 h-2 rounded-full bg-green-500 animate-pulse" />
-                    Live
-                  </span>
-                )}
-              </div>
-              
+
+
               <div className="flex flex-wrap gap-2 mb-4">
                 {visibleTags.map((tag, tagIndex) => (
                   <motion.span
@@ -350,7 +326,7 @@ const Projects = () => {
                         alt={tag}
                         title={tag}
                         className="w-3 h-3 object-contain"
-                        whileHover={{ 
+                        whileHover={{
                           scale: [1, 1.3, 1],
                           filter: ["brightness(1)", "brightness(1.3) drop-shadow(0 0 8px currentColor)", "brightness(1)"]
                         }}
@@ -363,7 +339,10 @@ const Projects = () => {
 
                 {project.tech.length > 4 && (
                   <motion.button
-                    onClick={() => toggleTags(project.id)}
+                    type="button"
+                    onMouseDown={(e) => e.preventDefault()}
+                    onClick={(e) => { e.stopPropagation(); setShowAll(prev => !prev); }}
+                    onKeyDown={(e) => { if (e.key === 'Enter' || e.key === ' ') { e.stopPropagation(); setShowAll(prev => !prev); } }}
                     className="px-2 py-1 text-xs font-medium border rounded-full bg-muted text-muted-foreground hover:bg-muted/70 transition cursor-pointer"
                     whileHover={{ scale: 1.05 }}
                     whileTap={{ scale: 0.95 }}
@@ -374,7 +353,7 @@ const Projects = () => {
               </div>
 
               <div className="flex-grow">
-                <motion.h3 
+                <motion.h3
                   className="text-xl font-semibold mb-2"
                   initial={{ opacity: 0 }}
                   animate={{ opacity: 1 }}
@@ -382,8 +361,8 @@ const Projects = () => {
                 >
                   {project.title}
                 </motion.h3>
-                
-                <motion.p 
+
+                <motion.p
                   className="text-muted-foreground text-sm mb-4 line-clamp-3"
                   initial={{ opacity: 0 }}
                   animate={{ opacity: 1 }}
@@ -391,10 +370,12 @@ const Projects = () => {
                 >
                   {project.description}
                 </motion.p>
+
+                {/* sneak peek moved to ProjectDetail page */}
               </div>
 
               <div className="flex justify-between items-center mt-auto">
-                <div className="flex space-x-3">
+                <div className="flex space-x-3 items-center">
                   <motion.div whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.9 }}>
                     <Link
                       to={`/project/${project.id}`}
@@ -416,6 +397,21 @@ const Projects = () => {
                       </a>
                     </motion.div>
                   )}
+                  {isLiveProject(project) && (
+                    <motion.div whileHover={{ scale: 1.02 }}>
+                      <a
+                        href={project.demoUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        aria-label={`Open live demo for ${project.title}`}
+                        onClick={(e) => e.stopPropagation()}
+                        className="flex items-center gap-1 px-2 py-1 text-xs font-medium border rounded-full bg-green-100 text-green-800 border-green-200"
+                      >
+                        <div className="w-2 h-2 rounded-full bg-green-500 animate-pulse" />
+                        Live
+                      </a>
+                    </motion.div>
+                  )}
                 </div>
               </div>
             </div>
@@ -433,7 +429,7 @@ const Projects = () => {
       <main className="flex-grow pt-24 md:pt-20">
         <div className="container mx-auto px-4 py-8 max-w-7xl">
           {/* Header */}
-          <motion.div 
+          <motion.div
             className="text-center mb-12"
             initial={{ opacity: 0, y: -30 }}
             animate={{ opacity: 1, y: 0 }}
@@ -443,13 +439,13 @@ const Projects = () => {
               My <span className="text-primary">Projects</span>
             </h1>
             <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
-              A collection of my work showcasing various technologies and problem-solving approaches. 
+              A collection of my work showcasing various technologies and problem-solving approaches.
               Each project represents a unique challenge and learning experience.
             </p>
           </motion.div>
 
           {/* Controls */}
-          <motion.div 
+          <motion.div
             className="mb-8 space-y-4"
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
@@ -472,21 +468,19 @@ const Projects = () => {
               <div className="flex items-center gap-2">
                 <button
                   onClick={() => setViewMode("grid")}
-                  className={`p-2 rounded-lg transition-colors ${
-                    viewMode === "grid" 
-                      ? "bg-primary text-primary-foreground" 
+                  className={`p-2 rounded-lg transition-colors ${viewMode === "grid"
+                      ? "bg-primary text-primary-foreground"
                       : "bg-background hover:bg-muted border border-border"
-                  }`}
+                    }`}
                 >
                   <Grid3X3 size={18} />
                 </button>
                 <button
                   onClick={() => setViewMode("list")}
-                  className={`p-2 rounded-lg transition-colors ${
-                    viewMode === "list" 
-                      ? "bg-primary text-primary-foreground" 
+                  className={`p-2 rounded-lg transition-colors ${viewMode === "list"
+                      ? "bg-primary text-primary-foreground"
                       : "bg-background hover:bg-muted border border-border"
-                  }`}
+                    }`}
                 >
                   <List size={18} />
                 </button>
@@ -521,7 +515,7 @@ const Projects = () => {
                   >
                     <option value="featured">Featured First</option>
                     <option value="title">Title</option>
-                    <option value="duration">Duration</option>
+                  
                   </select>
                 </div>
                 <button
@@ -535,7 +529,7 @@ const Projects = () => {
           </motion.div>
 
           {/* Project Count */}
-          <motion.div 
+          <motion.div
             className="mb-8 text-center"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
@@ -547,7 +541,7 @@ const Projects = () => {
           </motion.div>
 
           {/* Projects Grid/List */}
-          <motion.div 
+          <motion.div
             className={viewMode === "grid" ? "grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8" : "space-y-6"}
             variants={containerVariants}
             initial="hidden"
@@ -563,7 +557,7 @@ const Projects = () => {
 
           {/* No Results */}
           {filteredProjects.length === 0 && (
-            <motion.div 
+            <motion.div
               className="text-center py-16"
               initial={{ opacity: 0, scale: 0.9 }}
               animate={{ opacity: 1, scale: 1 }}
@@ -589,7 +583,7 @@ const Projects = () => {
 
           {/* Call to Action */}
           {filteredProjects.length > 0 && (
-            <motion.div 
+            <motion.div
               className="text-center mt-16"
               initial={{ opacity: 0, y: 30 }}
               animate={inView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
@@ -607,9 +601,9 @@ const Projects = () => {
               </motion.a>
             </motion.div>
           )}
-          
+
           {/* Coming Soon Section */}
-          <motion.div 
+          <motion.div
             className="text-center mt-20 mb-8 z-50"
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -626,8 +620,8 @@ const Projects = () => {
               >
                 <div className="text-6xl mb-4">🚀</div>
               </motion.div>
-              
-              <motion.h3 
+
+              <motion.h3
                 className="text-2xl md:text-3xl font-bold mb-4 "
                 initial={{ opacity: 0 }}
                 whileInView={{ opacity: 1 }}
@@ -636,8 +630,8 @@ const Projects = () => {
               >
                 More Amazing Projects <span className="text-primary">Coming Soon</span>
               </motion.h3>
-              
-              <motion.p 
+
+              <motion.p
                 className="text-muted-foreground text-lg mb-6"
                 initial={{ opacity: 0 }}
                 whileInView={{ opacity: 1 }}
@@ -646,8 +640,8 @@ const Projects = () => {
               >
                 I'm currently working on several exciting frontend and full-stack projects using MERN, Next.js, and other modern frameworks. Stay tuned for innovative solutions that blend creativity with technology powered by Next.js, MERN, AI/ML, Mobile Apps, and DevOps.
               </motion.p>
-              
-              <motion.div 
+
+              <motion.div
                 className="flex flex-wrap justify-center gap-3 mb-8"
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
@@ -668,24 +662,24 @@ const Projects = () => {
                   </motion.span>
                 ))}
               </motion.div>
-              
-              <motion.div 
+
+              <motion.div
                 className="inline-flex items-center gap-2 text-sm text-muted-foreground bg-card px-4 py-2 rounded-full border border-border/50"
                 initial={{ opacity: 0 }}
                 whileInView={{ opacity: 1 }}
                 viewport={{ once: true }}
                 transition={{ delay: 0.7, duration: 0.6 }}
               >
-                <motion.div 
+                <motion.div
                   className="w-2 h-2 rounded-full bg-primary"
-                  animate={{ 
+                  animate={{
                     opacity: [0.3, 1, 0.3],
                     scale: [0.8, 1.2, 0.8]
                   }}
-                  transition={{ 
-                    duration: 2, 
-                    repeat: Infinity, 
-                    ease: "easeInOut" 
+                  transition={{
+                    duration: 2,
+                    repeat: Infinity,
+                    ease: "easeInOut"
                   }}
                 />
                 <span>Currently in development</span>
