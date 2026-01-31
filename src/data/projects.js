@@ -155,7 +155,7 @@ export const projects = [
       "React Markdown",
       "Node.js",
       "Express",
-      "Google Gemini",
+      "Google Generative AI (Gemini)",
       "Axios"
     ],
     thumbnail: "https://res.cloudinary.com/dyfjy8kmv/image/upload/v1766273590/Code_Reviwer_Thumbnail_uhmlt1.png",
