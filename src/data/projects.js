@@ -266,7 +266,7 @@ export const projects = [
     "Node.js",
     "Express",
     "Model Context Protocol (MCP)",
-    "Google Gemini",
+    "Google Generative AI (Gemini)",
   ],
   thumbnail: "https://res.cloudinary.com/dyfjy8kmv/image/upload/v1766273588/MCP_Thumbnail_pcgb3j.png",
 },
