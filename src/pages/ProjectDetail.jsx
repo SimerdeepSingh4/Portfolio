@@ -87,6 +87,9 @@ export const ProjectDetail = () => {
   const isFeatured = !!project.featured;
 
   const tagIcons = {
+    "Context API":"https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg",
+    "React-Rnd":"https://raw.githubusercontent.com/bokuweb/react-rnd/refs/heads/master/logo.png",
+    "SCSS":"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSvzl7r0NVEDNeZmp-iWtn7HchjBcX01nzhkw&s",
     "Local Storage": "https://img.icons8.com/?size=96&id=13057&format=png",
     "Vanilla JS": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg",
     "React": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg",
@@ -99,7 +102,7 @@ export const ProjectDetail = () => {
     "Stripe": "https://img.icons8.com/?size=512&id=21246&format=png",
     "JWT": "https://img.icons8.com/?size=512&id=rHpveptSuwDz&format=png",
     "Google Cloud Speech API": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/googlecloud/googlecloud-original.svg",
-    "Google Generative AI (Gemini)": "https://img.icons8.com/?size=512&id=rnK88i9FvAFO&format=png",
+    "Google Gemini": "https://img.icons8.com/?size=512&id=rnK88i9FvAFO&format=png",
     "React Markdown": "https://www.svgrepo.com/show/446620/markdown.svg",
     "PrismJS": "https://prismjs.com/assets/logo.svg",
     "Cloudinary": "https://us.v-cdn.net/6036703/uploads/623ZP60L4HP4/cloudinary-cloud-glyph-blue-png.png",
@@ -113,7 +116,7 @@ export const ProjectDetail = () => {
     "Leaflet.js":"https://leafletjs.com/docs/images/logo.png",
     "Geolocation API":"https://uxwing.com/wp-content/themes/uxwing/download/location-travel-map/location-icon.png",
     "Chess.js":"https://images.chesscomfiles.com/uploads/v1/user/33.862d5ff1.160x160o.578dc76c0662@2x.png",
-    "Socket.IO":"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQyHzBsoRkOcXuYBYEz7AT6E0J_84Qe3u3hFA&s",
+    "Socket.IO":"https://socket.io/images/logo-dark.svg",
     "GSAP": "https://avatars.githubusercontent.com/u/2386673?v=4",
     "Model Context Protocol (MCP)": "https://registry.npmmirror.com/@lobehub/icons-static-png/latest/files/light/mcp.png",
     "Framer Motion": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRPznwv7OeqDgGjrlZfT28XyX4J9oJyZ9TYwg&s",
