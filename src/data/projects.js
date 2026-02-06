@@ -559,11 +559,11 @@ export const projects = [
     "https://res.cloudinary.com/dyfjy8kmv/image/upload/v1770400775/Screenshot_2026-02-02_073555_gpww9x.png"
   ],
   tech: [
-    "React 19",
+    "React",
     "Vite",
     "SCSS",
     "React-Rnd",
-    "Web Storage API",
+    "Local Storage",
     "Context API"
   ],
   thumbnail:
