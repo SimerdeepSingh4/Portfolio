@@ -3,7 +3,7 @@ export const projects = [
     id: "1",
     title: "Mentora LMS",
     featured: true,
-    difficulty: "Advanced",
+    
     year: "2024",
     shortDescription:"A full-featured Learning Management System built using MERN stack with role-based dashboards for students, teachers, and admins.",
     description:
@@ -80,7 +80,7 @@ export const projects = [
     id: "2",
     title: "V.O.L.T (Voice-to-Output Language Transcription)",
     featured: false,
-    difficulty: "Intermediate",    year: "2023",    shortDescription: "Real-time multilingual speech-to-text app with emotion detection and tone transformation.",
+        year: "2023",    shortDescription: "Real-time multilingual speech-to-text app with emotion detection and tone transformation.",
     description:
       "V.O.L.T is an advanced real-time multilingual transcription app built using React.js and Node.js. It enables users to convert live speech into accurate written text across various languages. What sets it apart is its integrated emotion detection system, which captures the speaker's emotional tone, and a tone transformation feature that allows users to convert the transcribed text into formal, informal, or neutral styles. Designed for professionals, educators, and global teams, V.O.L.T simplifies cross-language communication while adding emotional intelligence to speech-to-text conversion.",
     features: [
@@ -119,7 +119,7 @@ export const projects = [
     id: "3",
     title: "AI-Powered Code Review Platform",
     featured: false,
-    difficulty: "Advanced",
+    
     year: "2024",
     shortDescription: "AI-powered code review tool using Google Gemini with syntax highlighting and markdown feedback.",
     description:
@@ -164,7 +164,7 @@ export const projects = [
   id: "4",
   title: "Real-Time Multiplayer Chess Game",
   featured: true,
-  difficulty: "Advanced",  year: "2026",  shortDescription:"A web-based real-time multiplayer chess game with matchmaking and server-side move validation using Socket.IO and chess.js.",
+    year: "2026",  shortDescription:"A web-based real-time multiplayer chess game with matchmaking and server-side move validation using Socket.IO and chess.js.",
   description:
     "A web-based real-time multiplayer chess application built using Node.js, Express, and Socket.IO. The platform allows two players to compete live in a synchronized game session with automatic matchmaking and unique game rooms. The server validates all moves using chess.js, manages multiple concurrent games, and handles game-over conditions such as checkmate, timeout, or player disconnection. The interactive and responsive UI supports drag-and-drop and click-to-move functionality, making the gameplay smooth and intuitive across devices.",
   features: [
@@ -210,7 +210,7 @@ export const projects = [
   id: "5",
   title: "Animated Card Hover Effect",
   featured: false,
-  difficulty: "Beginner",
+
   description:
     "A simple front-end practice project focused on creating visually appealing animated card hover effects using pure HTML and CSS. The project demonstrates the use of CSS custom properties, conic gradients, and keyframe animations to produce glowing borders and smooth hover transitions.",
   demoUrl: "https://simerdeepsingh4.github.io/card-hover-effect/",
@@ -234,7 +234,7 @@ export const projects = [
   id: "6",
   title: "MCP-Powered Terminal AI Assistant",
   featured: true,
-  difficulty: "Advanced",
+  
   shortDescription:"A terminal-based AI assistant built with Node.js that leverages MCP for extensible tool-based interactions and automation.",
   description:
     "A terminal-based AI assistant built with Node.js that leverages a large language model and the Model Context Protocol (MCP). The assistant runs entirely in the command line and can perform tasks such as content generation, social media operations, file handling, and coding assistance through an extensible tool-based architecture.",
@@ -274,7 +274,7 @@ export const projects = [
   id: "7",
   title: "Live Real-Time Location Sharing App",
   featured: false,
-  difficulty: "Intermediate",
+  
   shortDescription: "Real-time location sharing app using Socket.IO and Leaflet for live map updates.",
   description:
     "A real-time location sharing web application built using Node.js, Express.js, Socket.IO, and Leaflet.js. The app allows multiple users to share their live geographic location and view all connected users on an interactive map powered by OpenStreetMap, with real-time updates via WebSockets.",
@@ -316,7 +316,7 @@ export const projects = [
   id: "8",
   title: "K72.ca Website Clone",
   featured: false,
-  difficulty: "Intermediate",
+  
   shortDescription: "Frontend clone of K72.ca focusing on GSAP-powered animations and smooth transitions.",
   description:
     "A frontend clone of the K72.ca creative agency website built using React and Vite. The project focuses on recreating smooth page transitions, high-performance animations, and a modern full-screen navigation experience using GSAP, while maintaining a responsive and clean UI.",
@@ -358,7 +358,7 @@ export const projects = [
   id: "9",
   title: "Real-Time Voting App",
   featured: false,
-  difficulty: "Advanced",
+  
   shortDescription: "Real-time voting app with WebSocket-powered live results and interactive charts.",
   description:
     "A modern real-time voting application built with React and Node.js that enables users to cast votes and view live results instantly. The app leverages WebSockets for real-time updates, interactive data visualizations, and secure session handling, delivering a smooth and engaging voting experience across devices.",
@@ -415,7 +415,7 @@ export const projects = [
   id: "10",
   title: "Mini Helpdesk App",
   featured: false,
-  difficulty: "Advanced",
+  
   shortDescription: "Real-time helpdesk ticketing system with admin dashboard and live Socket.IO updates.",
   description:
     "A modern, real-time helpdesk ticket management system built using the MERN stack. The application allows users to submit support tickets while admins can manage, filter, and update ticket statuses in real time using Socket.IO. It demonstrates real-world customer support workflows with a clean dashboard, live updates, and responsive UI.",
@@ -479,7 +479,7 @@ export const projects = [
   id: "11",
   title: "Figma-like Design Tool",
   featured: false,
-  difficulty: "Intermediate",
+  
   shortDescription: "Interactive web-based canvas tool for creating and manipulating shapes and text.",
   description:
     "A sophisticated web-based design interface that allows users to create, style, and arrange visual elements on a canvas. The project features a multi-panel layout including a layers panel and a property editor, mimicking real-world design software. It focuses on object-oriented manipulation, persistence via local storage, and multi-format export options.",
@@ -518,6 +518,56 @@ export const projects = [
   ],
   thumbnail:
     "https://res.cloudinary.com/dyfjy8kmv/image/upload/v1769822086/Gemini_Generated_Image_nkuvlhnkuvlhnkuv_ztanex.png",
+},
+{
+  id: "12",
+  title: "macOS Clone — Frontend UI",
+  featured: false,
+  
+  shortDescription: "A high-fidelity macOS desktop environment built with React and SCSS.",
+  description:
+    "A professional, pixel-perfect replication of the macOS operating system environment in the browser. This project focuses on high-performance animations, complex window management logic, and a modular component architecture. It features a functional Dock with magnification, draggable/resizable windows, a glassmorphic Control Center, and several built-in utility apps.",
+  features: [
+    "High-fidelity macOS UI with glassmorphism and fluid animations",
+    "Interactive Dock with magnification, bounce effects, and active state indicators",
+    "Advanced window management (draggable, resizable, stackable) using react-rnd",
+    "Global Spotlight Search command palette for app navigation",
+    "Functional Control Center with real-time sliders for volume and brightness",
+    "Wallpaper personalization with persistence via Local Storage",
+    "Context-aware custom right-click menus across the desktop",
+    "Suite of built-in apps including a CLI Emulator, Notes, and GitHub Feed"
+  ],
+  challenges: [
+    "Replicating complex OS-level interactions (magnification, window depth) in the DOM",
+    "Managing a global window state to handle stacking order (z-index) and focus logic",
+    "Implementing efficient, modular SCSS for glassmorphic visual effects",
+    "Optimizing real-time interactions like Spotlight search and Control Center toggles"
+  ],
+  demoUrl: "https://mac-os-clone-kk32.vercel.app/",
+  githubUrl: "https://github.com/SimerdeepSingh4/Mac-OS_Clone",
+  links: [
+    { label: "GitHub", url: "https://github.com/SimerdeepSingh4/Mac-OS_Clone" },
+    { label: "Live Demo", url: "https://mac-os-clone-kk32.vercel.app/" }
+  ],
+  videoUrl: "https://www.youtube.com/embed/hEPzLLJg_HE?si=cUIgFHo-adXCwwSF",
+  images: [
+    "https://res.cloudinary.com/dyfjy8kmv/image/upload/v1770400634/Screenshot_2026-02-01_203547_jg00it.png",
+    "https://res.cloudinary.com/dyfjy8kmv/image/upload/v1770400634/Screenshot_2026-02-01_203843_ky0eqt.png",
+    "https://res.cloudinary.com/dyfjy8kmv/image/upload/v1770400633/Screenshot_2026-02-01_203741_wv6yh6.png",
+    "https://res.cloudinary.com/dyfjy8kmv/image/upload/v1770400635/Screenshot_2026-02-02_072046_ma5zlt.png",
+    "https://res.cloudinary.com/dyfjy8kmv/image/upload/v1770400643/Screenshot_2026-02-01_203939_mptfph.png",
+    "https://res.cloudinary.com/dyfjy8kmv/image/upload/v1770400775/Screenshot_2026-02-02_073555_gpww9x.png"
+  ],
+  tech: [
+    "React 19",
+    "Vite",
+    "SCSS",
+    "React-Rnd",
+    "Web Storage API",
+    "Context API"
+  ],
+  thumbnail:
+    "https://res.cloudinary.com/dyfjy8kmv/image/upload/v1770400634/Screenshot_2026-02-01_203534_ofii6o.png",
 }
 
 ];
