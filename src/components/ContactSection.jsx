@@ -290,7 +290,7 @@ export default function ContactSection (){
                       whileTap={{ scale: 0.95 }}
                       initial={{ opacity: 0, scale: 0 }}
                       animate={{ opacity: 1, scale: 1 }}
-                      transition={{ delay: index * 0.1 + 0.5 }}
+                      transition={{ delay: index * 0.1 }}
                     >
                       <social.icon 
                         size={18} 
