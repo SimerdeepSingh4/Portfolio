@@ -155,7 +155,7 @@ export const projects = [
       "React Markdown",
       "Node.js",
       "Express",
-      "Google Generative AI (Gemini)",
+      "Google Gemini",
       "Axios"
     ],
     thumbnail: "https://res.cloudinary.com/dyfjy8kmv/image/upload/v1766273590/Code_Reviwer_Thumbnail_uhmlt1.png",
@@ -266,7 +266,7 @@ export const projects = [
     "Node.js",
     "Express",
     "Model Context Protocol (MCP)",
-    "Google Generative AI (Gemini)",
+    "Google Gemini",
   ],
   thumbnail: "https://res.cloudinary.com/dyfjy8kmv/image/upload/v1766273588/MCP_Thumbnail_pcgb3j.png",
 },

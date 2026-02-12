@@ -1,4 +1,6 @@
 import { ArrowUp, Github, Linkedin, Mail } from "lucide-react";
+import { motion } from "framer-motion";
+import { useState } from "react";
 
 export const Footer = () => {
   const handleScrollTop = () => {
@@ -9,20 +11,23 @@ export const Footer = () => {
     {
       name: "GitHub",
       icon: Github,
+      label: "GitHub", 
       href: "https://github.com/SimerdeepSingh4",
-      color: "#0077B5",
+      brandColor: "#9443bf",
     },
     {
       name: "LinkedIn",
       icon: Linkedin,
+      label: "LinkedIn", 
       href: "https://www.linkedin.com/in/simerdeep-singh-gandhi/",
-      color: "#1DA1F2",
+      brandColor: "#0077B5",
     },
     {
       name: "Email",
       icon: Mail,
+      label: "Email", 
       href: "mailto:simerdeepsingh567@gmail.com",
-      color: "#5b6abf",
+      brandColor: "#5b6abf",
     },
   ];
 
@@ -46,17 +51,40 @@ export const Footer = () => {
             <div className="flex items-center justify-center gap-2 sm:gap-3">
               {socialLinks.map((social) => {
                 const Icon = social.icon;
+                const [isHovered, setIsHovered] = useState(false);
                 return (
-                  <a
-                    key={social.name}
-                    href={social.href}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className={`p-1.5 sm:p-2 rounded-full bg-primary/10 text-muted-foreground transition-all duration-300 ${social.color} hover:bg-primary/20`}
-                    aria-label={`Visit my ${social.name} profile`}
-                  >
-                    <Icon className="w-4 h-4 sm:w-5 sm:h-5" />
-                  </a>
+                  <motion.a
+                      key={social.label}
+                      href={social.href}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      aria-label={`${social.label} profile`}
+                      className="relative flex items-center justify-center w-12 h-12 rounded-full bg-card border border-border/50 text-muted-foreground transition-all duration-300 group hover:border-primary/20"
+                      onMouseEnter={() => setIsHovered(true)}
+                      onMouseLeave={() => setIsHovered(false)}
+                      whileHover={{ scale: 1.1, y: -2 }}
+                      whileTap={{ scale: 0.95 }}
+                      initial={{ opacity: 0, scale: 0 }}
+                      animate={{ opacity: 1, scale: 1 }}
+                      transition={{ delay: 0.1 }}
+                    >
+                      <social.icon 
+                        size={18} 
+                        className="transition-all duration-300 group-hover:scale-110" 
+                        style={{
+                          color: isHovered ? social.brandColor : 'inherit',
+                          filter: isHovered ? 
+                            `drop-shadow(0 0 6px ${social.brandColor}) drop-shadow(0 0 12px ${social.brandColor}40) brightness(1.2)` : 
+                            'none',
+                          transition: 'all 0.3s ease'
+                        }}
+                      />
+                      {/* Tooltip */}
+                      <div className="absolute -top-12 left-1/2 transform -translate-x-1/2 bg-gray-900 dark:bg-gray-100 text-white dark:text-gray-900 text-xs px-2 py-1 rounded whitespace-nowrap opacity-0 group-hover:opacity-100 transition-all duration-300 pointer-events-none z-50">
+                        {social.label}
+                        <div className="absolute top-full left-1/2 transform -translate-x-1/2 w-0 h-0 border-l-4 border-r-4 border-t-4 border-transparent border-t-gray-900 dark:border-t-gray-100"></div>
+                      </div>
+                    </motion.a>
                 );
               })}
             </div>

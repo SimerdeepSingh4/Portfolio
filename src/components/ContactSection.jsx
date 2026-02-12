@@ -271,7 +271,7 @@ export default function ContactSection (){
                     icon: Github, 
                     href: "https://github.com/SimerdeepSingh4", 
                     label: "GitHub", 
-                    brandColor: "#5b6abf"
+                    brandColor: "#9443bf"
                   },
                 ].map((social, index) => {
                   const [isHovered, setIsHovered] = useState(false);

@@ -48,30 +48,30 @@ export const ProjectDetail = () => {
           <Navbar />
         </Suspense>
         <main className="flex-grow flex items-center justify-center">
-          <motion.div 
+          <motion.div
             className="text-center p-8"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
           >
-          <main className="flex-grow flex flex-col items-center justify-center text-center px-4 pt-10 pb-0 relative">
-                  <div className="z-10 max-w-xl animate-fade-in">
-                    <h1 className="text-lg sm:text-xl md:text-2xl mb-2 text-yellow-400 font-semibold">
-                      Houston, we have a problem.
-                    </h1>
-                    <h2 className="text-4xl sm:text-5xl md:text-6xl font-bold text-foreground mb-4 leading-none">
-                      Project Not Found
-                    </h2>
-                    <p className="text-base sm:text-lg md:text-xl text-muted-foreground mb-6">
-                      The project you're looking for doesn't exist.
-                    </p>
-                    <Link
-                      to="/projects"
-                      className="cosmic-button text-base sm:text-lg py-3 px-8 rounded-full shadow-lg hover:scale-105 focus-visible:outline-2 focus-visible:outline-primary transition-all duration-300 inline-block"
-                    >
-                      Back to Projects
-                    </Link>
-                  </div>
-                </main>
+            <main className="flex-grow flex flex-col items-center justify-center text-center px-4 pt-10 pb-0 relative">
+              <div className="z-10 max-w-xl animate-fade-in">
+                <h1 className="text-lg sm:text-xl md:text-2xl mb-2 text-yellow-400 font-semibold">
+                  Houston, we have a problem.
+                </h1>
+                <h2 className="text-4xl sm:text-5xl md:text-6xl font-bold text-foreground mb-4 leading-none">
+                  Project Not Found
+                </h2>
+                <p className="text-base sm:text-lg md:text-xl text-muted-foreground mb-6">
+                  The project you're looking for doesn't exist.
+                </p>
+                <Link
+                  to="/projects"
+                  className="cosmic-button text-base sm:text-lg py-3 px-8 rounded-full shadow-lg hover:scale-105 focus-visible:outline-2 focus-visible:outline-primary transition-all duration-300 inline-block"
+                >
+                  Back to Projects
+                </Link>
+              </div>
+            </main>
           </motion.div>
         </main>
         <Suspense fallback={<div className="text-center py-10">Loading footer...</div>}>
@@ -87,9 +87,9 @@ export const ProjectDetail = () => {
   const isFeatured = !!project.featured;
 
   const tagIcons = {
-    "Context API":"https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg",
-    "React-Rnd":"https://raw.githubusercontent.com/bokuweb/react-rnd/refs/heads/master/logo.png",
-    "SCSS":"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSvzl7r0NVEDNeZmp-iWtn7HchjBcX01nzhkw&s",
+    "Context API": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg",
+    "React-Rnd": "https://raw.githubusercontent.com/bokuweb/react-rnd/refs/heads/master/logo.png",
+    "SCSS": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSvzl7r0NVEDNeZmp-iWtn7HchjBcX01nzhkw&s",
     "Local Storage": "https://img.icons8.com/?size=96&id=13057&format=png",
     "Vanilla JS": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg",
     "React": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg",
@@ -113,10 +113,10 @@ export const ProjectDetail = () => {
     "CSS": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg",
     "Tailwind CSS": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/tailwindcss/tailwindcss-original.svg",
     "EJS": "https://www.svgrepo.com/show/373574/ejs.svg",
-    "Leaflet.js":"https://leafletjs.com/docs/images/logo.png",
-    "Geolocation API":"https://uxwing.com/wp-content/themes/uxwing/download/location-travel-map/location-icon.png",
-    "Chess.js":"https://images.chesscomfiles.com/uploads/v1/user/33.862d5ff1.160x160o.578dc76c0662@2x.png",
-    "Socket.IO":"https://socket.io/images/logo-dark.svg",
+    "Leaflet.js": "https://leafletjs.com/docs/images/logo.png",
+    "Geolocation API": "https://uxwing.com/wp-content/themes/uxwing/download/location-travel-map/location-icon.png",
+    "Chess.js": "https://images.chesscomfiles.com/uploads/v1/user/33.862d5ff1.160x160o.578dc76c0662@2x.png",
+    "Socket.IO": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRT4bSbljFkmXXm90uFGrz-vu8G6oP4yDT4hQ&s",
     "GSAP": "https://avatars.githubusercontent.com/u/2386673?v=4",
     "Model Context Protocol (MCP)": "https://registry.npmmirror.com/@lobehub/icons-static-png/latest/files/light/mcp.png",
     "Framer Motion": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRPznwv7OeqDgGjrlZfT28XyX4J9oJyZ9TYwg&s",
@@ -135,13 +135,13 @@ export const ProjectDetail = () => {
     }
   };
 
-  
+
 
   const openLightbox = (src, alt, title, imageIndex = null, imageArray = null) => {
-    setLightboxImage({ 
-      src, 
-      alt, 
-      title, 
+    setLightboxImage({
+      src,
+      alt,
+      title,
       imageIndex: imageIndex !== null ? imageIndex : null,
       imageArray: imageArray || null
     });
@@ -153,17 +153,17 @@ export const ProjectDetail = () => {
 
   const navigateLightbox = (direction) => {
     if (!lightboxImage?.imageArray || lightboxImage.imageIndex === null) return;
-    
+
     const currentIndex = lightboxImage.imageIndex;
     const totalImages = lightboxImage.imageArray.length;
     let newIndex;
-    
+
     if (direction === 'next') {
       newIndex = (currentIndex + 1) % totalImages;
     } else {
       newIndex = (currentIndex - 1 + totalImages) % totalImages;
     }
-    
+
     setLightboxImage({
       ...lightboxImage,
       src: lightboxImage.imageArray[newIndex],
@@ -199,14 +199,14 @@ export const ProjectDetail = () => {
         </div>
         <div className="container mx-auto px-4 max-w-7xl">
           {/* Back Button & Header */}
-          <motion.div 
+          <motion.div
             className="mb-8"
             initial={{ opacity: 0, x: -20 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.6 }}
           >
-            <Link 
-              to="/projects" 
+            <Link
+              to="/projects"
               className="inline-flex items-center gap-2 text-muted-foreground hover:text-primary transition-colors duration-300 mb-6 group"
             >
               <ArrowLeft className="w-4 h-4 group-hover:-translate-x-1 transition-transform" />
@@ -215,7 +215,7 @@ export const ProjectDetail = () => {
           </motion.div>
 
           {/* Hero Section */}
-          <motion.div 
+          <motion.div
             className="mb-12"
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
@@ -225,12 +225,12 @@ export const ProjectDetail = () => {
               {/* Background decorative elements */}
               <div className="absolute -top-10 -right-10 w-40 h-40 bg-gradient-to-br from-primary/20 to-secondary/20 rounded-full blur-3xl"></div>
               <div className="absolute -bottom-10 -left-10 w-32 h-32 bg-gradient-to-br from-secondary/15 to-primary/15 rounded-full blur-2xl"></div>
-              
+
               <div className="relative z-10">
                 {/* Project badges */}
                 <div className="flex flex-wrap items-center gap-3 mb-6">
                   {isFeatured && (
-                    <motion.div 
+                    <motion.div
                       className="flex items-center gap-1 bg-gradient-to-r from-indigo-600 to-purple-600 dark:from-primary dark:to-secondary px-3 py-1 rounded-full text-xs font-medium text-white shadow-lg border border-white/20 dark:border-transparent"
                       initial={{ scale: 0 }}
                       animate={{ scale: 1 }}
@@ -251,7 +251,7 @@ export const ProjectDetail = () => {
                 <h1 className="text-4xl md:text-5xl gradient-text font-bold mb-6 dark:text-foreground relative z-20">
                   {project.title}
                 </h1>
-                
+
                 <p className="text-lg leading-relaxed mb-8 max-w-4xl text-gray-700 dark:text-muted-foreground mx-auto text-center">
                   {project.description}
                 </p>
@@ -304,7 +304,7 @@ export const ProjectDetail = () => {
 
           {/* Sneak Peek Inline Preview (renders automatically for trusted small demos) */}
           {project.sneakPeek && isDemoAvailable && (
-            <motion.div 
+            <motion.div
               className="mb-12"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
@@ -332,7 +332,7 @@ export const ProjectDetail = () => {
           )}
 
           {/* Features & Challenges Grid */}
-          <motion.div 
+          <motion.div
             className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-12"
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
@@ -349,8 +349,8 @@ export const ProjectDetail = () => {
                 </div>
                 <ul className="space-y-3">
                   {project.features.map((feature, i) => (
-                    <motion.li 
-                      key={i} 
+                    <motion.li
+                      key={i}
                       className="flex items-start gap-3 feature-text"
                       initial={{ opacity: 0, x: -20 }}
                       animate={{ opacity: 1, x: 0 }}
@@ -363,7 +363,7 @@ export const ProjectDetail = () => {
                 </ul>
               </div>
             )}
-            
+
             {/* Challenges */}
             {project.challenges && (
               <div className="bg-gradient-to-br from-orange-50 to-red-50 dark:from-orange-500/10 dark:to-red-500/10 border border-orange-200 dark:border-orange-500/30 rounded-2xl p-8">
@@ -375,8 +375,8 @@ export const ProjectDetail = () => {
                 </div>
                 <ul className="space-y-3">
                   {project.challenges.map((challenge, i) => (
-                    <motion.li 
-                      key={i} 
+                    <motion.li
+                      key={i}
                       className="flex items-start gap-3 challenge-text"
                       initial={{ opacity: 0, x: -20 }}
                       animate={{ opacity: 1, x: 0 }}
@@ -393,7 +393,7 @@ export const ProjectDetail = () => {
 
           {/* Video Demo Section */}
           {project.videoUrl && (
-            <motion.div 
+            <motion.div
               className="mb-12"
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
@@ -420,7 +420,7 @@ export const ProjectDetail = () => {
 
           {/* Project Sections or Gallery */}
           {project.sections?.length > 0 ? (
-            <motion.div 
+            <motion.div
               className="mb-12"
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
@@ -430,7 +430,7 @@ export const ProjectDetail = () => {
                 <h2 className="text-3xl font-bold mb-3 gradient-text">Project Showcase</h2>
                 <p className="text-gray-600 dark:text-muted-foreground">Explore different aspects of this project</p>
               </div>
-              
+
               {/* Section Navigation */}
               <div className="flex flex-wrap justify-center gap-2 mb-8">
                 {project.sections.map((section, index) => (
@@ -440,11 +440,10 @@ export const ProjectDetail = () => {
                       setActiveSection(index);
                       setCurrentImageIndex(0);
                     }}
-                    className={`px-6 py-3 rounded-full transition-all duration-300 ${
-                      activeSection === index
+                    className={`px-6 py-3 rounded-full transition-all duration-300 ${activeSection === index
                         ? 'bg-primary text-primary-foreground shadow-lg'
                         : 'bg-white/90 dark:bg-card hover:bg-gray-100 dark:hover:bg-card/80  dark:text-muted-foreground hover:text-gray-900 dark:hover:text-foreground border border-gray-200 dark:border-border'
-                    }`}
+                      }`}
                     whileHover={{ scale: 1.05 }}
                     whileTap={{ scale: 0.95 }}
                   >
@@ -467,7 +466,7 @@ export const ProjectDetail = () => {
                   <p className="text-gray-700 dark:text-muted-foreground mb-8 leading-relaxed">
                     {project.sections[activeSection].content}
                   </p>
-                  
+
                   {/* Image Gallery with Navigation */}
                   {project.sections[activeSection].images.length > 0 && (
                     <div className="relative">
@@ -490,7 +489,7 @@ export const ProjectDetail = () => {
                           transition={{ duration: 0.5 }}
                           whileHover={{ scale: 1.02 }}
                         />
-                        
+
                         {/* Image Navigation */}
                         {project.sections[activeSection].images.length > 1 && (
                           <>
@@ -508,28 +507,28 @@ export const ProjectDetail = () => {
                             </button>
                           </>
                         )}
-                        
+
                         {/* Image Counter */}
                         {project.sections[activeSection].images.length > 1 && (
                           <div className="absolute bottom-4 left-1/2 -translate-x-1/2 bg-black/50 text-white px-3 py-1 rounded-full text-sm">
                             {currentImageIndex + 1} / {project.sections[activeSection].images.length}
                           </div>
                         )}
-                        
+
                         {/* Zoom hint */}
                         <div className="absolute top-4 right-4 bg-black/70 text-white px-3 py-1 rounded-full text-xs flex items-center gap-1 opacity-80 hover:opacity-100 transition-all duration-300 hover:scale-105 cursor-pointer backdrop-blur-sm"
-                             onClick={() => openLightbox(
-                               project.sections[activeSection].images[currentImageIndex],
-                               `${project.title} - ${project.sections[activeSection].title}`,
-                               project.sections[activeSection].title,
-                               currentImageIndex,
-                               project.sections[activeSection].images
-                             )}>
+                          onClick={() => openLightbox(
+                            project.sections[activeSection].images[currentImageIndex],
+                            `${project.title} - ${project.sections[activeSection].title}`,
+                            project.sections[activeSection].title,
+                            currentImageIndex,
+                            project.sections[activeSection].images
+                          )}>
                           <Eye size={12} />
                           Click to zoom
                         </div>
                       </div>
-                      
+
                       {/* Thumbnail Navigation */}
                       {project.sections[activeSection].images.length > 1 && (
                         <div className="flex justify-center gap-2 mt-4 overflow-x-auto pb-2">
@@ -537,9 +536,8 @@ export const ProjectDetail = () => {
                             <motion.button
                               key={idx}
                               onClick={() => setCurrentImageIndex(idx)}
-                              className={`relative overflow-hidden rounded-lg border-2 transition-all duration-300 ${
-                                currentImageIndex === idx ? 'border-primary' : 'border-transparent'
-                              }`}
+                              className={`relative overflow-hidden rounded-lg border-2 transition-all duration-300 ${currentImageIndex === idx ? 'border-primary' : 'border-transparent'
+                                }`}
                               whileHover={{ scale: 1.05 }}
                               whileTap={{ scale: 0.95 }}
                             >
@@ -563,7 +561,7 @@ export const ProjectDetail = () => {
           ) : (
             // Fallback for simple projects with just images
             project.images?.length > 0 && (
-              <motion.div 
+              <motion.div
                 className="mb-12"
                 initial={{ opacity: 0, y: 30 }}
                 animate={{ opacity: 1, y: 0 }}
@@ -571,7 +569,7 @@ export const ProjectDetail = () => {
               >
                 <div className="text-center mb-8">
                   <h2 className="text-3xl font-bold mb-3 gradient-text">Project Gallery</h2>
-                <p className="text-gray-600 dark:text-muted-foreground">Screenshots and previews of the project</p>
+                  <p className="text-gray-600 dark:text-muted-foreground">Screenshots and previews of the project</p>
                 </div>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   {project.images.map((img, idx) => (
@@ -590,7 +588,7 @@ export const ProjectDetail = () => {
                         className="w-full h-auto max-h-[400px] object-cover cursor-pointer transition-transform duration-500 group-hover:scale-105"
                         onClick={() => openLightbox(img, `${project.title} Screenshot`, project.title, idx, project.images)}
                       />
-                      <div 
+                      <div
                         className="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center cursor-pointer"
                         onClick={() => openLightbox(img, `${project.title} Screenshot`, project.title, idx, project.images)}
                       >
@@ -606,7 +604,7 @@ export const ProjectDetail = () => {
           )}
 
           {/* Tech Stack */}
-          <motion.div 
+          <motion.div
             className="mb-12"
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
@@ -619,7 +617,7 @@ export const ProjectDetail = () => {
                 </div>
                 <h3 className="text-2xl font-bold gradient-text">Technologies Used</h3>
               </div>
-              
+
               <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4">
                 {project.tech.map((tag, i) => (
                   <motion.div
@@ -635,10 +633,15 @@ export const ProjectDetail = () => {
                         <motion.img
                           src={tagIcons[tag]}
                           alt={tag}
-                          className="w-8 h-8 object-contain group-hover:scale-110 transition-transform duration-300"
-                          whileHover={{ 
+                          className={`
+    object-contain 
+    ${tag === "Leaflet.js", "React-Rnd" ? "w-25 h-8 object-contain" : "w-8 h-8"} 
+    ${tag === "PrismJS" ? "bg-black" : "bg-none"}
+    group-hover:scale-110 transition-transform duration-300
+  `}
+                          whileHover={{
                             scale: [1, 1.2, 1],
-                            rotate: [0, 5, -5, 0] 
+                            rotate: [0, 5, -5, 0]
                           }}
                           transition={{ duration: 0.5 }}
                         />
@@ -647,7 +650,7 @@ export const ProjectDetail = () => {
                         {tag}
                       </span>
                     </div>
-                    
+
                     {/* Hover effect overlay */}
                     <div className="absolute inset-0 bg-gradient-to-br from-primary/5 to-secondary/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-xl"></div>
                   </motion.div>
@@ -656,10 +659,10 @@ export const ProjectDetail = () => {
             </div>
           </motion.div>
         </div>
-        
+
         {/* Special Note for project 3 */}
         {project.id === "4" && (
-          <motion.div 
+          <motion.div
             className="container mx-auto px-4 max-w-4xl mb-8"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}

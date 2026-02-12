@@ -508,12 +508,7 @@ html:not(.dark) .text-slate-700 {
   color: #ffffff !important; /* White in dark mode */
 }
 
-/* PrismJS logo background fix for both light and dark modes */
-img[alt="PrismJS"] {
-  background-color: #000000;
-  border-radius: 4px;
-  padding: 2px;
-}
+
 
 /* Express logo background fix for both light and dark modes */
 img[alt="Express"],
