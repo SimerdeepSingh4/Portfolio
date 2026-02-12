@@ -142,14 +142,15 @@ const skills = [
 
 
 const categories = [
-  { id: "all", name: "All Skills", icon: "🚀" },
   { id: "primary", name: "Primary Stack", icon: "🔥" },
   { id: "working", name: "Working Knowledge", icon: "💼" },
   { id: "exploring", name: "Currently Exploring", icon: "🌱" },
+  { id: "all", name: "All Skills", icon: "🚀" },
+
 ];
 
 export const SkillsSection = () => {
-  const [activeCategory, setActiveCategory] = useState("all");
+  const [activeCategory, setActiveCategory] = useState("primary");
   const [ref, inView] = useInView();
 
   const filteredSkills = skills.filter(

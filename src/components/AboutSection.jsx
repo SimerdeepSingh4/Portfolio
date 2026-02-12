@@ -38,7 +38,7 @@ export const AboutSection = () => {
         <div className="absolute top-1/2 left-1/4 w-24 h-24 bg-primary/10 rounded-full blur-2xl animate-pulse-slow"></div>
       </div>
       
-      <div className="container mx-auto max-w-5xl relative z-10">
+      <div className="container mx-auto max-w-5xl relative">
         <motion.div
           variants={containerVariants}
           initial="hidden"
@@ -78,7 +78,7 @@ export const AboutSection = () => {
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
               >
-                <span className="relative z-10 flex items-center justify-center gap-2">
+                <span className="relative flex items-center justify-center gap-2">
                   Get In Touch
                   <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
                 </span>
@@ -90,7 +90,7 @@ export const AboutSection = () => {
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
               >
-                <span className="relative z-10 font-medium">Download CV</span>
+                <span className="relative font-medium">Download CV</span>
                 <div className="absolute inset-0 bg-gradient-to-r from-primary/5 to-secondary/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
               </motion.a>
             </div>
@@ -104,7 +104,10 @@ export const AboutSection = () => {
             </div>
             <div className="relative">
               {/* Animated timeline line */}
-              <div className="absolute left-4 top-0 bottom-0 w-0.5 bg-gradient-to-b from-primary via-secondary to-primary/20"></div>
+              <div className="absolute left-2 top-10 bottom-82 w-0.5 bg-gradient-to-b from-primary via-secondary to-primary/20 "></div>
+              <div className="absolute left-2 top-54 bottom-40 w-0.5 bg-gradient-to-b from-primary via-secondary to-primary/20 "></div>
+              <div className="absolute left-2 top-99 bottom-0 w-0.5 bg-gradient-to-b from-primary via-secondary to-primary/20 "></div>
+
               <ol className="relative ml-8 space-y-8">
                 <motion.li 
                   className="relative group "
@@ -112,8 +115,8 @@ export const AboutSection = () => {
                   animate={inView ? { opacity: 1, x: 0 } : { opacity: 0, x: -50 }}
                   transition={{ delay: 0.2, duration: 0.6 }}
                 >
-                  <div className="absolute -left-10 flex items-center justify-center w-8 h-8 bg-gradient-to-br from-primary to-secondary rounded-full ring-4 ring-primary/20 shadow-lg group-hover:ring-primary/40 transition-all duration-300">
-                    <User className="w-4 h-4 text-white" />
+                  <div className="absolute -left-10 flex items-center justify-center w-8 h-8 bg-gradient-to-br from-primary to-secondary rounded-full ring-4 ring-primary/20 shadow-lg group-hover:ring-primary/40 hover:ring-5 transition-all duration-300">
+                    <User className="w-4 h-4 text-white " />
                   </div>
                   <div className="bg-card/50 backdrop-blur-sm border border-primary/10 rounded-xl p-6 ml-4 hover:bg-card/80 hover:border-primary/20 transition-all duration-300 group-hover:shadow-lg group-hover:translate-x-2">
                     <h4 className="font-bold text-lg mb-2 group-hover:text-primary transition-colors">BCA Student, GLA University, Mathura</h4>
@@ -127,13 +130,13 @@ export const AboutSection = () => {
                   animate={inView ? { opacity: 1, x: 0 } : { opacity: 0, x: -50 }}
                   transition={{ delay: 0.4, duration: 0.6 }}
                 >
-                  <div className="absolute -left-10 flex items-center justify-center w-8 h-8 bg-gradient-to-br from-secondary to-primary rounded-full ring-4 ring-secondary/20 shadow-lg group-hover:ring-secondary/40 transition-all duration-300">
+                  <div className="absolute -left-10 flex items-center justify-center w-8 h-8 bg-gradient-to-br from-primary to-secondary rounded-full ring-4 ring-primary/20 hover:ring-5 shadow-lg group-hover:ring-primary/40 transition-all duration-300">
                     <Briefcase className="w-4 h-4 text-white" />
                   </div>
                   <div className="bg-card/50 backdrop-blur-sm border border-primary/10 rounded-xl p-6 ml-4 hover:bg-card/80 hover:border-primary/20 transition-all duration-300 group-hover:shadow-lg group-hover:translate-x-2">
                     <h4 className="font-bold text-lg mb-2 group-hover:text-primary transition-colors">Freelance Web Developer</h4>
                     <div className="inline-block bg-secondary/10 text-secondary text-xs font-medium px-3 py-1 rounded-full mb-3">Dec 2023 – Oct 2024</div>
-                    <p className="text-muted-foreground text-sm leading-relaxed">Worked on projects like <span className='font-semibold text-foreground'>Dimple Collection</span> (e-commerce site) and personal freelance tasks.</p>
+                    <p className="text-muted-foreground text-sm leading-relaxed">Worked on projects like e-commerce site and personal freelance tasks.</p>
                   </div>
                 </motion.li>
                 <motion.li 
@@ -142,7 +145,7 @@ export const AboutSection = () => {
                   animate={inView ? { opacity: 1, x: 0 } : { opacity: 0, x: -50 }}
                   transition={{ delay: 0.6, duration: 0.6 }}
                 >
-                  <div className="absolute -left-10 flex items-center justify-center w-8 h-8 bg-gradient-to-br from-primary to-secondary rounded-full ring-4 ring-primary/20 shadow-lg group-hover:ring-primary/40 transition-all duration-300">
+                  <div className="absolute -left-10 flex items-center justify-center w-8 h-8 bg-gradient-to-br from-secondary to-primary rounded-full ring-3 ring-secondary/10 shadow-lg group-hover:ring-secondary/40 hover:ring-4 transition-all duration-300">
                     <Code className="w-4 h-4 text-white animate-pulse" />
                   </div>
                   <div className="bg-card/50 backdrop-blur-sm border border-primary/10 rounded-xl p-6 ml-4 hover:bg-card/80 hover:border-primary/20 transition-all duration-300 group-hover:shadow-lg group-hover:translate-x-2">
