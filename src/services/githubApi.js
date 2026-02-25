@@ -18,13 +18,14 @@ export const fetchGitHubUser = async () => {
     const response = await fetch(`${GITHUB_API_BASE}/users/${GITHUB_USERNAME}`, {
       headers
     });
-    
+
     if (!response.ok) {
       throw new Error(`GitHub API error: ${response.status}`);
     }
-    
+
     const user = await response.json();
-    
+    console.log(user);
+
     return {
       name: user.name,
       bio: user.bio,
@@ -50,13 +51,13 @@ export const fetchGitHubRepos = async (limit = 6) => {
       `${GITHUB_API_BASE}/users/${GITHUB_USERNAME}/repos?sort=updated&per_page=${limit}`,
       { headers }
     );
-    
+
     if (!response.ok) {
       throw new Error(`GitHub API error: ${response.status}`);
     }
-    
+
     const repos = await response.json();
-    
+
     return repos.map(repo => ({
       id: repo.id,
       name: repo.name,
@@ -88,13 +89,13 @@ export const fetchGitHubEvents = async (limit = 100) => {
       `${GITHUB_API_BASE}/users/${GITHUB_USERNAME}/events/public?per_page=${limit}`,
       { headers }
     );
-    
+
     if (!response.ok) {
       throw new Error(`GitHub API error: ${response.status}`);
     }
-    
+
     const events = await response.json();
-    
+
     // Count different types of events
     const stats = {
       totalEvents: events.length,
@@ -104,7 +105,7 @@ export const fetchGitHubEvents = async (limit = 100) => {
       prEvents: events.filter(e => e.type === 'PullRequestEvent').length,
       watchEvents: events.filter(e => e.type === 'WatchEvent').length,
     };
-    
+
     return { events, stats };
   } catch (error) {
     console.error('Error fetching GitHub events:', error);
@@ -155,73 +156,51 @@ export const fetchContributionStats = async () => {
     }
 
     const data = await response.json();
-    
+
     if (data.errors) {
       throw new Error(`GraphQL errors: ${data.errors.map(e => e.message).join(', ')}`);
     }
 
     const contributions = data.data.user.contributionsCollection;
     const calendar = contributions.contributionCalendar;
-    
+
     // Calculate streaks from contribution calendar
     const contributionDays = [];
     calendar.weeks.forEach(week => {
       week.contributionDays.forEach(day => {
-        if (day.contributionCount > 0) {
-          contributionDays.push({
-            date: day.date,
-            count: day.contributionCount
-          });
-        }
+        contributionDays.push({
+          date: day.date,
+          count: day.contributionCount
+        });
       });
     });
-    
+
     // Sort by date (most recent first)
-    contributionDays.sort((a, b) => new Date(b.date) - new Date(a.date));
+    contributionDays.sort((a, b) => new Date(a.date) - new Date(b.date));
     
+
     // Calculate current streak
     let currentStreak = 0;
     let longestStreak = 0;
     let tempStreak = 0;
-    
+
     const today = new Date();
-    const yesterday = new Date(today);
-    yesterday.setDate(yesterday.getDate() - 1);
-    
-    // Check if there's a contribution today or yesterday to start current streak
-    let streakStarted = false;
-    
-    for (let i = 0; i < 365; i++) {
-      const checkDate = new Date(today);
-      checkDate.setDate(checkDate.getDate() - i);
-      const dateStr = checkDate.toISOString().split('T')[0];
-      
-      const hasContribution = contributionDays.some(day => day.date === dateStr);
-      
-      if (hasContribution) {
-        tempStreak++;
-        if (!streakStarted && i <= 1) { // Today or yesterday
-          currentStreak = tempStreak;
-          streakStarted = true;
-        }
-        longestStreak = Math.max(longestStreak, tempStreak);
+    let checkingDate = new Date(today);
+
+    while (true) {
+      const dateStr = checkingDate.toLocaleDateString('en-CA');
+
+      const day = contributionDays.find(d => d.date === dateStr);
+
+      if (day && day.count > 0) {
+        currentStreak++;
       } else {
-        if (streakStarted) {
-          // Current streak is established, continue counting total
-        } else {
-          // No current streak yet, reset temp
-          tempStreak = 0;
-        }
-        if (!streakStarted) {
-          tempStreak = 0;
-        }
+        break;
       }
+
+      checkingDate.setDate(checkingDate.getDate() - 1);
     }
-    
-    if (!streakStarted) {
-      currentStreak = 0;
-    }
-    
+
     return {
       totalCommits: contributions.totalCommitContributions,
       totalContributions: calendar.totalContributions,
@@ -245,20 +224,20 @@ export const fetchContributionStats = async () => {
 export const calculateContributionStats = (events) => {
   const now = new Date();
   const thisYear = now.getFullYear();
-  
+
   // Filter events from this year
   const thisYearEvents = events.filter(event => {
     const eventYear = new Date(event.created_at).getFullYear();
     return eventYear === thisYear;
   });
-  
+
   // Count commits from push events
   let totalCommits = 0;
   const contributionsByDay = {};
-  
+
   thisYearEvents.forEach(event => {
     const date = new Date(event.created_at).toDateString();
-    
+
     // Count different types of contributions
     if (event.type === 'PushEvent' && event.payload.commits) {
       const commits = event.payload.commits.length;
@@ -274,16 +253,16 @@ export const calculateContributionStats = (events) => {
       contributionsByDay[date] = (contributionsByDay[date] || 0) + 1;
     }
   });
-  
+
   // Calculate streak
   const contributionDates = Object.keys(contributionsByDay).sort((a, b) => new Date(b) - new Date(a));
   let currentStreak = 0;
   let longestStreak = 0;
   let tempStreak = 0;
-  
+
   const today = new Date().toDateString();
   let checkDate = new Date();
-  
+
   // Check current streak
   for (let i = 0; i < 365; i++) {
     const dateStr = checkDate.toDateString();
@@ -300,7 +279,7 @@ export const calculateContributionStats = (events) => {
     }
     checkDate.setDate(checkDate.getDate() - 1);
   }
-  
+
   return {
     totalCommits,
     contributions: Object.values(contributionsByDay).reduce((sum, count) => sum + count, 0),
@@ -325,18 +304,18 @@ export const fetchGitHubStats = async () => {
       const { events } = await fetchGitHubEvents(300);
       contributionStats = calculateContributionStats(events);
     }
-    
+
     // Get user and repos data
     const [user, repos] = await Promise.all([
       fetchGitHubUser(),
       fetchGitHubRepos(50) // Fetch more repos for accurate stats
     ]);
-    
+
     // Calculate total stars and forks
     const totalStars = repos.reduce((sum, repo) => sum + repo.stars, 0);
     const totalForks = repos.reduce((sum, repo) => sum + repo.forks, 0);
     const totalWatchers = repos.reduce((sum, repo) => sum + repo.watchers, 0);
-    
+
     return {
       // User stats
       totalRepos: user.publicRepos,
@@ -345,21 +324,21 @@ export const fetchGitHubStats = async () => {
       totalWatchers,
       followers: user.followers,
       following: user.following,
-      
+
       // Contribution stats (now accurate!)
       totalCommits: contributionStats.totalCommits,
       contributions: contributionStats.contributions, // This now matches GitHub's count
       currentStreak: contributionStats.currentStreak,
       longestStreak: contributionStats.longestStreak,
       contributionDays: contributionStats.contributionDays,
-      
+
       // Additional stats from GraphQL (if available)
       ...(contributionStats.totalIssues && {
         totalIssues: contributionStats.totalIssues,
         totalPRs: contributionStats.totalPRs,
         totalReviews: contributionStats.totalReviews,
       }),
-      
+
       // Profile info
       profileCreated: user.createdAt,
       lastUpdated: user.updatedAt,
@@ -426,13 +405,13 @@ export const fetchPinnedRepos = async () => {
     }
 
     const data = await response.json();
-    
+
     if (data.errors) {
       throw new Error(`GraphQL errors: ${data.errors.map(e => e.message).join(', ')}`);
     }
 
     const pinnedRepos = data.data.user.pinnedItems.nodes;
-    
+
     return pinnedRepos.map(repo => ({
       id: repo.id,
       name: repo.name,
@@ -450,13 +429,13 @@ export const fetchPinnedRepos = async () => {
     }));
   } catch (error) {
     console.error('Error fetching pinned repos:', error);
-    
+
     // If GraphQL fails (no token or API issues), fall back to REST API for recent repos
     if (error.message.includes('GraphQL') || error.message.includes('401')) {
       console.log('Falling back to recent repositories...');
       return await fetchGitHubRepos(6);
     }
-    
+
     throw error;
   }
 };
