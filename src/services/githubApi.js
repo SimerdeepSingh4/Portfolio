@@ -327,7 +327,7 @@ export const fetchGitHubStats = async () => {
 
       // Contribution stats (now accurate!)
       totalCommits: contributionStats.totalCommits,
-      contributions: contributionStats.contributions, // This now matches GitHub's count
+      contributions: contributionStats.contributions, 
       currentStreak: contributionStats.currentStreak,
       longestStreak: contributionStats.longestStreak,
       contributionDays: contributionStats.contributionDays,

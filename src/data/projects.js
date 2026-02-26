@@ -568,6 +568,53 @@ export const projects = [
   ],
   thumbnail:
     "https://res.cloudinary.com/dyfjy8kmv/image/upload/v1770400634/Screenshot_2026-02-01_203534_ofii6o.png",
-}
+},
+{
+  id: "13",
+  title: "Productivity Dashboard",
+  featured: false,
+  difficulty: "Intermediate",
+  shortDescription: "An all-in-one vanilla JS dashboard for tasks, focus, and daily planning.",
+  description:
+    "A clean, single-page productivity suite designed to centralize daily workflows. Built with vanilla JavaScript and ES modules, it integrates a multi-functional To-Do manager, a 24-hour daily planner, a configurable Pomodoro timer, and an idea-capturing board. The app features real-time weather integration via geolocation and custom-built UI panels, providing a seamless desktop-like experience in the browser.",
+  features: [
+    "Full-featured To-Do manager with search, priority filtering, and stats",
+    "Interactive 24-hour daily planner with text export capability",
+    "Customizable Pomodoro focus timer with work/break cycle tracking",
+    "Real-time weather dashboard with browser geolocation and AQI data",
+    "Dynamic 'Idea Board' with random-pick helper for creative brainstorming",
+    "Motivational quote widget with clipboard integration and refresh logic",
+    "Persistence layer using Local Storage for tasks, plans, and theme settings",
 
+  ],
+  challenges: [
+    "Implementing reliable weather and reverse-geocoding API handshakes",
+    "Building a global keyboard listener system (Esc key) for modal navigation",
+    "Handling local storage synchronization for multiple distinct feature sets",
+    "Managing complex app state without a framework",
+  ],
+  demoUrl: "#",
+  githubUrl: "https://github.com/SimerdeepSingh4/Productivity_Dashboard",
+  links: [
+    { label: "GitHub", url: "https://github.com/SimerdeepSingh4/Productivity_Dashboard" }
+  ],
+  videoUrl: null,
+  images: [
+    "https://res.cloudinary.com/dyfjy8kmv/image/upload/v1772117473/Productivity_Dashboard1_botypo.png",
+    "https://res.cloudinary.com/dyfjy8kmv/image/upload/v1772117473/Productivity_Dashboard2_o5cjmt.png",
+    "https://res.cloudinary.com/dyfjy8kmv/image/upload/v1772117472/Productivity_Dashboard3_gvtbnw.png",
+    "https://res.cloudinary.com/dyfjy8kmv/image/upload/v1772117473/Productivity_Dashboard4_juogky.png",
+    "https://res.cloudinary.com/dyfjy8kmv/image/upload/v1772117477/Productivity_Dashboard5_jieh8g.png",
+    "https://res.cloudinary.com/dyfjy8kmv/image/upload/v1772117481/Productivity_Dashboard6_bd7fq7.png"
+  ],
+  tech: [
+    "Vanilla JS",
+    "HTML",
+    "CSS",
+    "Local Storage",
+
+  ],
+  thumbnail:
+    "https://res.cloudinary.com/dyfjy8kmv/image/upload/v1772117500/Productivity_Dashboard_thumbnail_qduzap.png",
+}
 ];
