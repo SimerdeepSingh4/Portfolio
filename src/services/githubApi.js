@@ -165,41 +165,36 @@ export const fetchContributionStats = async () => {
     const calendar = contributions.contributionCalendar;
 
     // Calculate streaks from contribution calendar
-    const contributionDays = [];
+    const contributionDates = new Set();
+    const contributionDays = []; // Keep this for the count
     calendar.weeks.forEach(week => {
       week.contributionDays.forEach(day => {
-        contributionDays.push({
-          date: day.date,
-          count: day.contributionCount
-        });
+        contributionDays.push(day); // Populate for length
+        if (day.contributionCount > 0) {
+          contributionDates.add(day.date);
+        }
       });
     });
 
-    // Sort by date (most recent first)
-    contributionDays.sort((a, b) => new Date(a.date) - new Date(b.date));
-    
-
-    // Calculate current streak
     let currentStreak = 0;
-    let longestStreak = 0;
-    let tempStreak = 0;
-
     const today = new Date();
-    let checkingDate = new Date(today);
+    let streakDate = new Date(today);
 
-    while (true) {
-      const dateStr = checkingDate.toLocaleDateString('en-CA');
-
-      const day = contributionDays.find(d => d.date === dateStr);
-
-      if (day && day.count > 0) {
-        currentStreak++;
-      } else {
-        break;
-      }
-
-      checkingDate.setDate(checkingDate.getDate() - 1);
+    // If no contributions today, check from yesterday
+    if (!contributionDates.has(today.toISOString().split('T')[0])) {
+      streakDate.setDate(streakDate.getDate() - 1);
     }
+    
+    // The streak is valid if there are contributions today or yesterday
+    if (contributionDates.has(streakDate.toISOString().split('T')[0])) {
+        while (contributionDates.has(streakDate.toISOString().split('T')[0])) {
+            currentStreak++;
+            streakDate.setDate(streakDate.getDate() - 1);
+        }
+    }
+
+    // `longestStreak` is not used in the UI, so we can ignore it for now.
+    const longestStreak = 0;
 
     return {
       totalCommits: contributions.totalCommitContributions,
