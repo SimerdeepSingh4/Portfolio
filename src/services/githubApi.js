@@ -24,7 +24,7 @@ export const fetchGitHubUser = async () => {
     }
 
     const user = await response.json();
-    console.log(user);
+
 
     return {
       name: user.name,
