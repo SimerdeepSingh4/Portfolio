@@ -38,6 +38,7 @@ const Projects = () => {
   const allTechnologies = [...new Set(projects.flatMap(project => project.tech))].sort();
 
   const tagIcons = {
+    "Redis":"https://uxwing.com/wp-content/themes/uxwing/download/brands-and-social-media/redis-icon.png",
     "Context API":"https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg",
     "React-Rnd":"https://raw.githubusercontent.com/bokuweb/react-rnd/refs/heads/master/logo.png",
     "SCSS":"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSvzl7r0NVEDNeZmp-iWtn7HchjBcX01nzhkw&s",

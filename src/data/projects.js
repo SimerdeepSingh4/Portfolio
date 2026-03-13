@@ -620,7 +620,7 @@ export const projects = [
 {
   id: "14",
   title: "Movie Platform",
-  featured: true,
+  featured: false,
   difficulty: "Advanced",
   shortDescription: "A full-stack movie discovery engine with Redis caching, infinite scroll, and admin controls.",
   description:
