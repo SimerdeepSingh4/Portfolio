@@ -616,5 +616,56 @@ export const projects = [
   ],
   thumbnail:
     "https://res.cloudinary.com/dyfjy8kmv/image/upload/v1772117500/Productivity_Dashboard_thumbnail_qduzap.png",
+},
+{
+  id: "14",
+  title: "Movie Platform",
+  featured: true,
+  difficulty: "Advanced",
+  shortDescription: "A full-stack movie discovery engine with Redis caching, infinite scroll, and admin controls.",
+  description:
+    "A comprehensive, MERN stack movie discovery application designed for searching movies, TV shows, and actors. This project leverages the TMDB API, using a Node.js backend to securely proxy requests and cache results in Redis to drastically improve load times. Authentic users maintain favorites, a custom watchlist, and watch history, while a protected Admin Dashboard allows owners to manually add custom movies with ImageKit integration and manage users. The frontend is built with React 19 and utilizes GSAP and Motion for fluid animations.",
+  features: [
+    "Seamless endless scrolling on all discovery and search pages",
+    "Redis caching layer for TMDB API proxy to minimize load times and reduce rate limits",
+    "Comprehensive user profiles with Favorites, custom Watchlist, and automatically tracked Watch History",
+    "Protected Admin Dashboard allowing owners to manually add movies (with ImageKit integration)",
+    "Admin capability to manage or ban registered users",
+    "JWT-based user authentication with Redis-based token blacklisting for secure logouts",
+    "Beautiful & dynamic UI using Shadcn UI, Tailwind CSS, GSAP, and Motion animations",
+    "Backend efficiently proxies TMDB API calls, keeping API keys secure"
+  ],
+  challenges: [
+    "Integrating Redis for reliable request caching and token blacklisting during user logouts",
+    "Implementing infinite scroll across multiple content types (Movies, TV Shows, Search)",
+    "Replicating modern motion design on the web using GSAP timelines and Motion",
+    "Securing external TMDB API calls by building a dedicated backend proxy with caching"
+  ],
+  demoUrl: "https://movie-platform-1-3xep.onrender.com/",
+  githubUrl: "https://github.com/SimerdeepSingh4/Movie-Platform",
+  links: [
+    { label: "GitHub", url: "https://github.com/SimerdeepSingh4/Movie-Platform" },
+    { label: "Live Demo", url: "https://movie-platform-1-3xep.onrender.com/" }
+  ],
+  videoUrl: null, 
+  images: [
+    "https://res.cloudinary.com/dyfjy8kmv/image/upload/v1766275010/movie_1.png",
+    "https://res.cloudinary.com/dyfjy8kmv/image/upload/v1766275011/movie_2.png",
+    "https://res.cloudinary.com/dyfjy8kmv/image/upload/v1766275012/movie_3.png"
+  ],
+  tech: [
+    "React",
+    "Redux",
+    "GSAP",
+    "Node.js",
+    "Express",
+    "MongoDB",
+    "Redis",
+    "Tailwind CSS",
+    "Shadcn UI",
+    "JWT",
+  ],
+  thumbnail:
+    "https://res.cloudinary.com/dyfjy8kmv/image/upload/v1773426092/Gemini_Generated_Image_bcw91nbcw91nbcw9_giplir.png",
 }
 ];
