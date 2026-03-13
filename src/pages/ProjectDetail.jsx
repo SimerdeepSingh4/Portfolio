@@ -358,7 +358,7 @@ export const ProjectDetail = () => {
                       transition={{ delay: 0.4 + (i * 0.1) }}
                     >
                       <div className="w-2 h-2 bg-green-500 rounded-full mt-2 flex-shrink-0 "></div>
-                      <span >{feature}</span>
+                      <span className="text-left">{feature}</span>
                     </motion.li>
                   ))}
                 </ul>
@@ -384,7 +384,7 @@ export const ProjectDetail = () => {
                       transition={{ delay: 0.4 + (i * 0.1) }}
                     >
                       <div className="w-2 h-2 bg-orange-500 rounded-full mt-2 flex-shrink-0"></div>
-                      <span>{challenge}</span>
+                      <span className="text-left">{challenge}</span>
                     </motion.li>
                   ))}
                 </ul>
@@ -661,8 +661,8 @@ export const ProjectDetail = () => {
           </motion.div>
         </div>
 
-        {/* Special Note for project 3 */}
-        {project.id === "4" && (
+        {/* Special Note */}
+        {project.performanceNote && (
           <motion.div
             className="container mx-auto px-4 max-w-4xl mb-8"
             initial={{ opacity: 0, y: 20 }}
@@ -675,9 +675,9 @@ export const ProjectDetail = () => {
                   <Clock className="w-6 h-6 text-amber-900 dark:text-amber-200" />
                 </div>
                 <div>
-                  <h4 className="font-bold text-black dark:text-black mb-2 text-lg">⚡ Performance Note</h4>
+                  <h4 className="font-bold text-black dark:text-black mb-2 text-lg">{project.performanceNote.title}</h4>
                   <p className="text-black dark:text-grey-400 text-sm leading-relaxed font-semibold">
-                    This project's backend is hosted on Render's free tier. The first request may take 30-60 seconds due to server cold start, but subsequent requests will be much faster.
+                    {project.performanceNote.description}
                   </p>
                 </div>
               </div>
