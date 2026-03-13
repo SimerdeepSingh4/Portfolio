@@ -648,11 +648,30 @@ export const projects = [
     { label: "Live Demo", url: "https://movie-platform-1-3xep.onrender.com/" }
   ],
   videoUrl: null, 
-  images: [
-    "https://res.cloudinary.com/dyfjy8kmv/image/upload/v1766275010/movie_1.png",
-    "https://res.cloudinary.com/dyfjy8kmv/image/upload/v1766275011/movie_2.png",
-    "https://res.cloudinary.com/dyfjy8kmv/image/upload/v1766275012/movie_3.png"
-  ],
+  sections: [
+      {
+        title: "User Dashboard",
+        
+        images: [
+          "https://res.cloudinary.com/dyfjy8kmv/image/upload/v1773427101/CineBase-1_hcc4dq.png",
+          "https://res.cloudinary.com/dyfjy8kmv/image/upload/v1773427101/CineBase-2_myutfh.png",
+          "https://res.cloudinary.com/dyfjy8kmv/image/upload/v1773427100/CineBase-3_szulgy.png",
+          "https://res.cloudinary.com/dyfjy8kmv/image/upload/v1773427101/CineBase-4_zq5y8c.png",
+          "https://res.cloudinary.com/dyfjy8kmv/image/upload/v1773427100/CineBase-5_qunyas.png",
+          "https://res.cloudinary.com/dyfjy8kmv/image/upload/v1773427100/CineBase-6_azxwdi.png",
+        ],
+      },
+      {
+        title: "Admin Dashboard",
+        
+        images: [
+          "https://res.cloudinary.com/dyfjy8kmv/image/upload/v1773427099/CineBase-Ad-1_laavmn.png",
+          "https://res.cloudinary.com/dyfjy8kmv/image/upload/v1773427099/CineBase-Ad-2_odz12o.png",
+          "https://res.cloudinary.com/dyfjy8kmv/image/upload/v1773427099/CineBase-Ad-3_yfoxpa.png",
+          "https://res.cloudinary.com/dyfjy8kmv/image/upload/v1773427101/CineBase-Ad-4_g432bj.png",
+        ],
+      },
+    ],
   tech: [
     "React",
     "Redux",
