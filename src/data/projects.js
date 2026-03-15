@@ -651,7 +651,7 @@ export const projects = [
       { label: "GitHub", url: "https://github.com/SimerdeepSingh4/Movie-Platform" },
       { label: "Live Demo", url: "https://movie-platform-1-3xep.onrender.com/" }
     ],
-    videoUrl: null,
+    videoUrl: "https://www.youtube.com/embed/fu426xYRvdk?si=WZ-4bLyds47Dr7kq",
     sections: [
       {
         title: "User Dashboard",
