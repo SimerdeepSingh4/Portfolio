@@ -1,4 +1,3 @@
-
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import React, { Suspense, lazy } from "react";
 import { Toaster } from "@/components/ui/toaster";
@@ -6,11 +5,13 @@ import { Analytics } from "@vercel/analytics/react";
 import { SpeedInsights } from "@vercel/speed-insights/react";
 import { Toaster as HotToaster } from "react-hot-toast";
 import { FloatingActionButton } from "./components/FloatingActionButton";
-import Home from "./pages/Home";
-import ProjectDetail from "./pages/ProjectDetail";
-import NotFound from "./pages/NotFound";
-import Projects from "./pages/otherProjects";
+import { Spinner } from "./components/ui/Spinner";
 
+// Lazy Loaded Pages
+const Home = lazy(() => import("./pages/Home"));
+const ProjectDetail = lazy(() => import("./pages/ProjectDetail"));
+const Projects = lazy(() => import("./pages/otherProjects"));
+const NotFound = lazy(() => import("./pages/NotFound"));
 
 function App() {
   return (
@@ -28,18 +29,18 @@ function App() {
         }}
       />
       <BrowserRouter>
-
+        <Suspense fallback={<Spinner />}>
           <Routes>
             <Route index element={<Home />} />
             <Route path="/projects" element={<Projects />} />
             <Route path="/project/:id" element={<ProjectDetail />} />
             <Route path="*" element={<NotFound />} />
           </Routes>
+        </Suspense>
 
-          <div className="hidden sm:block">
-            <FloatingActionButton />
-          </div>
-        
+        <div className="hidden sm:block">
+          <FloatingActionButton />
+        </div>
       </BrowserRouter>
       <Analytics />
       <SpeedInsights />

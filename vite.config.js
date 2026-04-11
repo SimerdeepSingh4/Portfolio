@@ -11,4 +11,20 @@ export default defineConfig({
       "@": path.resolve(__dirname, "./src"),
     },
   },
+  build: {
+    rollupOptions: {
+      output: {
+        manualChunks(id) {
+          if (id.includes("node_modules")) {
+            if (id.includes("framer-motion")) return "framer-motion";
+            if (id.includes("lucide-react")) return "lucide-react";
+            if (id.includes("react-router-dom") || id.includes("remix-run") || id.includes("react-router")) return "react-router";
+            if (id.includes("@radix-ui")) return "radix-ui";
+            return "vendor"; // all other dependencies
+          }
+        },
+      },
+    },
+    chunkSizeWarningLimit: 1000,
+  },
 });

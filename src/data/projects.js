@@ -597,7 +597,7 @@ export const projects = [
       "Handling local storage synchronization for multiple distinct feature sets",
       "Managing complex app state without a framework",
     ],
-    demoUrl: "#",
+    demoUrl: "https://productivity-dashboard-steel.vercel.app/",
     githubUrl: "https://github.com/SimerdeepSingh4/Productivity_Dashboard",
     links: [
       { label: "GitHub", url: "https://github.com/SimerdeepSingh4/Productivity_Dashboard" }

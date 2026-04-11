@@ -1,9 +1,9 @@
+import React, { useEffect, useState } from "react";
 import { cn } from "@/lib/utils";
 import { Menu, X, Copy, Check } from "lucide-react";
-import { useEffect, useState } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
 import { ThemeToggle } from "./ThemeToggle";
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 import toast from "react-hot-toast";
 
 const navItems = [
@@ -15,17 +15,14 @@ const navItems = [
   { name: "Contact", href: "#contact" },
 ];
 
-export const Navbar = () => {
+export const Navbar = React.memo(() => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [copiedEmail, setCopiedEmail] = useState(false);
   const navigate = useNavigate();
   const location = useLocation();
 
   useEffect(() => {
-    const handleScroll = () => {
-      setIsScrolled(window.scrollY > 10);
-    };
+    const handleScroll = () => setIsScrolled(window.scrollY > 20);
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
@@ -33,223 +30,135 @@ export const Navbar = () => {
   // Prevent body scroll when mobile menu is open
   useEffect(() => {
     if (isMenuOpen) {
-      // Store the current scroll position
-      const scrollY = window.scrollY;
-      document.body.style.position = 'fixed';
-      document.body.style.top = `-${scrollY}px`;
-      document.body.style.width = '100%';
-      document.body.style.overflow = 'hidden';
+      document.body.classList.add('overflow-hidden');
     } else {
-      // Restore scroll position when closing menu
-      const scrollY = document.body.style.top;
-      document.body.style.position = '';
-      document.body.style.top = '';
-      document.body.style.width = '';
-      document.body.style.overflow = '';
-      if (scrollY) {
-        window.scrollTo(0, parseInt(scrollY || '0') * -1);
-      }
+      document.body.classList.remove('overflow-hidden');
     }
-
-    // Cleanup on unmount
-    return () => {
-      document.body.style.position = '';
-      document.body.style.top = '';
-      document.body.style.width = '';
-      document.body.style.overflow = '';
-    };
   }, [isMenuOpen]);
 
-const handleNavClick = async (e, href, isRoute = false) => {
-  e.preventDefault();
-  const targetId = href.replace("#", "");
+  const handleNavClick = async (e, href, isRoute = false) => {
+    e.preventDefault();
+    const targetId = href.replace("#", "");
+    setIsMenuOpen(false);
 
-  // Close menu first (so scroll can work normally)
-  setIsMenuOpen(false);
-
-  // Restore body scroll before trying to scroll
-  document.body.style.position = '';
-  document.body.style.top = '';
-  document.body.style.width = '';
-  document.body.style.overflow = '';
-
-  if (isRoute) {
-    navigate(href);
-    return;
-  }
-
-  const scrollToSection = () => {
-    const section = document.getElementById(targetId);
-    if (section) {
-      section.scrollIntoView({ behavior: "smooth", block: "start" });
+    if (isRoute) {
+      navigate(href);
+      return;
     }
-  };
 
-  if (location.pathname !== "/") {
-    navigate("/", { replace: false });
-
-    // Wait for route to render completely
-    setTimeout(scrollToSection, 500);
-  } else {
-    setTimeout(scrollToSection, 200);
-  }
-};
-
-
-  const copyEmail = async () => {
-    try {
-      await navigator.clipboard.writeText("simerdeepsingh567@gmail.com");
-      setCopiedEmail(true);
-      toast.success("Email copied to clipboard!");
-      setTimeout(() => setCopiedEmail(false), 2000);
-    } catch (err) {
-      toast.error("Failed to copy email");
-    }
-  };
-
-  // Keyboard shortcuts
-  useEffect(() => {
-    const handleKeyPress = (e) => {
-      if (e.ctrlKey || e.metaKey) {
-        switch (e.key) {
-          case '1':
-            e.preventDefault();
-            handleNavClick(e, '#hero');
-            break;
-          case '2':
-            e.preventDefault();
-            handleNavClick(e, '#about');
-            break;
-          case '3':
-            e.preventDefault();
-            handleNavClick(e, '#skills');
-            break;
-          case '4':
-            e.preventDefault();
-            handleNavClick(e, '#projects');
-            break;
-          case '5':
-            e.preventDefault();
-            handleNavClick(e, '#contact');
-            break;
-        }
+    const scrollToSection = () => {
+      const section = document.getElementById(targetId);
+      if (section) {
+        section.scrollIntoView({ behavior: "smooth", block: "start" });
       }
     };
 
-    window.addEventListener('keydown', handleKeyPress);
-    return () => window.removeEventListener('keydown', handleKeyPress);
-  }, []);
+    if (location.pathname !== "/") {
+      navigate("/");
+      setTimeout(scrollToSection, 500);
+    } else {
+      scrollToSection();
+    }
+  };
 
   return (
     <nav
-        className={cn(
-          "fixed w-full z-40 transition-all duration-200",
-          isScrolled ? "py-3 bg-background/80 backdrop-blur-md shadow-xs" : "py-5"
-        )}
-      >
-        <div className="container flex items-center justify-between">
+      className={cn(
+        "fixed w-full z-50 transition-all duration-500",
+        isScrolled 
+          ? "py-3 bg-background/60 backdrop-blur-xl border-b border-white/5 dark:border-white/[0.05] shadow-[0_2px_20px_-10px_rgba(0,0,0,0.3)]" 
+          : "py-6 bg-transparent"
+      )}
+    >
+      <div className="container mx-auto px-6 flex items-center justify-between max-w-7xl">
         <a
-          className="text-xl font-bold text-primary flex items-center cursor-pointer"
+          className="group flex items-center gap-2 cursor-pointer"
           href="#hero"
           onClick={(e) => handleNavClick(e, "#hero")}
         >
-          <span className="relative z-10">
-            <span className="text-glow text-foreground">Simerdeep</span>{" "}
-            Portfolio
+          <div className="relative">
+            <div className="absolute inset-0 bg-primary/20 blur-lg rounded-full opacity-0 group-hover:opacity-100 transition-opacity" />
+            <span className="text-xl font-black tracking-tighter text-foreground relative">
+              <span className="text-primary italic">S S G</span>
+            </span>
+          </div>
+          <span className="text-sm font-bold tracking-[0.2em] relative uppercase hidden sm:block overflow-hidden">
+            <span className="block group-hover:-translate-y-full transition-transform duration-500">Portfolio</span>
+            <span className="absolute inset-0 block translate-y-full group-hover:translate-y-0 transition-transform duration-500 text-primary">Simerdeep</span>
           </span>
         </a>
 
         {/* Desktop Nav */}
-        <div className="hidden md:flex items-center space-x-8">
+        <div className="hidden md:flex items-center space-x-1">
           {navItems.map((item, key) => (
             <motion.a
               key={key}
               href={item.href}
               onClick={(e) => handleNavClick(e, item.href, item.isRoute)}
-              className="text-foreground/80 hover:text-primary transition-colors duration-200 cursor-pointer relative group"
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
+              className="relative px-5 py-2 text-[11px] font-bold tracking-[0.2em] uppercase text-muted-foreground/70 hover:text-foreground transition-colors group"
             >
-              {item.name}
+              <span className="relative z-10">{item.name}</span>
               <motion.div
-                className="absolute -bottom-1 left-0 h-0.5 bg-primary"
-                initial={{ width: 0 }}
-                whileHover={{ width: "100%" }}
-                transition={{ duration: 0.2 }}
+                className="absolute inset-0 bg-muted/50 rounded-full scale-0 group-hover:scale-100 transition-transform duration-300 -z-10"
               />
+              <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-1 h-1 bg-primary rounded-full opacity-0 group-hover:opacity-100 transition-opacity" />
             </motion.a>
           ))}
-          <motion.button
-            onClick={copyEmail}
-            className="flex items-center gap-2 text-foreground/80 hover:text-primary transition-colors duration-200 cursor-pointer"
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
-          >
-            {copiedEmail ? <Check size={16} /> : <Copy size={16} />}
-            <span className="text-sm hidden lg:inline">Email</span>
-          </motion.button>
-          <ThemeToggle />
+          <div className="pl-4 ml-4 border-l border-border/40">
+            <ThemeToggle />
+          </div>
         </div>
 
         {/* Mobile Controls */}
-        <div className="md:hidden flex items-center gap-2">
+        <div className="md:hidden flex items-center gap-3">
           <ThemeToggle />
           <button
             onClick={() => setIsMenuOpen((prev) => !prev)}
-            className="p-2 text-foreground z-50"
+            className="p-2.5 rounded-xl bg-muted/30 text-foreground z-50 hover:bg-muted transition-colors"
             aria-label={isMenuOpen ? "Close Menu" : "Open Menu"}
           >
-            {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
+            {isMenuOpen ? <X size={20} /> : <Menu size={20} />}
           </button>
         </div>
 
-{/* Mobile Menu */}
-<div
-  onClick={() => setIsMenuOpen(false)} // close when background tapped
-  className={cn(
-    "fixed inset-0 bg-background/95 backdrop-blur-md z-40",
-    "flex flex-col items-center justify-center transition-all duration-200 md:hidden",
-    isMenuOpen 
-      ? "opacity-100 pointer-events-auto"
-      : "opacity-0 pointer-events-none"
-  )}
-  style={{ height: "100dvh" }}
->
-  <div
-    className="flex flex-col space-y-8 text-xl text-center px-6"
-    onClick={(e) => e.stopPropagation()} // prevent closing when clicking links
-  >
-    {navItems.map((item, key) => (
-      <motion.a
-        key={key}
-        href={item.href}
-        onClick={(e) => handleNavClick(e, item.href, item.isRoute)}
-        className="text-foreground/80 hover:text-primary transition-colors duration-200 cursor-pointer py-2"
-        initial={{ opacity: 0, y: 20 }}
-        animate={isMenuOpen ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
-        transition={{ duration: 0.3, delay: key * 0.1 }}
-        whileTap={{ scale: 0.95 }}
-      >
-        {item.name}
-      </motion.a>
-    ))}
-
-    {/* Copy Email Button */}
-    <motion.button
-      onClick={copyEmail}
-      className="flex items-center justify-center gap-2 text-foreground/80 hover:text-primary transition-colors duration-200 cursor-pointer py-2 mt-4"
-      initial={{ opacity: 0, y: 20 }}
-      animate={isMenuOpen ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
-      transition={{ duration: 0.3, delay: navItems.length * 0.1 }}
-      whileTap={{ scale: 0.95 }}
-    >
-      {copiedEmail ? <Check size={20} /> : <Copy size={20} />}
-      <span>Copy Email</span>
-    </motion.button>
-  </div>
-</div>
-        </div>
-      </nav>
+        {/* Mobile Menu Overlay */}
+        <AnimatePresence>
+          {isMenuOpen && (
+            <motion.div
+              initial={{ opacity: 0, x: "100%" }}
+              animate={{ opacity: 1, x: 0 }}
+              exit={{ opacity: 0, x: "100%" }}
+              transition={{ type: "spring", damping: 25, stiffness: 200 }}
+              className="fixed inset-0 bg-background/98 backdrop-blur-2xl z-40 md:hidden flex flex-col justify-center px-12"
+            >
+              <div className="space-y-4">
+                <span className="text-[10px] font-mono font-bold uppercase tracking-[0.5em] text-primary/40 block mb-8">Navigation Registry</span>
+                {navItems.map((item, key) => (
+                  <motion.a
+                    key={key}
+                    href={item.href}
+                    onClick={(e) => handleNavClick(e, item.href, item.isRoute)}
+                    className="block text-4xl font-black tracking-tighter text-foreground hover:text-primary transition-colors py-2"
+                    initial={{ opacity: 0, x: 20 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    transition={{ delay: 0.1 + key * 0.05 }}
+                  >
+                    {item.name}
+                  </motion.a>
+                ))}
+              </div>
+              
+              <div className="mt-20 pt-8 border-t border-border/20">
+                <p className="text-[10px] font-mono text-muted-foreground/40 uppercase tracking-widest">
+                  © {new Date().getFullYear()} // System Active
+                </p>
+              </div>
+            </motion.div>
+          )}
+        </AnimatePresence>
+      </div>
+    </nav>
   );
-};
+});
+
 export default Navbar;

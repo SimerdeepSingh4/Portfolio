@@ -1,9 +1,9 @@
-import { useEffect, useState, Suspense, lazy } from "react";
+import React, { useEffect, useState, Suspense, lazy } from "react";
 
 const StarBackground = lazy(() => import("./StarBackground"));
 const GeometricBackground = lazy(() => import("./GeometricBackground"));
 
-export const ThemeBackground = () => {
+export const ThemeBackground = React.memo(() => {
   const [isDarkMode, setIsDarkMode] = useState(true);
 
   useEffect(() => {
@@ -47,4 +47,6 @@ export const ThemeBackground = () => {
       </Suspense>
     </div>
   );
-};
+});
+
+export default ThemeBackground;

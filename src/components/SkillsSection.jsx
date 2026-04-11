@@ -157,126 +157,111 @@ export const SkillsSection = () => {
     (skill) => activeCategory === "all" || skill.category === activeCategory
   );
 
-
-  const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.1,
-      },
-    },
-  };
-
-  const cardVariants = {
-    hidden: { opacity: 0, y: 30, scale: 0.9 },
-    visible: {
-      opacity: 1,
-      y: 0,
-      scale: 1,
-      transition: {
-        duration: 0.5,
-        ease: "easeOut",
-      },
-    },
-  };
   return (
-    <section id="skills" ref={ref} className={`py-24 px-4 relative bg-secondary/30 section-fade${inView ? " in-view" : ""}`}>
-      <div className="container mx-auto max-w-5xl">
-        <h2 className="text-3xl md:text-4xl font-bold mb-12 text-center">
-          My <span className="text-primary"> Skills</span>
-        </h2>
+    <section 
+      id="skills" 
+      ref={ref} 
+      className="py-32 px-6 relative bg-secondary/5 overflow-hidden"
+    >
+      {/* HUD-Lite Background Grid */}
+      <div className="absolute inset-0 z-0 pointer-events-none opacity-[0.03] dark:opacity-[0.07]">
+        <div className="absolute inset-0 bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:40px_40px]" />
+        <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-primary/20 to-transparent" />
+        <div className="absolute inset-x-0 bottom-0 h-px bg-gradient-to-r from-transparent via-primary/20 to-transparent" />
+      </div>
 
-        <div className="flex flex-wrap justify-center gap-4 mb-12">
-          {categories.map((category, key) => (
-            <motion.button
-              key={key}
-              onClick={() => setActiveCategory(category.id)}
-              className={cn(
-                "px-6 py-3 rounded-full transition-all duration-300 capitalize cursor-pointer flex items-center gap-2 font-medium",
-                activeCategory === category.id
-                  ? "bg-primary text-primary-foreground shadow-lg scale-105"
-                  : "bg-card text-foreground hover:bg-card/80 hover:scale-105 border border-border"
-              )}
-              whileHover={{ y: -2 }}
-              whileTap={{ scale: 0.95 }}
-              layout
-            >
-              <span className="text-lg">{category.icon}</span>
-              {category.name}
-            </motion.button>
-          ))}
+      <div className="container mx-auto max-w-6xl relative z-10">
+        <header className="mb-20 text-center space-y-4">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={inView ? { opacity: 1, y: 0 } : {}}
+            transition={{ duration: 0.6 }}
+          >
+            <h2 className="text-4xl md:text-5xl font-bold tracking-tight text-foreground">
+              My <span className="text-primary italic">Skills</span>
+            </h2>
+          </motion.div>
+        </header>
+
+        {/* System Mode Selector (Category Switcher) */}
+        <div className="flex justify-center mb-16">
+          <div className="p-1.5 bg-background/40 backdrop-blur-xl border border-white/5 rounded-2xl flex flex-wrap justify-center gap-1 shadow-[0_8px_32px_rgba(0,0,0,0.1)]">
+            {categories.map((category) => (
+              <button
+                key={category.id}
+                onClick={() => setActiveCategory(category.id)}
+                className={cn(
+                  "relative px-6 py-2.5 rounded-xl transition-all duration-500 ease-out",
+                  "text-[10px] sm:text-[11px] font-bold tracking-widest uppercase cursor-pointer",
+                  activeCategory === category.id
+                    ? "text-primary-foreground"
+                    : "text-muted-foreground/60 hover:text-foreground"
+                )}
+              >
+                {activeCategory === category.id && (
+                  <motion.div
+                    layoutId="active-category"
+                    className="absolute inset-0 bg-primary rounded-xl shadow-[0_0_20px_rgba(var(--primary-rgb),0.3)]"
+                    transition={{ type: "spring", bounce: 0.2, duration: 0.6 }}
+                  />
+                )}
+                <span className="relative z-10">{category.name}</span>
+              </button>
+            ))}
+          </div>
         </div>
 
+        {/* Skill Matrix */}
         <motion.div
-          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6"
-          variants={containerVariants}
-          initial="hidden"
-          animate={inView ? "visible" : "hidden"}
           key={activeCategory}
+          className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-3 sm:gap-6"
+          initial="hidden"
+          animate="visible"
+          variants={{
+            hidden: { opacity: 0 },
+            visible: {
+              opacity: 1,
+              transition: { staggerChildren: 0.05 }
+            }
+          }}
         >
           {filteredSkills.map((skill, key) => (
             <motion.div
-              key={key}
-              variants={cardVariants}
-              whileHover={{ scale: 1.05 }}
+              key={skill.name}
+              variants={{
+                hidden: { opacity: 0, y: 20, rotateX: 15 },
+                visible: { opacity: 1, y: 0, rotateX: 0 }
+              }}
+              whileHover={{ y: -5 }}
               className="group"
             >
-              <div className="bg-card p-4 rounded-2xl shadow-xs card-hover relative overflow-hidden border border-border/50">
+              <div className="relative h-full bg-card/30 backdrop-blur-sm border border-white/5 rounded-2xl p-4 sm:p-6 transition-all duration-300 group-hover:bg-card/50 group-hover:border-primary/20 overflow-hidden">
+                {/* Holographic Border Accents */}
+                <div className="absolute top-0 left-0 w-2 h-2 border-t border-l border-primary/40 rounded-tl-sm opacity-0 group-hover:opacity-100 transition-opacity" />
+                <div className="absolute top-0 right-0 w-2 h-2 border-t border-r border-primary/40 rounded-tr-sm opacity-0 group-hover:opacity-100 transition-opacity" />
+                <div className="absolute bottom-0 left-0 w-2 h-2 border-b border-l border-primary/40 rounded-bl-sm opacity-0 group-hover:opacity-100 transition-opacity" />
+                <div className="absolute bottom-0 right-0 w-2 h-2 border-b border-r border-primary/40 rounded-br-sm opacity-0 group-hover:opacity-100 transition-opacity" />
 
-                {/* Top Accent Line */}
-                <div className={`absolute top-0 left-0 w-full h-1 
-      ${skill.category === "primary"
-                    ? "bg-gradient-to-r from-primary to-blue-500"
-                    : skill.category === "working"
-                      ? "bg-gradient-to-r from-yellow-400 to-orange-400"
-                      : "bg-gradient-to-r from-green-400 to-emerald-500"
-                  }`}
-                />
-
-                {/* Content */}
-                <div className="flex flex-col items-center text-center space-y-3 mt-2 h-full justify-between">
-
-                  <motion.div
-                    whileHover={{ scale: 1.15, rotate: 3 }}
-                    transition={{ type: "spring", stiffness: 300 }}
-                    className="w-12 h-12 flex items-center justify-center rounded-2xl bg-secondary/50 border border-border/50"
-                  >
-                    <img
-                      src={skill.icon}
-                      alt={skill.name}
-                      className="w-6 h-6 object-contain"
-                    />
-                  </motion.div>
-
-                  <div className="w-full">
-                    <h3 className="font-bold text-base mb-1">
+                <div className="flex flex-row items-center gap-3 sm:gap-4">
+                  <div className="relative flex-shrink-0">
+                    <div className="absolute inset-0 bg-primary/10 blur-xl rounded-full opacity-0 group-hover:opacity-100 transition-opacity" />
+                    <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-xl bg-background/50 border border-white/5 flex items-center justify-center relative group-hover:border-primary/20 transition-colors">
+                      <img
+                        src={skill.icon}
+                        alt={skill.name}
+                        className="w-5 h-5 sm:w-7 sm:h-7 object-contain opacity-80 group-hover:opacity-100 transition-all duration-500"
+                      />
+                    </div>
+                  </div>
+                  <div className="space-y-0.5 min-w-0">
+                    <h3 className="text-[12px] sm:text-[13px] font-bold tracking-tight text-foreground transition-colors group-hover:text-primary truncate">
                       {skill.name}
                     </h3>
-
-                    <div className="flex items-center justify-center text-xs text-muted-foreground mb-1">
-                    </div>
-
-                    <span className={cn(
-                      "inline-flex items-center px-2.5 py-0.5 rounded-full text-[10px] font-medium border bg-opacity-10",
-                      skill.category === "primary"
-                        ? "bg-blue-500/10 text-blue-600 border-blue-500/20 dark:text-blue-400"
-                        : skill.category === "working"
-                          ? "bg-yellow-500/10 border-yellow-500/20 text-yellow-600  dark:text-yellow-400"
-                          : "bg-green-500/10 text-green-600 border-green-500/20 dark:text-green-600"
-                    )}>
-                      {skill.category === "primary"
-                        ? "Primary Stack"
-                        : skill.category === "working"
-                          ? "Working Knowledge"
-                          : "Exploring"}
-                    </span>
                   </div>
-
                 </div>
 
-                {/* Hover Glow */}
-                <div className="absolute inset-0 bg-gradient-to-br from-primary/5 to-blue-500/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none rounded-lg" />
+                {/* Animated Power-line */}
+                <div className="absolute bottom-0 left-0 h-[1.5px] bg-primary/40 w-0 group-hover:w-full transition-all duration-500 ease-in-out shadow-[0_0_10px_#818cf8]" />
               </div>
             </motion.div>
           ))}

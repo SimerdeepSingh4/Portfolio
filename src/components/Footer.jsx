@@ -1,112 +1,147 @@
-import { ArrowUp, Github, Linkedin, Mail } from "lucide-react";
-import { motion } from "framer-motion";
-import { useState } from "react";
+import React, { useState } from "react";
+import { ArrowUp, Github, Linkedin, Mail, Copy, Check, Terminal, ExternalLink } from "lucide-react";
+import { motion, AnimatePresence } from "framer-motion";
+import toast from "react-hot-toast";
 
-export const Footer = () => {
+const SocialLink = React.memo(({ social }) => {
+  const [isHovered, setIsHovered] = useState(false);
+  const Icon = social.icon;
+
+  return (
+    <motion.a
+      href={social.href}
+      target="_blank"
+      rel="noopener noreferrer"
+      aria-label={`${social.label} profile`}
+      className="relative flex items-center justify-center w-10 h-10 rounded-xl bg-card border border-border/50 text-muted-foreground transition-all duration-300 group hover:border-primary/40 hover:bg-primary/5"
+      onMouseEnter={() => setIsHovered(true)}
+      onMouseLeave={() => setIsHovered(false)}
+      whileHover={{ scale: 1.1, y: -2 }}
+      whileTap={{ scale: 0.95 }}
+    >
+      <Icon
+        size={18}
+        className="transition-all duration-300 group-hover:scale-110"
+        style={{
+          color: isHovered ? social.brandColor : 'inherit',
+          filter: isHovered ?
+            `drop-shadow(0 0 8px ${social.brandColor})` :
+            'none',
+        }}
+      />
+      {/* Tooltip */}
+      <div className="absolute -top-10 left-1/2 transform -translate-x-1/2 bg-gray-900 dark:bg-gray-100 text-white dark:text-gray-900 text-[10px] px-2 py-1 rounded-md whitespace-nowrap opacity-0 group-hover:opacity-100 transition-all duration-300 pointer-events-none z-50">
+        {social.label}
+      </div>
+    </motion.a>
+  );
+});
+
+export const Footer = React.memo(() => {
+  const [copiedEmail, setCopiedEmail] = useState(false);
+
   const handleScrollTop = () => {
     window.scrollTo({ top: 0, behavior: "smooth" });
+  };
+
+  const copyEmail = async () => {
+    try {
+      await navigator.clipboard.writeText("simerdeepsingh567@gmail.com");
+      setCopiedEmail(true);
+      toast.success("Email copied to clipboard!");
+      setTimeout(() => setCopiedEmail(false), 2000);
+    } catch (err) {
+      toast.error("Failed to copy email");
+    }
   };
 
   const socialLinks = [
     {
       name: "GitHub",
       icon: Github,
-      label: "GitHub", 
+      label: "GitHub",
       href: "https://github.com/SimerdeepSingh4",
       brandColor: "#9443bf",
     },
     {
       name: "LinkedIn",
       icon: Linkedin,
-      label: "LinkedIn", 
+      label: "LinkedIn",
       href: "https://www.linkedin.com/in/simerdeep-singh-gandhi/",
       brandColor: "#0077B5",
     },
-    {
-      name: "Email",
-      icon: Mail,
-      label: "Email", 
-      href: "mailto:simerdeepsingh567@gmail.com",
-      brandColor: "#5b6abf",
-    },
+
   ];
 
   return (
-    <footer className="relative bg-card border-t border-border mt-12">
-      {/* Gradient border */}
-      <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-primary/50 to-transparent"></div>
-
-      <div className="py-3 sm:py-4 px-4 sm:px-8">
-        <div className="flex flex-col sm:flex-row sm:justify-between sm:items-center gap-4 sm:gap-6 text-center sm:text-left max-w-6xl mx-auto w-full">
-          {/* Left section */}
-          <div className="flex flex-col sm:flex-row sm:items-center justify-center sm:justify-start gap-2 sm:gap-4 w-full sm:w-auto">
-            <div className="text-xs sm:text-sm text-muted-foreground ">
-              © {new Date().getFullYear()} Designed & Developed by{" "}
-              <span className="text-primary font-medium">
-                Simerdeep Singh Gandhi
-              </span>
-            </div>
-
-            {/* Social Icons */}
-            <div className="flex items-center justify-center gap-2 sm:gap-3">
-              {socialLinks.map((social) => {
-                const Icon = social.icon;
-                const [isHovered, setIsHovered] = useState(false);
-                return (
-                  <motion.a
-                      key={social.label}
-                      href={social.href}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      aria-label={`${social.label} profile`}
-                      className="relative flex items-center justify-center w-12 h-12 rounded-full bg-card border border-border/50 text-muted-foreground transition-all duration-300 group hover:border-primary/20"
-                      onMouseEnter={() => setIsHovered(true)}
-                      onMouseLeave={() => setIsHovered(false)}
-                      whileHover={{ scale: 1.1, y: -2 }}
-                      whileTap={{ scale: 0.95 }}
-                      initial={{ opacity: 0, scale: 0 }}
-                      animate={{ opacity: 1, scale: 1 }}
-                      transition={{ delay: 0.1 }}
-                    >
-                      <social.icon 
-                        size={18} 
-                        className="transition-all duration-300 group-hover:scale-110" 
-                        style={{
-                          color: isHovered ? social.brandColor : 'inherit',
-                          filter: isHovered ? 
-                            `drop-shadow(0 0 6px ${social.brandColor}) drop-shadow(0 0 12px ${social.brandColor}40) brightness(1.2)` : 
-                            'none',
-                          transition: 'all 0.3s ease'
-                        }}
-                      />
-                      {/* Tooltip */}
-                      <div className="absolute -top-12 left-1/2 transform -translate-x-1/2 bg-gray-900 dark:bg-gray-100 text-white dark:text-gray-900 text-xs px-2 py-1 rounded whitespace-nowrap opacity-0 group-hover:opacity-100 transition-all duration-300 pointer-events-none z-50">
-                        {social.label}
-                        <div className="absolute top-full left-1/2 transform -translate-x-1/2 w-0 h-0 border-l-4 border-r-4 border-t-4 border-transparent border-t-gray-900 dark:border-t-gray-100"></div>
-                      </div>
-                    </motion.a>
-                );
-              })}
+    <footer className="relative bg-background border-t border-border/30 mt-12 pt-6">
+      {/* Background Atmosphere - Subtler */}
+      <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[80vw] h-[20vw] bg-primary/2 blur-[80px] -z-10" />
+      
+      <div className="container mx-auto px-6 max-w-7xl relative z-10">
+        <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-8 mb-8">
+          {/* Identity & Technical Briefing */}
+          <div className="space-y-4">
+            <h3 className="text-2xl font-black tracking-tighter text-foreground group cursor-default">
+              Simerdeep <span className="text-primary italic">Portfolio</span>
+            </h3>
+            <div className="flex flex-wrap items-center gap-x-4 gap-y-2">
+              {/* <div className="flex items-center gap-2 text-[9px] font-mono font-bold uppercase tracking-widest text-green-500/80">
+                <span className="w-1.5 h-1.5 rounded-full bg-green-500 shadow-[0_0_8px_rgba(34,197,94,0.6)]" />
+                System Nominal
+              </div> */}
+              <div className="text-[10px] font-mono text-muted-foreground/30 uppercase tracking-[0.15em] flex items-center gap-1.5">
+                 © {new Date().getFullYear()} // Built with React, Tailwind & Framer
+              </div>
             </div>
           </div>
 
-          {/* Right section */}
-          <div className="flex items-center justify-center sm:justify-end gap-2 sm:gap-4 w-full sm:w-auto">
-            <div className="text-[10px] sm:text-xs text-muted-foreground">
-              Built with <span className="text-primary font-medium">React</span>{" "}
-              & <span className="text-primary font-medium">Tailwind CSS</span>
+          {/* Social & Contact Controls */}
+          <div className="flex flex-wrap items-center gap-4">
+            <div className="flex gap-3">
+              {socialLinks.map((social) => (
+                <SocialLink key={social.label} social={social} />
+              ))}
             </div>
+            
+
+            <motion.button
+              onClick={copyEmail}
+              className="relative flex items-center justify-center w-10 h-10 rounded-xl bg-card border border-border/50 text-primary transition-all duration-300 group hover:border-primary/40 hover:bg-primary/5"
+              whileHover={{ scale: 1.1, y: -2 }}
+              whileTap={{ scale: 0.95 }}
+            >
+              <AnimatePresence mode="wait">
+                {copiedEmail ? (
+                  <motion.div key="check" initial={{ scale: 0 }} animate={{ scale: 1 }} exit={{ scale: 0 }}>
+                    <Check size={18} />
+                  </motion.div>
+                ) : (
+                  <motion.div key="mail" initial={{ scale: 0 }} animate={{ scale: 1 }} exit={{ scale: 0 }}>
+                    <Mail size={18} />
+                  </motion.div>
+                )}
+              </AnimatePresence>
+              {/* Using absolute positioning and higher z-index for tooltip */}
+              <div className="absolute -top-10 left-1/2 transform -translate-x-1/2 bg-gray-900 dark:bg-gray-100 text-white dark:text-gray-900 text-[10px] px-2 py-1 rounded-md whitespace-nowrap opacity-0 group-hover:opacity-100 transition-all duration-300 pointer-events-none z-50">
+                Copy Email
+              </div>
+            </motion.button>
+            <div className="h-6 w-px bg-border/20 hidden sm:block mx-1" />
 
             <button
               onClick={handleScrollTop}
-              className="p-2 sm:p-3 rounded-full bg-primary/10 hover:bg-primary/20 text-primary transition-all duration-300 group"
-              aria-label="Scroll to top"
+              className="flex items-center gap-2 text-[13px] font-mono font-bold uppercase tracking-widest text-muted-foreground/40 hover:text-primary transition-colors group pl-2"
             >
-              <ArrowUp className="w-4 h-4 sm:w-5 sm:h-5 transition-transform duration-300 group-hover:-translate-y-1" />
+              Orbit
+              <ArrowUp size={14} className="group-hover:-translate-y-1 transition-transform" />
             </button>
           </div>
         </div>
       </div>
     </footer>
   );
-};
+});
+
+
+export default Footer;
