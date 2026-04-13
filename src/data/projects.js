@@ -2,7 +2,7 @@ export const projects = [
   {
     id: "1",
     title: "Mentora LMS",
-    featured: true,
+    featured: false,
 
     year: "2024",
     shortDescription: "A full-featured Learning Management System built using MERN stack with role-based dashboards for students, teachers, and admins.",
@@ -237,7 +237,7 @@ export const projects = [
   {
     id: "6",
     title: "MCP-Powered Terminal AI Assistant",
-    featured: true,
+    featured: false,
 
     shortDescription: "A terminal-based AI assistant built with Node.js that leverages MCP for extensible tool-based interactions and automation.",
     description:
@@ -526,7 +526,7 @@ export const projects = [
   {
     id: "12",
     title: "macOS Clone — Frontend UI",
-    featured: false,
+    featured: true,
 
     shortDescription: "A high-fidelity macOS desktop environment built with React and SCSS.",
     description:
@@ -624,7 +624,7 @@ export const projects = [
   {
     id: "14",
     title: "Movie Platform",
-    featured: false,
+    featured: true,
     difficulty: "Advanced",
     shortDescription: "A full-stack movie discovery engine with Redis caching, infinite scroll, and admin controls.",
     description:
