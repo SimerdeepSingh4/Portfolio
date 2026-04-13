@@ -136,7 +136,7 @@ export const projects = [
       "Ensuring accurate and actionable feedback",
       "Maintaining performance with large code snippets"
     ],
-    demoUrl: "#",
+    demoUrl: "https://code-reviewer-nine-smoky.vercel.app/",
     githubUrl: "https://github.com/SimerdeepSingh4/Code-Reviewer",
     links: [
       { label: "Live Demo", url: "#" },
@@ -159,6 +159,10 @@ export const projects = [
       "Axios"
     ],
     thumbnail: "https://res.cloudinary.com/dyfjy8kmv/image/upload/v1766273590/Code_Reviwer_Thumbnail_uhmlt1.png",
+    performanceNote: {
+      title: "⚡ Performance Note",
+      description: "This project's backend is hosted on Render's free tier. The first request may take 30-60 seconds due to server cold start, but subsequent requests will be much faster."
+    }
   },
   {
     id: "4",
