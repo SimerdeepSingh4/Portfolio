@@ -6,9 +6,10 @@ import Tilt from "react-parallax-tilt";
 import { tagIcons } from "../../data/tagIcons";
 
 const ProjectCard = React.memo(({ project, viewMode, openLightbox }) => {
+  const tech = project.tech || [];
   const [showAll, setShowAll] = useState(false);
-  const visibleTags = showAll ? project.tech : project.tech.slice(0, 4);
-  const hiddenCount = project.tech.length - 4;
+  const visibleTags = showAll ? tech : tech.slice(0, 4);
+  const hiddenCount = tech.length - 4;
   const imageUrl = project.thumbnail || project.images?.[0] || project.sections?.[0]?.images?.[0];
   const isFeatured = !!project.featured;
 
@@ -73,7 +74,7 @@ const ProjectCard = React.memo(({ project, viewMode, openLightbox }) => {
                     {tag}
                   </span>
                 ))}
-                {project.tech.length > 4 && (
+                {tech.length > 4 && (
                   <button
                     onClick={(e) => { e.stopPropagation(); setShowAll(prev => !prev); }}
                     className="px-2 py-1 text-xs font-medium border rounded-full bg-muted text-muted-foreground hover:bg-muted/70 transition cursor-pointer"
@@ -173,7 +174,7 @@ const ProjectCard = React.memo(({ project, viewMode, openLightbox }) => {
                   {tag}
                 </motion.span>
               ))}
-              {project.tech.length > 4 && (
+              {tech.length > 4 && (
                 <motion.button
                   onClick={(e) => { e.stopPropagation(); setShowAll(prev => !prev); }}
                   className="px-2 py-1 text-xs font-medium border rounded-full bg-muted text-muted-foreground hover:bg-muted/70 transition cursor-pointer"

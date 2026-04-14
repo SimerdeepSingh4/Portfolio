@@ -8,7 +8,7 @@ const ProjectHero = React.memo(({ project }) => {
   const isFeatured = !!project.featured;
 
   // Generate a pseudo-random hash for the "technical readout" feel
-  const projectRef = `PRJ-${project.id.toUpperCase()}-${Math.floor(1000 + Math.random() * 9000)}`;
+  const projectRef = `PRJ-${String(project.id || "").toUpperCase()}-${Math.floor(1000 + Math.random() * 9000)}`;
 
   return (
     <motion.div
@@ -52,8 +52,8 @@ const ProjectHero = React.memo(({ project }) => {
           </div>
 
           <h1 className="text-3xl md:text-5xl font-bold mb-5 tracking-tight leading-tight text-foreground">
-            <span className="opacity-90">{project.title.split(' ')[0]} </span>
-            <span className="gradient-text">{project.title.split(' ').slice(1).join(' ')}</span>
+            <span className="opacity-90">{project.title ? project.title.split(' ')[0] : ''} </span>
+            <span className="gradient-text">{project.title ? project.title.split(' ').slice(1).join(' ') : ''}</span>
           </h1>
 
           <p className="text-base md:text-lg leading-relaxed mb-8 max-w-2xl text-muted-foreground mx-auto font-light tracking-wide italic decoration-primary/20">

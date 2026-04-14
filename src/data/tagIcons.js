@@ -16,6 +16,7 @@ export const tagIcons = {
   "JWT": "https://img.icons8.com/?size=512&id=rHpveptSuwDz&format=png",
   "Google Cloud Speech API": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/googlecloud/googlecloud-original.svg",
   "Google Gemini": "https://img.icons8.com/?size=512&id=rnK88i9FvAFO&format=png",
+  "Mistral AI":"https://res.cloudinary.com/dyfjy8kmv/image/upload/q_auto/f_auto/v1776124495/66af6a44585ea98e55ff8606_emryqm.png",
   "React Markdown": "https://www.svgrepo.com/show/446620/markdown.svg",
   "PrismJS": "https://prismjs.com/assets/logo.svg",
   "Cloudinary": "https://assets.streamlinehq.com/image/private/w_300,h_300,ar_1/f_auto/v1/icons/1/cloudinary-icon-ug0qqy8ms6ozyzy6cntbll.png/cloudinary-icon-hz05evx1htrghud89kpab4.png?_a=DATAiZiuZAA0",

@@ -3,6 +3,7 @@ import { motion } from "framer-motion";
 import { tagIcons } from "../../data/tagIcons";
 
 const TechStack = React.memo(({ tech }) => {
+  if (!tech || tech.length === 0) return null;
   return (
     <div className="mb-16">
       <div className="flex flex-col items-center mb-10">

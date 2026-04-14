@@ -10,31 +10,39 @@ const ShowcaseContent = React.memo(({
   setCurrentImageIndex,
   openLightbox
 }) => {
-  if (!project.sections || project.sections.length === 0) return null;
+  const sections = project.sections && project.sections.length > 0
+    ? project.sections
+    : (project.images && project.images.length > 0
+      ? [{ title: "Project Gallery", content: "A visual showcase of the project's interface and features.", images: project.images }]
+      : []);
 
-  const activeSectionData = project.sections[activeSection];
+  if (sections.length === 0) return null;
+
+  const activeSectionData = sections[activeSection] || sections[0];
   const images = activeSectionData.images || [];
 
   return (
     <div className="mb-20">
       {/* Section Controls - Technical Dock UI */}
-      <div className="flex justify-center mb-10">
-        <div className="p-1.5 bg-muted/30 backdrop-blur-md rounded-2xl border border-border/50 flex gap-2 overflow-x-auto no-scrollbar max-w-full">
-          {project.sections.map((section, index) => (
-            <button
-              key={index}
-              onClick={() => { setActiveSection(index); setCurrentImageIndex(0); }}
-              className={`px-5 py-2.5 rounded-xl text-sm font-bold whitespace-nowrap transition-all duration-300 flex items-center gap-2 ${activeSection === index
-                  ? "bg-primary text-primary-foreground shadow-lg shadow-primary/20 scale-105"
-                  : "hover:bg-muted text-muted-foreground"
-                }`}
-            >
-              {index === 0 ? <Layout size={16} /> : <ImageIcon size={16} />}
-              {section.title}
-            </button>
-          ))}
+      {sections.length > 1 && (
+        <div className="flex justify-center mb-10">
+          <div className="p-1.5 bg-muted/30 backdrop-blur-md rounded-2xl border border-border/50 flex gap-2 overflow-x-auto no-scrollbar max-w-full">
+            {sections.map((section, index) => (
+              <button
+                key={index}
+                onClick={() => { setActiveSection(index); setCurrentImageIndex(0); }}
+                className={`px-5 py-2.5 rounded-xl text-sm font-bold whitespace-nowrap transition-all duration-300 flex items-center gap-2 ${activeSection === index
+                    ? "bg-primary text-primary-foreground shadow-lg shadow-primary/20 scale-105"
+                    : "hover:bg-muted text-muted-foreground"
+                  }`}
+              >
+                {index === 0 ? <Layout size={16} /> : <ImageIcon size={16} />}
+                {section.title}
+              </button>
+            ))}
+          </div>
         </div>
-      </div>
+      )}
 
       <AnimatePresence mode="wait">
         <motion.div

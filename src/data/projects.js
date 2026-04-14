@@ -121,20 +121,20 @@ export const projects = [
     featured: false,
 
     year: "2024",
-    shortDescription: "AI-powered code review tool using Google Gemini with syntax highlighting and markdown feedback.",
-    description:
-      "A full-stack code review application built using React and Node.js, integrated with Google's Gemini AI to provide real-time, automated feedback on prewritten code. It offers syntax highlighting, mobile responsiveness, and markdown-formatted results for code quality, performance, and security insights.",
+    shortDescription: "Studio-grade AI code reviewer with Monaco-powered IDE, failover intelligence, and dual-link resilience.",
+    description: 
+      "A professional-grade code review studio built with React 19 and Monaco Editor. It features a robust dual-AI fallback engine (Gemini & Mistral) that ensures zero-downtime structural analysis. Fully mobile-responsive, it provides high-density technical feedback, health scoring, and automatic failover between production and local backend services.",
     features: [
-      "AI-powered code review (Google Gemini API)",
-      "Syntax highlighting (PrismJS)",
-      "Markdown-formatted feedback",
-      "Mobile responsive design",
-      "Real-time feedback"
+      "The Architect IDE (Monaco-powered, folding, auto-brackets)",
+      "Dual-Engine Resilience (Gemini primary, Mistral fallback)",
+      "Dual-Link Persistence (Auto-switch between Prod/Local URL)",
+      "Mission Control Layout (3-column Desktop, Stacked Mobile)",
+      "Structural Health Scoring & Monitoring"
     ],
     challenges: [
-      "Integrating AI for code analysis",
-      "Ensuring accurate and actionable feedback",
-      "Maintaining performance with large code snippets"
+      "Implementing 8s hard-timeout AI engine failover logic",
+      "Optimizing Monaco Editor for fluid mobile responsiveness",
+      "Architecting a multi-origin CORS and failover resilience system"
     ],
     demoUrl: "https://code-reviewer-nine-smoky.vercel.app/",
     githubUrl: "https://github.com/SimerdeepSingh4/Code-Reviewer",
@@ -155,6 +155,7 @@ export const projects = [
       "React Markdown",
       "Node.js",
       "Express",
+      "Mistral AI",
       "Google Gemini",
       "Axios"
     ],
