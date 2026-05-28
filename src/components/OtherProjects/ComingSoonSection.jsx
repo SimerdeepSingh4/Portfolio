@@ -1,5 +1,7 @@
 import React from "react";
 import { motion } from "framer-motion";
+import Lottie from "lottie-react";
+import comingSoonAnimation from "../../../public/coming soon.json";
 
 const ComingSoonSection = React.memo(() => {
   return (
@@ -12,13 +14,17 @@ const ComingSoonSection = React.memo(() => {
     >
       <div className="max-w-2xl mx-auto z-50">
         <motion.div
-          className="mb-6"
+          className="flex justify-center mb-2"
           initial={{ scale: 0 }}
           whileInView={{ scale: 1 }}
           viewport={{ once: true }}
           transition={{ delay: 0.2, type: "spring", stiffness: 100 }}
         >
-          <div className="text-6xl mb-4 text-center">🚀</div>
+          <Lottie
+            animationData={comingSoonAnimation}
+            loop={true}
+            className="w-64 h-64 md:w-80 md:h-80"
+          />
         </motion.div>
 
         <motion.h3
@@ -28,17 +34,17 @@ const ComingSoonSection = React.memo(() => {
           viewport={{ once: true }}
           transition={{ delay: 0.3, duration: 0.6 }}
         >
-          More Amazing Projects <span className="text-primary">Coming Soon</span>
+          Next in the <span className="text-primary">Pipeline</span>
         </motion.h3>
 
         <motion.p
-          className="text-muted-foreground text-lg mb-6"
+          className="text-muted-foreground text-base md:text-lg mb-6 max-w-xl mx-auto leading-relaxed"
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
           transition={{ delay: 0.4, duration: 0.6 }}
         >
-          I'm currently working on several exciting frontend and full-stack projects using MERN, Next.js, and other modern frameworks. Stay tuned for innovative solutions that blend creativity with technology.
+          I am currently developing full-stack web applications, integrating AI API endpoints, and setting up automated CI/CD pipelines to streamline deployment workflows.
         </motion.p>
 
         <motion.div
@@ -64,25 +70,13 @@ const ComingSoonSection = React.memo(() => {
         </motion.div>
 
         <motion.div
-          className="inline-flex items-center gap-2 text-sm text-muted-foreground bg-card px-4 py-2 rounded-full border border-border/50 shadow-sm"
+          className="inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-wider text-muted-foreground bg-card px-4 py-2 rounded-full border border-border/50 shadow-sm select-none"
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
           transition={{ delay: 0.7, duration: 0.6 }}
         >
-          <motion.div
-            className="w-2 h-2 rounded-full bg-primary"
-            animate={{
-              opacity: [0.3, 1, 0.3],
-              scale: [0.8, 1.2, 0.8]
-            }}
-            transition={{
-              duration: 2,
-              repeat: Infinity,
-              ease: "easeInOut"
-            }}
-          />
-          <span>Currently in development</span>
+          <span>Currently in Development</span>
         </motion.div>
       </div>
     </motion.div>

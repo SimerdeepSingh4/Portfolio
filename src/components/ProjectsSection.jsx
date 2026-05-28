@@ -1,9 +1,8 @@
-import { ArrowRight, ExternalLink, Github, Star, Eye } from "lucide-react";
+import { ArrowRight, ExternalLink, Github, Star, Eye, Briefcase } from "lucide-react";
 import { Link } from "react-router-dom";
 import { useInView } from "@/hooks/useInView";
 import { useState } from "react";
 import { motion } from "framer-motion";
-import Tilt from "react-parallax-tilt";
 import { ImageLightbox } from "./ImageLightbox";
 import { projects as projectsData } from "@/data/projects";
 
@@ -127,30 +126,43 @@ export default function ProjectsSection() {
             const showAll = expandedTags[project.id];
             const visibleTags = showAll ? project.tags : project.tags.slice(0, 4);
             const hiddenCount = project.tags.length - 4;
+            const isFreelance = !!project.isFreelance;
+            const isFeatured = !!project.featured;
+            const isGithubAvailable = project.githubUrl && project.githubUrl !== "#" && !isFreelance;
 
             return (
-              <motion.div key={project.id} variants={cardVariants}>
-                <Tilt
-                  tiltMaxAngleX={5}
-                  tiltMaxAngleY={5}
-                  perspective={1000}
-                  scale={1.02}
-                  transitionSpeed={450}
-                  className="group"
-                >
-                  <div className="bg-white dark:bg-card rounded-lg overflow-hidden shadow-lg card-hover relative border border-gray-200/50 dark:border-gray-700/50">
-                    {/* Featured Badge */}
-                    {project.featured && (
-                      <motion.div 
-                        className="absolute top-3 left-3 z-10 bg-primary text-primary-foreground px-2 py-1 rounded-full text-xs font-medium flex items-center gap-1"
-                        initial={{ scale: 0 }}
-                        animate={{ scale: 1 }}
-                        transition={{ delay: 0.3 }}
-                      >
-                        <Star size={12} fill="currentColor" />
-                        Featured
-                      </motion.div>
-                    )}
+              <motion.div key={project.id} variants={cardVariants} className="group">
+                  <div className={`rounded-lg overflow-hidden shadow-lg card-hover relative border transition-all duration-300 ${
+                    isFreelance 
+                      ? "border-amber-500/50 shadow-amber-500/10 bg-amber-500/5 ring-1 ring-amber-500/20" 
+                      : "bg-white dark:bg-card border-gray-200/50 dark:border-gray-700/50"
+                  }`}>
+                    {/* Project Badges */}
+                    <div className="absolute top-3 left-3 z-10 flex flex-row flex-wrap gap-2">
+                      {isFreelance && (
+                        <motion.div 
+                          className="bg-amber-500 text-white px-2 py-1 rounded-full text-xs font-medium flex items-center gap-1 shadow-md shadow-amber-500/20"
+                          initial={{ scale: 0 }}
+                          animate={{ scale: 1 }}
+                          transition={{ delay: 0.3 }}
+                        >
+                          <Briefcase size={12} fill="currentColor" />
+                          Client Project
+                        </motion.div>
+                      )}
+                      
+                      {isFeatured && (
+                        <motion.div 
+                          className="bg-primary text-primary-foreground px-2 py-1 rounded-full text-xs font-medium flex items-center gap-1 shadow-md shadow-primary/20"
+                          initial={{ scale: 0 }}
+                          animate={{ scale: 1 }}
+                          transition={{ delay: 0.4 }}
+                        >
+                          <Star size={12} fill="currentColor" />
+                          Featured
+                        </motion.div>
+                      )}
+                    </div>
                     
                     <div className="h-48 overflow-hidden relative">
                       <motion.img
@@ -223,6 +235,10 @@ export default function ProjectsSection() {
                       >
                         {project.title}
                       </motion.h3>
+
+                      {isFreelance && project.clientName && (
+                        <p className="text-amber-500 text-[10px] font-bold mb-2 uppercase tracking-[0.2em]">Client: {project.clientName}</p>
+                      )}
                       
                       <motion.p 
                         className="text-sm mb-4 text-slate-700 dark:text-muted-foreground leading-relaxed"
@@ -244,17 +260,19 @@ export default function ProjectsSection() {
                               <ExternalLink size={20} />
                             </Link>
                           </motion.div>
-                          <motion.div whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.9 }}>
-                            <a
-                              href={project.githubUrl}
-                              target="_blank"
-                              rel="noopener noreferrer"
-                              className="text-foreground/80 hover:text-primary transition-colors duration-300"
-                              aria-label={`View ${project.title} on GitHub`}
-                            >
-                              <Github size={20} />
-                            </a>
-                          </motion.div>
+                          {isGithubAvailable && (
+                            <motion.div whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.9 }}>
+                              <a
+                                href={project.githubUrl}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="text-foreground/80 hover:text-primary transition-colors duration-300"
+                                aria-label={`View ${project.title} on GitHub`}
+                              >
+                                <Github size={20} />
+                              </a>
+                            </motion.div>
+                          )}
 
                           {project.demoUrl && project.demoUrl !== "#" && (
                             <motion.div whileHover={{ scale: 1.02 }}>
@@ -264,9 +282,8 @@ export default function ProjectsSection() {
                                 rel="noopener noreferrer"
                                 aria-label={`Open live demo for ${project.title}`}
                                 onClick={(e) => e.stopPropagation()}
-                                className="flex items-center gap-1 px-2 py-1 text-xs font-medium border rounded-full bg-green-100 text-green-800 border-green-200"
+                                className="flex items-center px-2.5 py-0.5 text-[10px] font-bold tracking-wider uppercase border rounded-full bg-green-500/10 text-green-600 dark:text-green-400 border-green-500/20"
                               >
-                                <div className="w-2 h-2 rounded-full bg-green-500 animate-pulse" />
                                 Live
                               </a>
                             </motion.div>
@@ -275,7 +292,6 @@ export default function ProjectsSection() {
                       </div>
                     </div>
                   </div>
-                </Tilt>
               </motion.div>
             );
           })}

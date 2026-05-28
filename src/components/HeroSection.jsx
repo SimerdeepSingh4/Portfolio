@@ -110,9 +110,9 @@ export const HeroSection = () => {
             <Typewriter
               options={{
                 strings: [
-                  "I'm a Full-Stack Web Developer passionate about building seamless digital experiences",
-"I build responsive, scalable, user-friendly web apps",
-"I love turning ideas into elegant, functional solutions through code",
+                  "I'm a full-stack web developer who loves building web applications.",
+                  "I focus on React, Node.js, and making user interfaces feel alive.",
+                  "I turn ideas into functional, clean code.",
                 ],
                 autoStart: true,
                 loop: true,

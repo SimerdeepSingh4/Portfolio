@@ -1,14 +1,13 @@
 import React from "react";
 import { motion } from "framer-motion";
-import { Star, ExternalLink, Github, Play, Terminal } from "lucide-react";
+import { Star, ExternalLink, Github, Play, Terminal, Briefcase } from "lucide-react";
 
 const ProjectHero = React.memo(({ project }) => {
   const isDemoAvailable = project.demoUrl && project.demoUrl !== "#";
-  const isGithubAvailable = project.githubUrl && project.githubUrl !== "#";
+  const isFreelance = !!project.isFreelance;
+  const isGithubAvailable = project.githubUrl && project.githubUrl !== "#" && !isFreelance;
   const isFeatured = !!project.featured;
 
-  // Generate a pseudo-random hash for the "technical readout" feel
-  const projectRef = `PRJ-${String(project.id || "").toUpperCase()}-${Math.floor(1000 + Math.random() * 9000)}`;
 
   return (
     <motion.div
@@ -26,12 +25,20 @@ const ProjectHero = React.memo(({ project }) => {
         <div className="relative z-10">
           {/* Header Metadata - More compact */}
           <div className="flex flex-wrap items-center justify-center gap-3 mb-6">
-            <div className="flex items-center gap-1.5 px-2.5 py-1 bg-primary/10 dark:bg-primary/5 rounded-md border border-primary/20 dark:border-primary/10">
-              <Terminal size={10} className="text-primary" />
-              <span className="text-[9px] font-mono tracking-[0.15em] text-primary/80 uppercase">{projectRef}</span>
-            </div>
+
+            {isFreelance && (
+              <motion.div
+                className="flex items-center gap-1 bg-gradient-to-r from-amber-500 to-orange-500 px-3 py-1 rounded-full text-[10px] font-bold text-white shadow-md shadow-amber-500/20"
+                initial={{ scale: 0 }}
+                animate={{ scale: 1 }}
+                transition={{ delay: 0.4, type: "spring", stiffness: 200 }}
+              >
+                <Briefcase size={10} fill="currentColor" />
+                CLIENT PROJECT
+              </motion.div>
+            )}
             
-            {isFeatured && (
+            {isFeatured && !isFreelance && (
               <motion.div
                 className="flex items-center gap-1 bg-gradient-to-r from-indigo-600 to-purple-600 dark:from-primary dark:to-secondary px-3 py-1 rounded-full text-[10px] font-bold text-white shadow-md shadow-primary/10"
                 initial={{ scale: 0 }}
@@ -42,12 +49,12 @@ const ProjectHero = React.memo(({ project }) => {
                 FEATURED
               </motion.div>
             )}
-            
-            {isDemoAvailable && (
-              <span className="flex items-center gap-1 px-3 py-1 text-[10px] font-semibold tracking-tight uppercase border border-green-500/20 rounded-full bg-green-500/5 text-green-500">
-                <div className="w-1 h-1 rounded-full bg-green-500 animate-pulse" />
-                Live
-              </span>
+
+            {isFreelance && project.clientName && (
+              <div className="flex items-center gap-1.5 px-3 py-1 bg-background/50 backdrop-blur-md rounded-full border border-border shadow-sm">
+                <span className="text-[10px] font-semibold tracking-wider text-muted-foreground uppercase">Client:</span>
+                <span className="text-[11px] font-bold text-foreground tracking-tight">{project.clientName}</span>
+              </div>
             )}
           </div>
 
@@ -60,19 +67,23 @@ const ProjectHero = React.memo(({ project }) => {
             {project.description}
           </p>
 
-          <div className="flex flex-wrap justify-center gap-4">
+          <div className="flex flex-wrap justify-center items-center gap-4">
             {isDemoAvailable && (
               <motion.a
                 href={project.demoUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="px-6 py-3 bg-primary text-primary-foreground rounded-full text-sm font-bold flex items-center gap-2 group shadow-[0_12px_24px_-8px_rgba(var(--primary),0.3)] hover:shadow-[0_16px_32px_-8px_rgba(var(--primary),0.5)] transition-all duration-500"
+                className={`px-6 py-3 rounded-full text-sm font-bold flex items-center gap-2 group transition-all duration-500 ${
+                  isFreelance 
+                    ? "bg-amber-500 text-white shadow-[0_12px_24px_-8px_rgba(245,158,11,0.4)] hover:shadow-[0_16px_32px_-8px_rgba(245,158,11,0.6)]" 
+                    : "bg-primary text-primary-foreground shadow-[0_12px_24px_-8px_rgba(var(--primary),0.3)] hover:shadow-[0_16px_32px_-8px_rgba(var(--primary),0.5)]"
+                }`}
                 whileHover={{ scale: 1.05, y: -2 }}
                 whileTap={{ scale: 0.95 }}
-                aria-label="Launch Live Demo"
+                aria-label={isFreelance ? "Visit Live Site" : "View Live Demo"}
               >
                 <ExternalLink size={16} className="group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform duration-300" />
-                Launch Demo
+                {isFreelance ? "Visit Live Site" : "View Live Demo"}
               </motion.a>
             )}
             

@@ -18,6 +18,8 @@ import { useEffect, useRef, useState } from "react";
 import { useInView } from "@/hooks/useInView";
 import { motion } from "framer-motion";
 import toast from "react-hot-toast";
+import Lottie from "lottie-react";
+import contactFormAnimation from "../../public/contact-form.json";
 
 export default function ContactSection (){
   const { toast: shadowToast } = useToast();
@@ -148,12 +150,12 @@ export default function ContactSection (){
           
           {/* Availability Status */}
           <motion.div
-            className="inline-flex items-center gap-2 bg-green-100 text-green-800 px-4 py-2 rounded-full text-sm font-medium"
+            className="inline-flex items-center gap-2 bg-green-500/10 text-green-600 dark:text-green-400 border border-green-500/20 px-4 py-1.5 rounded-full text-xs font-bold tracking-wider uppercase"
             initial={{ scale: 0 }}
             animate={inView ? { scale: 1 } : { scale: 0 }}
             transition={{ delay: 0.3, type: "spring" }}
           >
-            <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse"></div>
+            <div className="w-1.5 h-1.5 bg-green-500 dark:bg-green-400 rounded-full"></div>
             Open to Job Opportunities
           </motion.div>
           
@@ -317,145 +319,179 @@ export default function ContactSection (){
 
           {/* Right Column - Contact Form */}
           <motion.div variants={itemVariants}>
-            <div className="bg-card p-8 rounded-lg shadow-xs border border-border/50">
-              <div className="flex items-center gap-2 mb-6">
-                <h3 className="text-2xl font-semibold">Send a Message</h3>
-                {state.succeeded && (
-                  <motion.div
-                    initial={{ scale: 0 }}
-                    animate={{ scale: 1 }}
-                    className="text-green-500"
-                  >
-                    <CheckCircle size={20} />
-                  </motion.div>
-                )}
-              </div>
-
-              <form ref={formRef} className="space-y-6" onSubmit={onSubmit}>
-                {/* Name Field */}
-                <div>
-                  <label htmlFor="name" className="block text-sm font-medium mb-2">
-                    Your Name *
-                  </label>
-                  <input
-                    type="text"
-                    id="name"
-                    name="name"
-                    value={formData.name}
-                    onChange={handleInputChange}
-                    className={cn(
-                      "w-full px-4 py-3 rounded-md border bg-background transition-colors focus:outline-none focus:ring-2 focus:ring-primary",
-                      formErrors.name
-                        ? "border-red-500 focus:ring-red-500"
-                        : "border-input"
-                    )}
-                    placeholder="e.g., Enter your name"
-                  />
-                  {formErrors.name && (
-                    <motion.p
-                      initial={{ opacity: 0, height: 0 }}
-                      animate={{ opacity: 1, height: "auto" }}
-                      className="text-red-500 text-sm mt-1"
-                    >
-                      {formErrors.name}
-                    </motion.p>
-                  )}
-                  <ValidationError prefix="Name" field="name" errors={state.errors} />
-                </div>
-
-                {/* Email Field */}
-                <div>
-                  <label htmlFor="email" className="block text-sm font-medium mb-2">
-                    Your Email *
-                  </label>
-                  <input
-                    type="email"
-                    id="email"
-                    name="email"
-                    value={formData.email}
-                    onChange={handleInputChange}
-                    className={cn(
-                      "w-full px-4 py-3 rounded-md border bg-background transition-colors focus:outline-none focus:ring-2 focus:ring-primary",
-                      formErrors.email
-                        ? "border-red-500 focus:ring-red-500"
-                        : "border-input"
-                    )}
-                    placeholder="e.g., you@example.com"
-                  />
-                  {formErrors.email && (
-                    <motion.p
-                      initial={{ opacity: 0, height: 0 }}
-                      animate={{ opacity: 1, height: "auto" }}
-                      className="text-red-500 text-sm mt-1"
-                    >
-                      {formErrors.email}
-                    </motion.p>
-                  )}
-                  <ValidationError prefix="Email" field="email" errors={state.errors} />
-                </div>
-
-                {/* Message Field */}
-                <div>
-                  <label htmlFor="message" className="block text-sm font-medium mb-2">
-                    Your Message *
-                  </label>
-                  <textarea
-                    id="message"
-                    name="message"
-                    rows={5}
-                    value={formData.message}
-                    onChange={handleInputChange}
-                    className={cn(
-                      "w-full px-4 py-3 rounded-md border bg-background transition-colors focus:outline-none focus:ring-2 focus:ring-primary resize-none",
-                      formErrors.message
-                        ? "border-red-500 focus:ring-red-500"
-                        : "border-input"
-                    )}
-                    placeholder="I'd like to discuss a potential collaboration opportunity..."
-                  />
-                  {formErrors.message && (
-                    <motion.p
-                      initial={{ opacity: 0, height: 0 }}
-                      animate={{ opacity: 1, height: "auto" }}
-                      className="text-red-500 text-sm mt-1"
-                    >
-                      {formErrors.message}
-                    </motion.p>
-                  )}
-                  <ValidationError prefix="Message" field="message" errors={state.errors} />
-                  <div className="text-xs text-muted-foreground mt-1">
-                    {formData.message.length}/500 characters
+            <div className="bg-card p-8 rounded-lg shadow-xs border border-border/50 min-h-[480px] flex flex-col justify-center relative">
+              {!state.succeeded ? (
+                <>
+                  <div className="flex items-center gap-2 mb-6">
+                    <h3 className="text-2xl font-semibold">Send a Message</h3>
                   </div>
-                </div>
 
-                {/* Submit Button */}
-                <motion.button
-                  type="submit"
-                  disabled={state.submitting}
-                  className={cn(
-                    "cosmic-button w-full flex items-center justify-center gap-2 relative overflow-hidden",
-                    state.submitting && "opacity-70 cursor-not-allowed"
-                  )}
-                  whileHover={{ scale: state.submitting ? 1 : 1.02 }}
-                  whileTap={{ scale: state.submitting ? 1 : 0.98 }}
-                >
-                  {state.submitting ? (
-                    <>
-                      <motion.div
-                        className="w-4 h-4 border-2 border-white border-t-transparent rounded-full"
-                        animate={{ rotate: 360 }}
-                        transition={{ duration: 1, repeat: Infinity, ease: "linear" }}
+                  <form ref={formRef} className="space-y-6" onSubmit={onSubmit}>
+                    {/* Name Field */}
+                    <div>
+                      <label htmlFor="name" className="block text-sm font-medium mb-2">
+                        Your Name *
+                      </label>
+                      <input
+                        type="text"
+                        id="name"
+                        name="name"
+                        value={formData.name}
+                        onChange={handleInputChange}
+                        className={cn(
+                          "w-full px-4 py-3 rounded-md border bg-background transition-colors focus:outline-none focus:ring-2 focus:ring-primary",
+                          formErrors.name
+                            ? "border-red-500 focus:ring-red-500"
+                            : "border-input"
+                        )}
+                        placeholder="e.g., Enter your name"
                       />
-                      Sending...
-                    </>
-                  ) : (
-                    <>
-                      Send Message
-                      <Send size={16} />
-                    </>
-                  )}
-                </motion.button>
-              </form>
+                      {formErrors.name && (
+                        <motion.p
+                          initial={{ opacity: 0, height: 0 }}
+                          animate={{ opacity: 1, height: "auto" }}
+                          className="text-red-500 text-sm mt-1"
+                        >
+                          {formErrors.name}
+                        </motion.p>
+                      )}
+                      <ValidationError prefix="Name" field="name" errors={state.errors} />
+                    </div>
+
+                    {/* Email Field */}
+                    <div>
+                      <label htmlFor="email" className="block text-sm font-medium mb-2">
+                        Your Email *
+                      </label>
+                      <input
+                        type="email"
+                        id="email"
+                        name="email"
+                        value={formData.email}
+                        onChange={handleInputChange}
+                        className={cn(
+                          "w-full px-4 py-3 rounded-md border bg-background transition-colors focus:outline-none focus:ring-2 focus:ring-primary",
+                          formErrors.email
+                            ? "border-red-500 focus:ring-red-500"
+                            : "border-input"
+                        )}
+                        placeholder="e.g., you@example.com"
+                      />
+                      {formErrors.email && (
+                        <motion.p
+                          initial={{ opacity: 0, height: 0 }}
+                          animate={{ opacity: 1, height: "auto" }}
+                          className="text-red-500 text-sm mt-1"
+                        >
+                          {formErrors.email}
+                        </motion.p>
+                      )}
+                      <ValidationError prefix="Email" field="email" errors={state.errors} />
+                    </div>
+
+                    {/* Message Field */}
+                    <div>
+                      <label htmlFor="message" className="block text-sm font-medium mb-2">
+                        Your Message *
+                      </label>
+                      <textarea
+                        id="message"
+                        name="message"
+                        rows={5}
+                        value={formData.message}
+                        onChange={handleInputChange}
+                        className={cn(
+                          "w-full px-4 py-3 rounded-md border bg-background transition-colors focus:outline-none focus:ring-2 focus:ring-primary resize-none",
+                          formErrors.message
+                            ? "border-red-500 focus:ring-red-500"
+                            : "border-input"
+                        )}
+                        placeholder="I'd like to discuss a potential collaboration opportunity..."
+                      />
+                      {formErrors.message && (
+                        <motion.p
+                          initial={{ opacity: 0, height: 0 }}
+                          animate={{ opacity: 1, height: "auto" }}
+                          className="text-red-500 text-sm mt-1"
+                        >
+                          {formErrors.message}
+                        </motion.p>
+                      )}
+                      <ValidationError prefix="Message" field="message" errors={state.errors} />
+                      <div className="text-xs text-muted-foreground mt-1">
+                        {formData.message.length}/500 characters
+                      </div>
+                    </div>
+
+                    {/* Submit Button */}
+                    <motion.button
+                      type="submit"
+                      disabled={state.submitting}
+                      className={cn(
+                        "cosmic-button w-full flex items-center justify-center gap-2 relative overflow-hidden",
+                        state.submitting && "opacity-70 cursor-not-allowed"
+                      )}
+                      whileHover={{ scale: state.submitting ? 1 : 1.02 }}
+                      whileTap={{ scale: state.submitting ? 1 : 0.98 }}
+                    >
+                      {state.submitting ? (
+                        <>
+                          <motion.div
+                            className="w-4 h-4 border-2 border-white border-t-transparent rounded-full"
+                            animate={{ rotate: 360 }}
+                            transition={{ duration: 1, repeat: Infinity, ease: "linear" }}
+                          />
+                          Sending...
+                        </>
+                      ) : (
+                        <>
+                          Send Message
+                          <Send size={16} />
+                        </>
+                      )}
+                    </motion.button>
+                  </form>
+                </>
+              ) : (
+                <motion.div
+                  initial={{ opacity: 0, scale: 0.9 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  className="flex flex-col items-center justify-center py-8 text-center"
+                >
+                  <motion.div
+                    animate={{ 
+                      x: [0, -15, 400, 1200],
+                      y: [0, 15, -400, -1200],
+                      scale: [1, 1.05, 0.7, 0.3],
+                      opacity: [1, 1, 0.8, 0]
+                    }}
+                    transition={{
+                      delay: 1.5,
+                      duration: 1.2,
+                      ease: [0.25, 0.1, 0.25, 1]
+                    }}
+                    className="w-48 h-48 md:w-56 md:h-56"
+                  >
+                    <Lottie
+                      animationData={contactFormAnimation}
+                      loop={false}
+                      className="w-full h-full"
+                    />
+                  </motion.div>
+                  
+                  <motion.div
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ delay: 2.2, duration: 0.5 }}
+                    className="space-y-3 mt-4"
+                  >
+                    <h3 className="text-2xl font-bold tracking-tight text-foreground">Message Sent!</h3>
+                    <p className="text-muted-foreground text-sm max-w-sm">
+                      Thank you for reaching out. The paper plane has left the hangar, and I'll get back to you shortly!
+                    </p>
+                  </motion.div>
+                </motion.div>
+              )}
             </div>
           </motion.div>
         </motion.div>

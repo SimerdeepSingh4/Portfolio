@@ -39,10 +39,6 @@ const PerformanceNote = React.memo(({ note }) => {
             </div>
           </div>
           
-          {/* Bottom Readout Data */}
-          <div className="mt-4 flex justify-end">
-            <span className="text-[9px] font-mono text-muted-foreground/30 uppercase tracking-[0.3em]">Status: Nominal // Sync: Direct</span>
-          </div>
         </div>
       </div>
 

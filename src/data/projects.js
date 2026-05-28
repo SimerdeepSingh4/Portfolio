@@ -1,25 +1,71 @@
 export const projects = [
   {
+    id: "trusted-wall",
+    title: "The Trusted Wall",
+    featured: true,
+    isFreelance: true,
+    clientName: "The Trusted Wall Architecture",
+    clientRole: "Lead Developer / Consultant",
+    testimonial: {
+      quote: "Simerdeep transformed our digital presence. He grasped our architectural philosophy and built an immersive, animation-heavy portfolio that is fast, sleek, and exceptionally easy for our team to manage using Sanity CMS. His design consulting exceeded our expectations.",
+      author: "Ar. Harsh Vardhan",
+      role: "Founder & Lead Architect",
+      company: "The Trusted Wall Architecture"
+    },
+    year: "2024",
+    shortDescription: "A custom architectural portfolio featuring smooth GSAP animations and a headless Sanity CMS backend.",
+    description: "I built this custom portfolio for an architectural firm to showcase their residential and commercial projects. It uses React and GSAP for smooth page transitions and is integrated with Sanity CMS so the client can easily manage their project gallery without touching code.",
+    features: [
+      "Smooth GSAP animations for interactive page transitions",
+      "Headless Sanity CMS integration for client-side content management",
+      "Responsive layout built using React and Tailwind CSS",
+      "Categorized project archive with custom taxonomy support",
+      "Optimized masonry grid layout for fast high-resolution image loads"
+    ],
+    challenges: [
+      "Optimizing performance when loading large architectural images along with GSAP animations",
+      "Structuring flexible schemas in Sanity CMS to fit complex project descriptions",
+      "Fine-tuning scroll-based animations to work reliably across mobile devices"
+    ],
+    demoUrl: "https://thetrustedwall.com",
+    links: [
+      { label: "Live Site", url: "https://thetrustedwall.com" }
+    ],
+    tech: ["React", "GSAP", "Sanity CMS", "Tailwind CSS", "Framer Motion"],
+    thumbnail: "https://res.cloudinary.com/dyfjy8kmv/image/upload/v1778450378/Screenshot_2026-05-11_032206_ix81gy.png",
+    sections: [
+      {
+        title: "The Brief",
+        content: "The client, a premium architectural firm, required a digital experience that transcended standard portfolio layouts. They needed a 'Digital Ledger' that mirrored their architectural philosophy: tectonic rigor, material honesty, and spatial storytelling. The challenge was to deliver a high-fidelity, animation-heavy experience that remained performant and fully manageable by their non-technical team.",
+        images: ["https://res.cloudinary.com/dyfjy8kmv/image/upload/v1778450378/Screenshot_2026-05-11_032206_ix81gy.png","https://res.cloudinary.com/dyfjy8kmv/image/upload/v1778450377/Screenshot_2026-05-11_032249_zpkmvz.png", "https://res.cloudinary.com/dyfjy8kmv/image/upload/v1778450377/Screenshot_2026-05-11_032552_toy99z.png"]
+      },
+      {
+        title: "The Solution",
+        content: "I engineered a custom React 19 architecture integrated with Sanity CMS for headless content delivery. Using GSAP and Framer Motion, I implemented a rhythmic scroll system and editorial page transitions that give the site a cinematic, magazine-like feel. For the backend, I designed a flexible schema in Sanity that accommodates diverse architectural narratives, from technical drawings to high-res realizations, ensuring the client has total creative control.",
+        images: ["https://res.cloudinary.com/dyfjy8kmv/image/upload/v1778450376/Screenshot_2026-05-11_032308_vaijlg.png", "https://res.cloudinary.com/dyfjy8kmv/image/upload/v1778450376/Screenshot_2026-05-11_032606_hoeyzh.png", "https://res.cloudinary.com/dyfjy8kmv/image/upload/v1778450376/Screenshot_2026-05-11_032540_mc6ubx.png"]
+      }
+    ]
+  },
+  {
     id: "1",
     title: "Mentora LMS",
     featured: false,
 
     year: "2024",
-    shortDescription: "A full-featured Learning Management System built using MERN stack with role-based dashboards for students, teachers, and admins.",
+    shortDescription: "A full-stack learning platform with role-based dashboards for students, teachers, and admins.",
     description:
-      "Mentora is a modern Learning Management System built using the MERN stack. It caters to students, educators, and organizations by offering role-based access and features such as course creation, assessments, personalized learning, and secure payment integration.",
+      "Mentora is a Learning Management System I built using the MERN stack. It includes dedicated dashboards for students to track progress, teachers to manage courses and create quizzes, and admins to oversee platform activity.",
     features: [
-      "Role-based dashboards for students, teachers, and admins",
-      "Course creation, quizzes, and assignments",
-      "AI-powered personalized learning paths",
-      "Secure payment integration",
-      "Progress tracking and analytics",
-      "Cloud-based file uploads (Cloudinary)"
+      "Dedicated student, teacher, and admin dashboards",
+      "Course creator supporting quizzes and assignments",
+      "Secure payment checkout integration",
+      "Visual progress trackers and course analytics",
+      "Cloud-based file storage using Cloudinary"
     ],
     challenges: [
-      "Implementing real-time progress tracking",
-      "Integrating AI for personalized learning",
-      "Ensuring secure authentication and payments"
+      "Designing a relational MongoDB schema to link courses, enrollments, and user progress",
+      "Handling real-time state synchronization for active quiz attempts",
+      "Integrating third-party secure APIs for payments and media hosting"
     ],
     demoUrl: "#",
     githubUrl: "https://github.com/SimerdeepSingh4/Mentora-LMS-",
@@ -80,20 +126,20 @@ export const projects = [
     id: "2",
     title: "V.O.L.T (Voice-to-Output Language Transcription)",
     featured: false,
-    year: "2023", shortDescription: "Real-time multilingual speech-to-text app with emotion detection and tone transformation.",
+    year: "2023",
+    shortDescription: "A real-time speech-to-text app with tone adjustment and multilingual support.",
     description:
-      "V.O.L.T is an advanced real-time multilingual transcription app built using React.js and Node.js. It enables users to convert live speech into accurate written text across various languages. What sets it apart is its integrated emotion detection system, which captures the speaker's emotional tone, and a tone transformation feature that allows users to convert the transcribed text into formal, informal, or neutral styles. Designed for professionals, educators, and global teams, V.O.L.T simplifies cross-language communication while adding emotional intelligence to speech-to-text conversion.",
+      "V.O.L.T is a real-time transcription app built with React and Node.js. It converts spoken audio to text across multiple languages, detects emotional tone, and allows users to transform the output into formal, casual, or neutral phrasing using AI.",
     features: [
-      "Real-time multilingual transcription",
-      "Emotion detection from speech",
-      "Tone transformation (formal, informal, neutral)",
-      "Cloud-based storage (Firebase)",
-      "User-friendly interface"
+      "Real-time transcription supporting multiple languages",
+      "Tone transformation for rewriting transcripts using AI models",
+      "Cloud-based database storage with Firebase integration",
+      "Interactive audio visualization controls"
     ],
     challenges: [
-      "Integrating multiple speech APIs",
-      "Accurate emotion detection",
-      "Optimizing for real-time performance"
+      "Handling audio streaming synchronization between the frontend and transcription APIs",
+      "Managing token constraints and prompt structures for quick AI tone adjustments",
+      "Optimizing WebSocket channels for continuous, low-latency live feedback"
     ],
     demoUrl: "#",
     githubUrl: "https://github.com/SimerdeepSingh4/V.O.L.T",
@@ -121,20 +167,19 @@ export const projects = [
     featured: false,
 
     year: "2024",
-    shortDescription: "Studio-grade AI code reviewer with Monaco-powered IDE, failover intelligence, and dual-link resilience.",
+    shortDescription: "An interactive code reviewer built with React and Monaco Editor featuring automated AI feedback.",
     description: 
-      "A professional-grade code review studio built with React 19 and Monaco Editor. It features a robust dual-AI fallback engine (Gemini & Mistral) that ensures zero-downtime structural analysis. Fully mobile-responsive, it provides high-density technical feedback, health scoring, and automatic failover between production and local backend services.",
+      "I built this platform to automate code reviews using Monaco Editor and AI models. It accepts code snippets, scores code quality, and provides actionable feedback. It also features a fallback system between Gemini and Mistral APIs to ensure continuous service.",
     features: [
-      "The Architect IDE (Monaco-powered, folding, auto-brackets)",
-      "Dual-Engine Resilience (Gemini primary, Mistral fallback)",
-      "Dual-Link Persistence (Auto-switch between Prod/Local URL)",
-      "Mission Control Layout (3-column Desktop, Stacked Mobile)",
-      "Structural Health Scoring & Monitoring"
+      "Code editor interface powered by Monaco Editor",
+      "AI feedback generated using Gemini and Mistral models",
+      "API fallback logic to use a secondary engine if primary fails",
+      "Multi-layout workspace optimized for mobile and desktop screens"
     ],
     challenges: [
-      "Implementing 8s hard-timeout AI engine failover logic",
-      "Optimizing Monaco Editor for fluid mobile responsiveness",
-      "Architecting a multi-origin CORS and failover resilience system"
+      "Implementing API timeout detection and automatic model switching",
+      "Ensuring Monaco Editor resizing doesn't trigger layout shifting on mobile screens",
+      "Architecting dynamic backend API target switching (production to local)"
     ],
     demoUrl: "https://code-reviewer-nine-smoky.vercel.app/",
     githubUrl: "https://github.com/SimerdeepSingh4/Code-Reviewer",
@@ -168,25 +213,22 @@ export const projects = [
   {
     id: "4",
     title: "Real-Time Multiplayer Chess Game",
-    featured: true,
-    year: "2026", shortDescription: "A web-based real-time multiplayer chess game with matchmaking and server-side move validation using Socket.IO and chess.js.",
+    featured: false,
+    year: "2026",
+    shortDescription: "A real-time multiplayer chess game with live matchmaking and server-side move validation.",
     description:
-      "A web-based real-time multiplayer chess application built using Node.js, Express, and Socket.IO. The platform allows two players to compete live in a synchronized game session with automatic matchmaking and unique game rooms. The server validates all moves using chess.js, manages multiple concurrent games, and handles game-over conditions such as checkmate, timeout, or player disconnection. The interactive and responsive UI supports drag-and-drop and click-to-move functionality, making the gameplay smooth and intuitive across devices.",
+      "A multiplayer chess game built using Node.js and Socket.IO. It supports real-time matchmaking, private game rooms, and uses chess.js on the server to validate every move before updating the board to prevent client-side modifications.",
     features: [
-      "Real-time multiplayer gameplay using Socket.IO",
-      "Automatic matchmaking with waiting room",
-      "Unique game rooms for multiple concurrent matches",
-      "Server-side move validation using chess.js",
-      "Turn-based timer system (30 seconds per move)",
-      "Drag-and-drop and click-to-move support",
-      "Auto-flipping chessboard for black player",
-      "Responsive and interactive UI"
+      "Real-time multiplayer synchronization via Socket.IO",
+      "Active matchmaking queue and lobby waiting area",
+      "Secure server-side move validation with chess.js",
+      "Automatic game board orientation adjustment per player color",
+      "Integrated turn timers and automatic timeout forfeit logic"
     ],
     challenges: [
-      "Managing multiple concurrent game sessions",
-      "Synchronizing real-time moves between players",
-      "Implementing reliable server-side move validation",
-      "Handling disconnections and timeout scenarios"
+      "Managing active game sessions and client socket mappings in memory",
+      "Synchronizing and broadcasting state changes with zero race conditions",
+      "Safely recovering game state when a player temporarily disconnects"
     ],
     demoUrl: "https://chess-app-4bp9.onrender.com/",
     githubUrl: "https://github.com/SimerdeepSingh4/chess-newc",
@@ -221,7 +263,7 @@ export const projects = [
     featured: false,
 
     description:
-      "A simple front-end practice project focused on creating visually appealing animated card hover effects using pure HTML and CSS. The project demonstrates the use of CSS custom properties, conic gradients, and keyframe animations to produce glowing borders and smooth hover transitions.",
+      "A front-end practice project demonstrating animated card hover effects built with pure HTML and CSS. It uses CSS custom properties, linear gradients, and keyframe transitions to create animated card boundaries.",
     demoUrl: "https://simerdeepsingh4.github.io/card-hover-effect/",
     githubUrl: "https://github.com/SimerdeepSingh4/card-hover-effect",
     links: [
@@ -244,21 +286,19 @@ export const projects = [
     title: "MCP-Powered Terminal AI Assistant",
     featured: false,
 
-    shortDescription: "A terminal-based AI assistant built with Node.js that leverages MCP for extensible tool-based interactions and automation.",
+    shortDescription: "A command-line AI assistant built using Node.js and Model Context Protocol (MCP).",
     description:
-      "A terminal-based AI assistant built with Node.js that leverages a large language model and the Model Context Protocol (MCP). The assistant runs entirely in the command line and can perform tasks such as content generation, social media operations, file handling, and coding assistance through an extensible tool-based architecture.",
+      "This is a terminal assistant that uses the Model Context Protocol (MCP) to interact with local files and APIs. It allows the LLM to execute tools directly from the command line, such as reading files, running scripts, and automating tasks.",
     features: [
-      "Conversational AI in the terminal",
-      "Extensible tool-based architecture using MCP",
-      "Social media automation and analytics",
-      "File read/write operations via AI commands",
-      "Code generation and explanation support",
-      "User personalization support"
+      "Command-line AI chat interface",
+      "Modular tool execution framework using MCP protocols",
+      "Local file read and write operations via natural language",
+      "Extensible tool templates for API integrations"
     ],
     challenges: [
-      "Designing a modular MCP-based architecture",
-      "Secure handling of multiple API integrations",
-      "Synchronizing tool execution with AI responses"
+      "Designing a secure system for verifying local commands before execution",
+      "Structuring reliable tool schema definitions that map correctly to AI prompts",
+      "Handling tool execution error logging and recovering conversation context"
     ],
     demoUrl: "#",
     githubUrl: "https://github.com/SimerdeepSingh4/MCP_Server",
@@ -284,21 +324,19 @@ export const projects = [
     title: "Live Real-Time Location Sharing App",
     featured: false,
 
-    shortDescription: "Real-time location sharing app using Socket.IO and Leaflet for live map updates.",
+    shortDescription: "A live map tracker that displays connected users in real time using Leaflet and Socket.IO.",
     description:
-      "A real-time location sharing web application built using Node.js, Express.js, Socket.IO, and Leaflet.js. The app allows multiple users to share their live geographic location and view all connected users on an interactive map powered by OpenStreetMap, with real-time updates via WebSockets.",
+      "A location tracking app built with Node.js, Socket.IO, and Leaflet.js. It allows connected clients to share their GPS coordinates in real time, displaying all active users on a shared OpenStreetMap interface.",
     features: [
-      "Real-time location updates using Socket.IO",
-      "Live map visualization with Leaflet.js and OpenStreetMap",
-      "Geolocation API integration for live tracking",
-      "Multi-user support with unique markers",
-      "Responsive design for mobile and desktop",
-      "Express.js server with EJS templating"
+      "Real-time location broadcasts over WebSockets",
+      "Interactive map rendering powered by Leaflet.js",
+      "Device Geolocation API integration for coordinates",
+      "Distinct active markers dynamically drawn per user connection"
     ],
     challenges: [
-      "Synchronizing real-time location updates between users",
-      "Handling frequent geolocation updates efficiently",
-      "Managing multiple user markers on the map"
+      "Filtering noisy or inaccurate Geolocation coordinate jumps",
+      "Managing the lifecycle of markers on connection loss or timeout",
+      "Optimizing broadcast frequencies to minimize server bandwidth usage"
     ],
     demoUrl: "#",
     githubUrl: "https://github.com/SimerdeepSingh4/RealTime_Tracker",
@@ -326,20 +364,17 @@ export const projects = [
     title: "K72.ca Website Clone",
     featured: false,
 
-    shortDescription: "Frontend clone of K72.ca focusing on GSAP-powered animations and smooth transitions.",
+    shortDescription: "A recreation of the agency website K72.ca, focusing on fluid GSAP transitions.",
     description:
-      "A frontend clone of the K72.ca creative agency website built using React and Vite. The project focuses on recreating smooth page transitions, high-performance animations, and a modern full-screen navigation experience using GSAP, while maintaining a responsive and clean UI.",
+      "A frontend replica of the K72.ca agency website built with React. The main goal was to replicate the brand's smooth vertical layout animations, full-screen navigations, and timeline-triggered animations using GSAP.",
     features: [
-      "Multi-page navigation using React Router",
-      "Smooth page transitions and animations with GSAP",
-      "Full-screen animated navigation menu",
-      "Project showcase layout",
-      "Responsive design across devices"
+      "Routable page layouts using React Router",
+      "Custom GSAP animation timelines for scroll-driven animations",
+      "Responsive grid and layout matching the design guidelines"
     ],
     challenges: [
-      "Recreating complex GSAP animations",
-      "Managing smooth transitions between routes",
-      "Maintaining performance with animation-heavy UI"
+      "Aligning and debugging scroll trigger offsets for accurate element animations",
+      "Managing React component state unmounting while GSAP animations are still playing"
     ],
     demoUrl: "https://k72-clone-eta.vercel.app/",
     githubUrl: "https://github.com/SimerdeepSingh4/K72-clone",
@@ -368,23 +403,19 @@ export const projects = [
     title: "Real-Time Voting App",
     featured: false,
 
-    shortDescription: "Real-time voting app with WebSocket-powered live results and interactive charts.",
+    shortDescription: "A live poll app featuring instant results and charts using Socket.IO.",
     description:
-      "A modern real-time voting application built with React and Node.js that enables users to cast votes and view live results instantly. The app leverages WebSockets for real-time updates, interactive data visualizations, and secure session handling, delivering a smooth and engaging voting experience across devices.",
+      "A polling application built with React and Node.js. It enables users to cast votes on active polls and view visual chart updates in real time using Socket.IO.",
     features: [
-      "Live vote updates using Socket.IO",
-      "Interactive charts and real-time statistics",
-      "Modern UI with Tailwind CSS and shadcn/ui",
-      "Dark and light theme support",
-      "JWT-based session management",
-      "Duplicate vote prevention",
-      "Responsive and mobile-optimized design"
+      "WebSocket-driven vote streaming via Socket.IO",
+      "Interactive data charts displaying live poll results",
+      "JWT token validation to manage voting sessions",
+      "Device-level storage rules to prevent duplicate voting"
     ],
     challenges: [
-      "Synchronizing real-time vote updates across clients",
-      "Preventing duplicate votes reliably",
-      "Managing WebSocket connections at scale",
-      "Integrating live charts with streaming data"
+      "Preventing duplicate submissions across different clients",
+      "Handling concurrent database writes during vote spikes",
+      "Updating live charts efficiently without unnecessary component re-renders"
     ],
     demoUrl: "#",
     githubUrl: "https://github.com/SimerdeepSingh4/Real-Time-Voting-App",
@@ -425,24 +456,19 @@ export const projects = [
     title: "Mini Helpdesk App",
     featured: false,
 
-    shortDescription: "Real-time helpdesk ticketing system with admin dashboard and live Socket.IO updates.",
+    shortDescription: "A customer support ticketing system with live updates and admin queues.",
     description:
-      "A modern, real-time helpdesk ticket management system built using the MERN stack. The application allows users to submit support tickets while admins can manage, filter, and update ticket statuses in real time using Socket.IO. It demonstrates real-world customer support workflows with a clean dashboard, live updates, and responsive UI.",
+      "A ticket management application built with the MERN stack. It allows users to submit support tickets and lets admins manage, filter, and update ticket statuses in real time using Socket.IO.",
     features: [
-      "Support ticket creation with priority levels",
-      "Admin dashboard for managing and updating tickets",
-      "Real-time updates using Socket.IO",
-      "Advanced filtering, sorting, and search functionality",
-      "Ticket status workflow (Open, In Progress, Closed)",
-      "Statistics dashboard with visual metrics",
-      "Modern UI using Tailwind CSS and shadcn/ui",
-      "JWT-based authentication and role handling"
+      "Support ticket creation interface with priority categorization",
+      "Live admin dashboard with real-time ticket queues",
+      "JWT-based role authentication for customers and admins",
+      "Advanced filtering by status, date, and priority level"
     ],
     challenges: [
-      "Implementing real-time dashboard updates reliably",
-      "Designing role-based access for users and admins",
-      "Managing ticket state and filters efficiently",
-      "Handling form validation and error states cleanly"
+      "Syncing status changes instantly between user interfaces and admin views",
+      "Designing secure, role-restricted API endpoints for admin commands",
+      "Handling validation and file attachments on ticket submission"
     ],
     demoUrl: "#",
     githubUrl: "https://github.com/SimerdeepSingh4/Mini-Helpdesk-App",
@@ -489,24 +515,19 @@ export const projects = [
     title: "Figma-like Design Tool",
     featured: false,
 
-    shortDescription: "Interactive web-based canvas tool for creating and manipulating shapes and text.",
+    shortDescription: "A browser-based canvas editor for placing, resizing, and arranging shapes.",
     description:
-      "A sophisticated web-based design interface that allows users to create, style, and arrange visual elements on a canvas. The project features a multi-panel layout including a layers panel and a property editor, mimicking real-world design software. It focuses on object-oriented manipulation, persistence via local storage, and multi-format export options.",
+      "A web-based design canvas built with vanilla JavaScript. It includes a properties sidebar and layers panel, allowing users to place, resize, style, and drag shapes on an interactive viewport.",
     features: [
-      "Interactive canvas for adding and manipulating rectangles and text",
-      "Real-time property editor for styling (color, size, rotation, font)",
-      "Drag-and-drop element positioning and corner-handle resizing",
-      "Layers panel for organizational management and selection",
-      "Keyboard shortcuts (Arrow keys, Shift, Delete) for precision editing",
-      "Automatic persistence using Browser Local Storage",
-      "Export functionality to both JSON and standalone HTML files",
-      "Modern dark-themed UI for a professional design experience"
+      "Draggable and resizable canvas shapes",
+      "Sidebar controller for editing colors, dimensions, and positioning",
+      "Layers panel showing current elements hierarchy",
+      "Local storage state autosave and export to static HTML files"
     ],
     challenges: [
-      "Developing precise resize and drag logic for canvas elements",
-      "Synchronizing the property editor with selected element states",
-      "Implementing efficient keyboard listeners for element manipulation",
-      "Creating a robust export system to render design data into valid HTML"
+      "Writing canvas drag and corner-resize algorithms manually in JavaScript",
+      "Managing event bubbling and canvas focus rules for keyboard hotkeys",
+      "Exporting complex element coordinates into a correct HTML layout"
     ],
     demoUrl: "#",
     githubUrl: "https://github.com/SimerdeepSingh4/Figma-Clone",
@@ -533,24 +554,20 @@ export const projects = [
     title: "macOS Clone — Frontend UI",
     featured: true,
 
-    shortDescription: "A high-fidelity macOS desktop environment built with React and SCSS.",
+    shortDescription: "A high-fidelity replica of the macOS desktop interface built using React and SCSS.",
     description:
-      "A professional, pixel-perfect replication of the macOS operating system environment in the browser. This project focuses on high-performance animations, complex window management logic, and a modular component architecture. It features a functional Dock with magnification, draggable/resizable windows, a glassmorphic Control Center, and several built-in utility apps.",
+      "A frontend project replicating the macOS desktop environment. It features draggable and resizable windows, a magnifying dock, Spotlight search, custom wallpaper controls, and basic built-in utilities like a notepad and terminal emulator.",
     features: [
-      "High-fidelity macOS UI with glassmorphism and fluid animations",
-      "Interactive Dock with magnification, bounce effects, and active state indicators",
-      "Advanced window management (draggable, resizable, stackable) using react-rnd",
-      "Global Spotlight Search command palette for app navigation",
-      "Functional Control Center with real-time sliders for volume and brightness",
-      "Wallpaper personalization with persistence via Local Storage",
-      "Context-aware custom right-click menus across the desktop",
-      "Suite of built-in apps including a CLI Emulator, Notes, and GitHub Feed"
+      "Interactive desktop layout with glassmorphic styling and transition effects",
+      "Magnifying application dock using custom mouse tracking algorithms",
+      "Draggable, resizable, and stackable window manager powered by react-rnd",
+      "Spotlight Search palette for quick navigation shortcuts",
+      "Persistent user settings saved directly in Local Storage"
     ],
     challenges: [
-      "Replicating complex OS-level interactions (magnification, window depth) in the DOM",
-      "Managing a global window state to handle stacking order (z-index) and focus logic",
-      "Implementing efficient, modular SCSS for glassmorphic visual effects",
-      "Optimizing real-time interactions like Spotlight search and Control Center toggles"
+      "Managing window focal states and z-index ordering across multiple active apps",
+      "Building a custom context menu and dock magnification logic using basic mouse position calculations",
+      "Optimizing SCSS imports and variables for clean, reusable modular styling sheets"
     ],
     demoUrl: "https://mac-os-clone-kk32.vercel.app/",
     githubUrl: "https://github.com/SimerdeepSingh4/Mac-OS_Clone",
@@ -581,26 +598,18 @@ export const projects = [
   {
     id: "13",
     title: "Productivity Dashboard",
-    featured: false,
-    difficulty: "Intermediate",
     shortDescription: "An all-in-one vanilla JS dashboard for tasks, focus, and daily planning.",
     description:
-      "A clean, single-page productivity suite designed to centralize daily workflows. Built with vanilla JavaScript and ES modules, it integrates a multi-functional To-Do manager, a 24-hour daily planner, a configurable Pomodoro timer, and an idea-capturing board. The app features real-time weather integration via geolocation and custom-built UI panels, providing a seamless desktop-like experience in the browser.",
+      "A productivity dashboard built using vanilla JavaScript and ES modules. It includes a todo list manager, a 24-hour daily scheduler, a Pomodoro timer, and integrates location-based weather updates.",
     features: [
-      "Full-featured To-Do manager with search, priority filtering, and stats",
-      "Interactive 24-hour daily planner with text export capability",
-      "Customizable Pomodoro focus timer with work/break cycle tracking",
-      "Real-time weather dashboard with browser geolocation and AQI data",
-      "Dynamic 'Idea Board' with random-pick helper for creative brainstorming",
-      "Motivational quote widget with clipboard integration and refresh logic",
-      "Persistence layer using Local Storage for tasks, plans, and theme settings",
-
+      "Todo list editor with priorities, filtering, and local autosaving",
+      "Interactive daily planner that exports entries as plain text files",
+      "Pomodoro timer widget with configurable intervals",
+      "Location-based weather forecast using browser Geolocation API"
     ],
     challenges: [
-      "Implementing reliable weather and reverse-geocoding API handshakes",
-      "Building a global keyboard listener system (Esc key) for modal navigation",
-      "Handling local storage synchronization for multiple distinct feature sets",
-      "Managing complex app state without a framework",
+      "Managing multiple distinct application components and shared local storage keys without a framework",
+      "Setting up secure and clean API handling for reverse-geocoding coordinates to locate weather stations"
     ],
     demoUrl: "https://productivity-dashboard-steel.vercel.app/",
     githubUrl: "https://github.com/SimerdeepSingh4/Productivity_Dashboard",
@@ -631,24 +640,20 @@ export const projects = [
     title: "Movie Platform",
     featured: true,
     difficulty: "Advanced",
-    shortDescription: "A full-stack movie discovery engine with Redis caching, infinite scroll, and admin controls.",
+    shortDescription: "A film and TV show search platform featuring Redis caching and infinite scrolling.",
     description:
-      "A comprehensive, MERN stack movie discovery application designed for searching movies, TV shows, and actors. This project leverages the TMDB API, using a Node.js backend to securely proxy requests and cache results in Redis to drastically improve load times. Authentic users maintain favorites, a custom watchlist, and watch history, while a protected Admin Dashboard allows owners to manually add custom movies with manage users. The frontend is built with React 19 and utilizes GSAP and Motion for fluid animations.",
+      "A full-stack movie search platform built with the MERN stack. It proxies TMDB requests through Node.js and caches queries in Redis to improve performance, featuring infinite scroll feeds, custom watchlists, and an admin portal.",
     features: [
-      "Seamless endless scrolling on all discovery and search pages",
-      "Redis caching layer for TMDB API proxy to minimize load times and reduce rate limits",
-      "Comprehensive user profiles with Favorites, custom Watchlist, and automatically tracked Watch History",
-      "Protected Admin Dashboard allowing owners to manually add movies",
-      "Admin capability to manage or ban registered users",
-      "JWT-based user authentication with Redis-based token blacklisting for secure logouts",
-      "Beautiful & dynamic UI using Shadcn UI, Tailwind CSS, GSAP, and Motion animations",
-      "Backend efficiently proxies TMDB API calls, keeping API keys secure"
+      "Infinite scroll feed for continuous content discovery",
+      "Redis caching layer to store API responses and decrease API call latency",
+      "User accounts featuring personal watchlists and history logs",
+      "Protected admin routes to manage registered users and custom entries",
+      "JWT-based authentication with active token blacklisting on logout"
     ],
     challenges: [
-      "Integrating Redis for reliable request caching and token blacklisting during user logouts",
-      "Implementing infinite scroll across multiple content types (Movies, TV Shows, Search)",
-      "Replicating modern motion design on the web using GSAP timelines and Motion",
-      "Securing external TMDB API calls by building a dedicated backend proxy with caching"
+      "Configuring Redis caching policies to correctly handle API updates and token blacklisting",
+      "Optimizing list renders during rapid scroll feeds to prevent memory leaks",
+      "Proxying external requests securely on the backend while maintaining quick response times"
     ],
     demoUrl: "https://movie-platform-1-3xep.onrender.com/",
     githubUrl: "https://github.com/SimerdeepSingh4/Movie-Platform",

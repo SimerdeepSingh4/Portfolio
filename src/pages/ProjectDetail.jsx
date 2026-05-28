@@ -12,6 +12,7 @@ import VideoDemo from "../components/ProjectDetail/VideoDemo";
 import ShowcaseContent from "../components/ProjectDetail/ShowcaseContent";
 import TechStack from "../components/ProjectDetail/TechStack";
 import PerformanceNote from "../components/ProjectDetail/PerformanceNote";
+import Testimonial from "../components/ProjectDetail/Testimonial";
 
 // Global Components (Static imports to avoid Vite chunk warnings)
 import { Navbar } from "../components/Navbar";
@@ -149,8 +150,9 @@ export const ProjectDetail = () => {
           </motion.div>
 
           <FeaturesChallenges project={project} />
+          {/* <Testimonial testimonial={project.testimonial} /> */}
           <VideoDemo project={project} />
-          
+
           <ShowcaseContent
             project={project}
             activeSection={activeSection}
@@ -159,7 +161,7 @@ export const ProjectDetail = () => {
             setCurrentImageIndex={setCurrentImageIndex}
             openLightbox={openLightbox}
           />
-          
+
           <TechStack tech={project.tech} />
           <PerformanceNote note={project.performanceNote} />
         </div>

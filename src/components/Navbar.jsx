@@ -97,11 +97,10 @@ export const Navbar = React.memo(() => {
               onClick={(e) => handleNavClick(e, item.href, item.isRoute)}
               className="relative px-5 py-2 text-[11px] font-bold tracking-[0.2em] uppercase text-muted-foreground/70 hover:text-foreground transition-colors group"
             >
-              <span className="relative z-10">{item.name}</span>
-              <motion.div
-                className="absolute inset-0 bg-muted/50 rounded-full scale-0 group-hover:scale-100 transition-transform duration-300 -z-10"
-              />
-              <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-1 h-1 bg-primary rounded-full opacity-0 group-hover:opacity-100 transition-opacity" />
+              <span className="relative z-10 py-1">
+                {item.name}
+                <div className="absolute bottom-0 left-0 w-full h-[2px] bg-primary scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-center" />
+              </span>
             </motion.a>
           ))}
           <div className="pl-4 ml-4 border-l border-border/40">

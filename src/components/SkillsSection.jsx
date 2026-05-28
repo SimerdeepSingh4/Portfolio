@@ -236,12 +236,6 @@ export const SkillsSection = () => {
               className="group"
             >
               <div className="relative h-full bg-card/30 backdrop-blur-sm border border-white/5 rounded-2xl p-4 sm:p-6 transition-all duration-300 group-hover:bg-card/50 group-hover:border-primary/20 overflow-hidden">
-                {/* Holographic Border Accents */}
-                <div className="absolute top-0 left-0 w-2 h-2 border-t border-l border-primary/40 rounded-tl-sm opacity-0 group-hover:opacity-100 transition-opacity" />
-                <div className="absolute top-0 right-0 w-2 h-2 border-t border-r border-primary/40 rounded-tr-sm opacity-0 group-hover:opacity-100 transition-opacity" />
-                <div className="absolute bottom-0 left-0 w-2 h-2 border-b border-l border-primary/40 rounded-bl-sm opacity-0 group-hover:opacity-100 transition-opacity" />
-                <div className="absolute bottom-0 right-0 w-2 h-2 border-b border-r border-primary/40 rounded-br-sm opacity-0 group-hover:opacity-100 transition-opacity" />
-
                 <div className="flex flex-row items-center gap-3 sm:gap-4">
                   <div className="relative flex-shrink-0">
                     <div className="absolute inset-0 bg-primary/10 blur-xl rounded-full opacity-0 group-hover:opacity-100 transition-opacity" />

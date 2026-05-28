@@ -1,8 +1,7 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
-import { Star, Eye, ExternalLink, Github } from "lucide-react";
-import Tilt from "react-parallax-tilt";
+import { Star, Eye, ExternalLink, Github, Briefcase } from "lucide-react";
 import { tagIcons } from "../../data/tagIcons";
 
 const ProjectCard = React.memo(({ project, viewMode, openLightbox }) => {
@@ -12,9 +11,10 @@ const ProjectCard = React.memo(({ project, viewMode, openLightbox }) => {
   const hiddenCount = tech.length - 4;
   const imageUrl = project.thumbnail || project.images?.[0] || project.sections?.[0]?.images?.[0];
   const isFeatured = !!project.featured;
+  const isFreelance = !!project.isFreelance;
 
   const isLiveProject = (project) => project.demoUrl && project.demoUrl !== "#";
-  const isGithubAvailable = (project) => project.githubUrl && project.githubUrl !== "#";
+  const isGithubAvailable = (project) => project.githubUrl && project.githubUrl !== "#" && !project.isFreelance;
 
   const cardVariants = {
     hidden: { opacity: 0, y: 50, scale: 0.9 },
@@ -34,7 +34,9 @@ const ProjectCard = React.memo(({ project, viewMode, openLightbox }) => {
       <motion.div
         key={`list-card-${project.id}`}
         variants={cardVariants}
-        className="bg-card rounded-lg overflow-hidden shadow-sm border border-border hover:shadow-lg transition-all duration-300"
+        className={`rounded-lg overflow-hidden shadow-sm border hover:shadow-lg transition-all duration-300 ${
+          isFreelance ? "border-amber-500/50 shadow-amber-500/10 bg-amber-500/5 ring-1 ring-amber-500/20" : "bg-card border-border"
+        }`}
       >
         <div className="flex flex-col md:flex-row">
           <div className="md:w-1/3 h-48 md:h-auto relative overflow-hidden">
@@ -46,21 +48,37 @@ const ProjectCard = React.memo(({ project, viewMode, openLightbox }) => {
               onClick={() => openLightbox(project)}
               whileHover={{ scale: 1.05 }}
             />
-            {isFeatured && (
-              <motion.div
-                className="absolute top-3 left-3 bg-primary text-primary-foreground px-2 py-1 rounded-full text-xs font-medium flex items-center gap-1 shadow-md"
-                initial={{ scale: 0 }}
-                animate={{ scale: 1 }}
-                transition={{ delay: 0.3 }}
-              >
-                <Star size={12} fill="currentColor" />
-                Featured
-              </motion.div>
-            )}
+            <div className="absolute top-3 left-3 z-10 flex flex-row flex-wrap gap-2">
+              {isFreelance && (
+                <motion.div
+                  className="bg-amber-500 text-white px-2 py-1 rounded-full text-xs font-medium flex items-center gap-1 shadow-md"
+                  initial={{ scale: 0 }}
+                  animate={{ scale: 1 }}
+                  transition={{ delay: 0.3 }}
+                >
+                  <Briefcase size={12} fill="currentColor" />
+                  Client Project
+                </motion.div>
+              )}
+              {isFeatured && (
+                <motion.div
+                  className="bg-primary text-primary-foreground px-2 py-1 rounded-full text-xs font-medium flex items-center gap-1 shadow-md"
+                  initial={{ scale: 0 }}
+                  animate={{ scale: 1 }}
+                  transition={{ delay: 0.3 }}
+                >
+                  <Star size={12} fill="currentColor" />
+                  Featured
+                </motion.div>
+              )}
+            </div>
           </div>
           <div className="md:w-2/3 p-6 flex flex-col justify-between">
             <div>
               <h3 className="text-xl font-semibold mb-2">{project.title}</h3>
+              {isFreelance && project.clientName && (
+                <p className="text-amber-500 text-xs font-medium mb-2 uppercase tracking-wider">Client: {project.clientName}</p>
+              )}
               <p className="text-muted-foreground text-sm mb-4 line-clamp-2">{project.description}</p>
               <div className="flex flex-wrap gap-2 mb-4">
                 {visibleTags.map((tag) => (
@@ -107,9 +125,10 @@ const ProjectCard = React.memo(({ project, viewMode, openLightbox }) => {
                     href={project.demoUrl}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="flex items-center gap-1 px-2 py-1 text-xs font-medium border rounded-full bg-green-100 text-green-800 border-green-200 dark:bg-green-900/30 dark:text-green-400 dark:border-green-800"
+                    aria-label={`Open live demo for ${project.title}`}
+                    onClick={(e) => e.stopPropagation()}
+                    className="flex items-center px-2.5 py-0.5 text-[10px] font-bold tracking-wider uppercase border rounded-full bg-green-500/10 text-green-600 dark:text-green-400 border-green-500/20"
                   >
-                    <div className="w-2 h-2 rounded-full bg-green-500 animate-pulse" />
                     Live
                   </a>
                 )}
@@ -123,27 +142,34 @@ const ProjectCard = React.memo(({ project, viewMode, openLightbox }) => {
 
   // Grid view
   return (
-    <motion.div variants={cardVariants}>
-      <Tilt
-        tiltMaxAngleX={5}
-        tiltMaxAngleY={5}
-        perspective={1000}
-        scale={1.02}
-        transitionSpeed={450}
-        className="group h-full"
-      >
-        <div className="bg-card rounded-lg overflow-hidden shadow-sm border border-border card-hover relative h-full flex flex-col">
-          {isFeatured && (
-            <motion.div
-              className="absolute top-3 left-3 z-10 bg-primary text-primary-foreground px-2 py-1 rounded-full text-xs font-medium flex items-center gap-1 shadow-md"
-              initial={{ scale: 0 }}
-              animate={{ scale: 1 }}
-              transition={{ delay: 0.3 }}
-            >
-              <Star size={12} fill="currentColor" />
-              Featured
-            </motion.div>
-          )}
+    <motion.div variants={cardVariants} className="group h-full">
+        <div className={`rounded-lg overflow-hidden shadow-sm border card-hover relative h-full flex flex-col ${
+          isFreelance ? "border-amber-500/50 shadow-amber-500/10 bg-amber-500/5 ring-1 ring-amber-500/20" : "bg-card border-border"
+        }`}>
+          <div className="absolute top-3 left-3 z-10 flex flex-row flex-wrap gap-2">
+            {isFreelance && (
+              <motion.div
+                className="bg-amber-500 text-white px-2 py-1 rounded-full text-xs font-medium flex items-center gap-1 shadow-md"
+                initial={{ scale: 0 }}
+                animate={{ scale: 1 }}
+                transition={{ delay: 0.3 }}
+              >
+                <Briefcase size={12} fill="currentColor" />
+                Client Project
+              </motion.div>
+            )}
+            {isFeatured && (
+              <motion.div
+                className="bg-primary text-primary-foreground px-2 py-1 rounded-full text-xs font-medium flex items-center gap-1 shadow-md"
+                initial={{ scale: 0 }}
+                animate={{ scale: 1 }}
+                transition={{ delay: 0.3 }}
+              >
+                <Star size={12} fill="currentColor" />
+                Featured
+              </motion.div>
+            )}
+          </div>
 
           <div className="h-48 overflow-hidden relative">
             <motion.img
@@ -188,6 +214,9 @@ const ProjectCard = React.memo(({ project, viewMode, openLightbox }) => {
 
             <div className="flex-grow">
               <h3 className="text-xl font-semibold mb-2">{project.title}</h3>
+              {isFreelance && project.clientName && (
+                <p className="text-amber-500 text-xs font-medium mb-2 uppercase tracking-wider">Client: {project.clientName}</p>
+              )}
               <p className="text-muted-foreground text-sm mb-4 line-clamp-3">{project.description}</p>
             </div>
 
@@ -221,9 +250,10 @@ const ProjectCard = React.memo(({ project, viewMode, openLightbox }) => {
                       href={project.demoUrl}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="flex items-center gap-1 px-2 py-1 text-xs font-medium border rounded-full bg-green-100 text-green-800 border-green-200 dark:bg-green-900/30 dark:text-green-400 dark:border-green-800"
+                      aria-label={`Open live demo for ${project.title}`}
+                      onClick={(e) => e.stopPropagation()}
+                      className="flex items-center px-2.5 py-0.5 text-[10px] font-bold tracking-wider uppercase border rounded-full bg-green-500/10 text-green-600 dark:text-green-400 border-green-500/20"
                     >
-                      <div className="w-2 h-2 rounded-full bg-green-500 animate-pulse" />
                       Live
                     </a>
                   </motion.div>
@@ -232,7 +262,6 @@ const ProjectCard = React.memo(({ project, viewMode, openLightbox }) => {
             </div>
           </div>
         </div>
-      </Tilt>
     </motion.div>
   );
 });

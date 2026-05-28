@@ -1,4 +1,4 @@
-import { Briefcase, Code, User, Sparkles, ArrowRight } from "lucide-react";
+import { GraduationCap, Laptop, Compass, Terminal, Layout, Server, Handshake, ArrowRight } from "lucide-react";
 import { useInView } from "@/hooks/useInView";
 import { motion } from "framer-motion";
 import { cn } from "@/lib/utils";
@@ -18,21 +18,21 @@ export const AboutSection = () => {
 
   const itemVariants = {
     hidden: { opacity: 0, y: 20 },
-    visible: { 
-      opacity: 1, 
+    visible: {
+      opacity: 1,
       y: 0,
       transition: { duration: 0.6, ease: "easeOut" }
     }
   };
 
   return (
-    <section 
-      id="about" 
-      ref={ref} 
+    <section
+      id="about"
+      ref={ref}
       className="py-24 px-4 relative overflow-hidden"
     >
 
-      
+
       <div className="container mx-auto max-w-5xl relative z-10">
         <motion.div
           variants={containerVariants}
@@ -41,9 +41,8 @@ export const AboutSection = () => {
           className="space-y-16"
         >
           <motion.div variants={itemVariants} className="text-center mb-16">
-            <div className="inline-flex items-center gap-2 bg-gradient-to-r from-primary/10 to-secondary/10 text-primary px-6 py-3 rounded-full text-sm font-medium mb-6 backdrop-blur-sm border border-primary/20">
-              <Sparkles className="w-4 h-4" />
-              Getting to know me
+            <div className="inline-flex items-center gap-2 text-primary px-6 py-3 text-sm font-semibold mb-6 backdrop-blur-sm underline decoration-[3px] decoration-primary underline-offset-8">
+              A Brief Introduction
             </div>
             <h2 className="text-4xl md:text-5xl font-bold tracking-tight mb-4 text-foreground">
               About <span className="text-primary italic">Me</span>
@@ -55,21 +54,21 @@ export const AboutSection = () => {
             <div className="relative bg-card/40 backdrop-blur-sm rounded-2xl p-8 border border-white/5 shadow-lg group">
               <div className="absolute -top-2 -right-2 w-16 h-16 bg-gradient-to-br from-primary/10 to-secondary/10 rounded-full blur-xl"></div>
               <h3 className="text-2xl md:text-3xl font-bold mb-6 text-foreground tracking-tight">
-                Full-Stack Web Developer & <br/><span className="text-primary italic">Quick Learner</span>
+                Full-Stack Web Developer & <br /><span className="text-primary italic">Quick Learner</span>
               </h3>
               <div className="space-y-4 text-muted-foreground leading-relaxed font-medium">
                 <p>
-                  I'm a BCA graduate with a strong foundation in full-stack web development. I specialize in creating responsive, accessible, and performant web applications using modern technologies like React.js, Node.js, and MongoDB.
+                  I'm a BCA graduate focused on building web applications. I specialize in JavaScript, React, Node.js, and MongoDB, and love creating smooth user interfaces.
                 </p>
                 <p>
-                  I've worked on multiple freelance and personal projects, including a ride-sharing app, a multilingual transcription web app, and a learning management system. I enjoy solving complex problems and am always exploring new technologies like Docker and automation tools to grow as a developer.
+                  I've worked on freelance contracts and personal projects, from full-stack learning platforms to animation-rich portfolios. I enjoy building useful tools and am currently learning Docker and server automation to improve my deployment workflow.
                 </p>
               </div>
             </div>
-            
+
             <div className="flex flex-col sm:flex-row gap-4 pt-6 justify-center">
-              <motion.a 
-                href="#contact" 
+              <motion.a
+                href="#contact"
                 className="cosmic-button group relative overflow-hidden flex items-center justify-center gap-2 px-8 py-3.5"
                 whileHover={{ scale: 1.05, y: -2 }}
                 whileTap={{ scale: 0.95 }}
@@ -105,27 +104,35 @@ export const AboutSection = () => {
                   {
                     title: "BCA Student, GLA University",
                     date: "2022 – 2025",
-                    desc: "Core foundation in full-stack architectural systems and software engineering principles.",
-                    icon: User,
+                    desc: "Learned the fundamentals of computer science, algorithms, databases, and software development.",
+                    icon: GraduationCap,
                     align: "left"
                   },
                   {
                     title: "Freelance Web Developer",
                     date: "Dec 2023 – Oct 2024",
-                    desc: "Deployed custom-built logistical and commercial platforms for high-growth clients.",
-                    icon: Briefcase,
+                    desc: "Worked directly with clients and teams to build custom web applications and features.",
+                    icon: Laptop,
                     align: "right"
                   },
                   {
-                    title: "R&D & Continuous Learning",
-                    date: "Ongoing",
-                    desc: "Exploring advanced AI integration, Docker orchestration, and reactive design patterns.",
-                    icon: Code,
+                    title: "Freelance Developer, The Trusted Wall",
+                    date: "Duration: 3 Weeks",
+                    desc: "Built a custom architectural showcase site using GSAP scroll animations and Sanity CMS.",
+                    icon: Compass,
                     align: "left",
+                    isSpecial: true
+                  },
+                  {
+                    title: "Continuous Learning",
+                    date: "Ongoing",
+                    desc: "Exploring containerization with Docker, server administration, and building AI tools.",
+                    icon: Terminal,
+                    align: "right",
                     isOngoing: true
                   }
                 ].map((log, idx) => (
-                  <motion.div 
+                  <motion.div
                     key={idx}
                     variants={itemVariants}
                     className={cn(
@@ -134,14 +141,25 @@ export const AboutSection = () => {
                     )}
                   >
                     <div className="absolute left-[-40px] sm:left-1/2 sm:-translate-x-1/2 w-10 h-10 rounded-full bg-background border border-primary/40 flex items-center justify-center z-10 shadow-[0_0_20px_rgba(var(--primary-rgb),0.3)]">
-                      <log.icon size={18} className={cn("text-primary", log.isOngoing ? "animate-pulse" : "")} />
+                      <log.icon size={18} className="text-primary" />
                     </div>
 
                     <div className="w-full sm:w-[45%]">
-                      <div className="p-8 rounded-2xl bg-card/20 border border-white/5 hover:border-primary/20 transition-all group backdrop-blur-sm shadow-xl hover:shadow-primary/5">
+                      <div className={cn(
+                        "p-8 rounded-2xl bg-card/20 border transition-all group backdrop-blur-sm shadow-xl",
+                        log.isSpecial
+                          ? "border-primary/50 shadow-primary/10 bg-primary/5 ring-1 ring-primary/20"
+                          : "border-white/5 hover:border-primary/20 hover:shadow-primary/5"
+                      )}>
                         <div className="flex justify-between items-start mb-3">
-                          <h4 className="font-bold text-base md:text-lg tracking-tight text-foreground/80 group-hover:text-primary transition-colors">{log.title}</h4>
-                          <span className="text-[11px] font-mono font-bold text-primary/70 uppercase pt-1">{log.date}</span>
+                          <h4 className={cn(
+                            "font-bold text-base md:text-lg tracking-tight transition-colors",
+                            log.isSpecial ? "text-primary" : "text-foreground/80 group-hover:text-primary"
+                          )}>{log.title}</h4>
+                          <span className={cn(
+                            "text-[11px] font-mono font-bold uppercase pt-1",
+                            log.isSpecial ? "text-primary" : "text-primary/70"
+                          )}>{log.date}</span>
                         </div>
                         <p className="text-sm leading-relaxed text-muted-foreground font-medium">{log.desc}</p>
                       </div>
@@ -163,31 +181,28 @@ export const AboutSection = () => {
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
               {[
                 {
-                  icon: Code,
-                  title: "Technical Execution",
-                  description: "Translating complex blueprints into high-performance web systems using modern frameworks."
+                  icon: Layout,
+                  title: "Frontend Build",
+                  description: "Building responsive interfaces that match designs exactly, using clean HTML, CSS, and React."
                 },
                 {
-                  icon: User,
-                  title: "Infrastructure Logic", 
-                  description: "Architecting robust backend pipelines with focus on data integrity and real-time synchronization."
+                  icon: Server,
+                  title: "Backend & APIs",
+                  description: "Designing clean databases, writing RESTful APIs, and implementing secure authentication."
                 },
                 {
-                  icon: Briefcase,
-                  title: "Production Delivery",
-                  description: "From JOYTRIP to V.O.L.T, delivering production-ready platforms that solve real-world logistical friction."
+                  icon: Handshake,
+                  title: "Freelance Experience",
+                  description: "Working directly with clients to turn their ideas into working products on budget and on schedule."
                 }
               ].map((skill, index) => (
-                <motion.div 
+                <motion.div
                   key={index}
                   variants={itemVariants}
                   whileHover={{ y: -5 }}
                   className="group relative h-full"
                 >
                   <div className="h-full bg-card/30 backdrop-blur-sm border border-white/5 rounded-2xl p-8 transition-all duration-300 group-hover:bg-card/50 group-hover:border-primary/20 overflow-hidden">
-                    <div className="absolute top-0 left-0 w-2 h-2 border-t border-l border-primary/40 rounded-tl-sm opacity-0 group-hover:opacity-100 transition-opacity" />
-                    <div className="absolute top-0 right-0 w-2 h-2 border-t border-r border-primary/40 rounded-tr-sm opacity-0 group-hover:opacity-100 transition-opacity" />
-                    
                     <div className="space-y-6">
                       <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center text-primary border border-primary/20 group-hover:scale-110 transition-transform">
                         <skill.icon size={22} />
