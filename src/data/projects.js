@@ -36,12 +36,12 @@ export const projects = [
     sections: [
       {
         title: "The Brief",
-        content: "The client, a premium architectural firm, required a digital experience that transcended standard portfolio layouts. They needed a 'Digital Ledger' that mirrored their architectural philosophy: tectonic rigor, material honesty, and spatial storytelling. The challenge was to deliver a high-fidelity, animation-heavy experience that remained performant and fully manageable by their non-technical team.",
+        content: "The Trusted Wall, an architecture and interior design firm, needed a modern website that showcased their projects, services, and expertise while remaining easy to manage without technical knowledge. In addition to replicating and improving their existing web presence, the client required a content management system that would allow them to independently publish projects, blogs, research articles, and structured study materials for students and professionals.",
         images: ["https://res.cloudinary.com/dyfjy8kmv/image/upload/v1778450378/Screenshot_2026-05-11_032206_ix81gy.png", "https://res.cloudinary.com/dyfjy8kmv/image/upload/v1778450377/Screenshot_2026-05-11_032249_zpkmvz.png", "https://res.cloudinary.com/dyfjy8kmv/image/upload/v1778450377/Screenshot_2026-05-11_032552_toy99z.png"]
       },
       {
         title: "The Solution",
-        content: "I engineered a custom React 19 architecture integrated with Sanity CMS for headless content delivery. Using GSAP and Framer Motion, I implemented a rhythmic scroll system and editorial page transitions that give the site a cinematic, magazine-like feel. For the backend, I designed a flexible schema in Sanity that accommodates diverse architectural narratives, from technical drawings to high-res realizations, ensuring the client has total creative control.",
+        content: "I developed a responsive React-based website and integrated Sanity CMS as a headless content management solution. Custom content models were created for projects, blogs, and study materials, including a course-and-chapter structure that enables organized educational content. The CMS allows the client to upload images, publish articles, manage project portfolios, and update study resources without developer assistance. The final solution delivers a professional user experience while providing a scalable and easy-to-maintain content workflow.",
         images: ["https://res.cloudinary.com/dyfjy8kmv/image/upload/v1778450376/Screenshot_2026-05-11_032308_vaijlg.png", "https://res.cloudinary.com/dyfjy8kmv/image/upload/v1778450376/Screenshot_2026-05-11_032606_hoeyzh.png", "https://res.cloudinary.com/dyfjy8kmv/image/upload/v1778450376/Screenshot_2026-05-11_032540_mc6ubx.png"]
       }
     ]
