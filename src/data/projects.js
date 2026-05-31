@@ -669,6 +669,7 @@ export const projects = [
           "https://res.cloudinary.com/dyfjy8kmv/image/upload/v1773427101/CineBase-4_zq5y8c.png",
           "https://res.cloudinary.com/dyfjy8kmv/image/upload/v1773427100/CineBase-5_qunyas.png",
           "https://res.cloudinary.com/dyfjy8kmv/image/upload/v1773427100/CineBase-6_azxwdi.png",
+          "https://res.cloudinary.com/dyfjy8kmv/image/upload/v1780271408/Cinebase-3_ndkhy8.png"
         ],
       },
       {
