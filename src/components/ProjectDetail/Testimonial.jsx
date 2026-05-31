@@ -9,49 +9,40 @@ const Testimonial = React.memo(({ testimonial }) => {
   const authorName = testimonial.author;
   const authorRole = testimonial.role;
   const authorCompany = testimonial.company;
+  const avatarUrl = testimonial.avatar;
 
   return (
     <motion.div
-      className="max-w-4xl mx-auto mb-16 px-4"
-      initial={{ opacity: 0, y: 30 }}
+      className="max-w-4xl mx-auto mb-24 px-4 text-left"
+      initial={{ opacity: 0, y: 15 }}
       whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true }}
-      transition={{ duration: 0.8, ease: "easeOut" }}
+      viewport={{ once: true, margin: "-100px" }}
+      transition={{ duration: 0.6, ease: "easeOut" }}
     >
-      <div className="relative p-[1px] rounded-3xl overflow-hidden bg-gradient-to-br from-primary/30 via-purple-500/10 to-transparent shadow-[0_20px_50px_rgba(0,0,0,0.15)] dark:shadow-[0_20px_50px_rgba(0,0,0,0.3)]">
-        <div className="bg-white/90 dark:bg-card/40 backdrop-blur-xl p-8 md:p-12 rounded-[23px] relative overflow-hidden group">
-          {/* Background Ambient Glow */}
-          <div className="absolute -top-12 -left-12 w-40 h-40 bg-primary/10 rounded-full blur-3xl pointer-events-none group-hover:scale-125 transition-transform duration-700" />
-          
-          <div className="relative z-10 flex flex-col md:flex-row gap-6 md:gap-8 items-start">
-            <div className="p-4 rounded-2xl bg-primary/10 border border-primary/20 text-primary flex items-center justify-center shrink-0">
-              <Quote className="h-8 w-8 rotate-180" />
-            </div>
+      <div className="border-l-2 border-primary/50 pl-6 md:pl-10 py-2 relative flex flex-col gap-6">
+        <Quote className="h-6 w-6 text-primary/40" />
+        
+        <blockquote className="text-lg md:text-xl md:leading-relaxed text-foreground/90 font-medium">
+          "{quoteText}"
+        </blockquote>
 
-            <div className="flex-grow">
-              <div className="flex items-center gap-2 mb-4">
-                <span className="text-[10px] font-mono font-bold uppercase tracking-widest text-primary/70">Client Feedback</span>
-                <div className="h-[1px] flex-1 bg-border/30" />
-              </div>
-
-              <blockquote className="text-lg md:text-xl text-foreground font-medium italic leading-relaxed mb-6">
-                "{quoteText}"
-              </blockquote>
-
-              <div className="flex flex-col">
-                <cite className="not-italic font-bold text-foreground text-base tracking-wide font-display">
-                  {authorName}
-                </cite>
-                <span className="text-xs text-muted-foreground mt-0.5">
-                  {authorRole} • <span className="text-primary/80 font-medium">{authorCompany}</span>
-                </span>
-              </div>
-            </div>
+        <div className="flex items-center gap-4">
+          {avatarUrl && (
+            <img 
+              src={avatarUrl} 
+              alt={authorName} 
+              className="w-12 h-12 rounded-full object-cover border border-border bg-muted/20"
+              loading="lazy"
+            />
+          )}
+          <div className="flex flex-col">
+            <cite className="not-italic font-bold text-foreground text-sm tracking-wide">
+              {authorName}
+            </cite>
+            <span className="text-xs text-muted-foreground mt-0.5">
+              {authorRole} <span className="text-primary/70 mx-1.5">•</span> {authorCompany}
+            </span>
           </div>
-
-          {/* Decorative Corner Lines */}
-          <div className="absolute top-0 right-0 w-8 h-8 border-t-2 border-r-2 border-primary/20 rounded-tr-[23px]" />
-          <div className="absolute bottom-0 left-0 w-8 h-8 border-b-2 border-l-2 border-primary/20 rounded-bl-[23px]" />
         </div>
       </div>
     </motion.div>

@@ -4,15 +4,15 @@ export const projects = [
     title: "The Trusted Wall",
     featured: true,
     isFreelance: true,
-    clientName: "The Trusted Wall Architecture",
+    clientName: "The Trusted Wall",
     clientRole: "Lead Developer / Consultant",
     testimonial: {
-      quote: "Simerdeep transformed our digital presence. He grasped our architectural philosophy and built an immersive, animation-heavy portfolio that is fast, sleek, and exceptionally easy for our team to manage using Sanity CMS. His design consulting exceeded our expectations.",
-      author: "Ar. Harsh Vardhan",
+      quote: "Simerdeep developed our website exactly as we envisioned and was highly responsive throughout the process. He successfully integrated our projects, blog, and study material management system, making it easy for our team to update content without technical assistance. We are very satisfied with the final result and his professionalism.",
+      author: "Ar. Himanshu Gautam",
       role: "Founder & Lead Architect",
-      company: "The Trusted Wall Architecture"
+      company: "The Trusted Wall",
+      avatar: "https://ik.imagekit.io/w4si6daal/WhatsApp%20Image%202026-04-29%20at%205.58.11%20PM.jpeg?tr=w-800,f-auto"
     },
-    year: "2024",
     shortDescription: "A custom architectural portfolio featuring smooth GSAP animations and a headless Sanity CMS backend.",
     description: "I built this custom portfolio for an architectural firm to showcase their residential and commercial projects. It uses React and GSAP for smooth page transitions and is integrated with Sanity CMS so the client can easily manage their project gallery without touching code.",
     features: [
@@ -37,7 +37,7 @@ export const projects = [
       {
         title: "The Brief",
         content: "The client, a premium architectural firm, required a digital experience that transcended standard portfolio layouts. They needed a 'Digital Ledger' that mirrored their architectural philosophy: tectonic rigor, material honesty, and spatial storytelling. The challenge was to deliver a high-fidelity, animation-heavy experience that remained performant and fully manageable by their non-technical team.",
-        images: ["https://res.cloudinary.com/dyfjy8kmv/image/upload/v1778450378/Screenshot_2026-05-11_032206_ix81gy.png","https://res.cloudinary.com/dyfjy8kmv/image/upload/v1778450377/Screenshot_2026-05-11_032249_zpkmvz.png", "https://res.cloudinary.com/dyfjy8kmv/image/upload/v1778450377/Screenshot_2026-05-11_032552_toy99z.png"]
+        images: ["https://res.cloudinary.com/dyfjy8kmv/image/upload/v1778450378/Screenshot_2026-05-11_032206_ix81gy.png", "https://res.cloudinary.com/dyfjy8kmv/image/upload/v1778450377/Screenshot_2026-05-11_032249_zpkmvz.png", "https://res.cloudinary.com/dyfjy8kmv/image/upload/v1778450377/Screenshot_2026-05-11_032552_toy99z.png"]
       },
       {
         title: "The Solution",
@@ -51,7 +51,6 @@ export const projects = [
     title: "Mentora LMS",
     featured: false,
 
-    year: "2024",
     shortDescription: "A full-stack learning platform with role-based dashboards for students, teachers, and admins.",
     description:
       "Mentora is a Learning Management System I built using the MERN stack. It includes dedicated dashboards for students to track progress, teachers to manage courses and create quizzes, and admins to oversee platform activity.",
@@ -126,7 +125,6 @@ export const projects = [
     id: "2",
     title: "V.O.L.T (Voice-to-Output Language Transcription)",
     featured: false,
-    year: "2023",
     shortDescription: "A real-time speech-to-text app with tone adjustment and multilingual support.",
     description:
       "V.O.L.T is a real-time transcription app built with React and Node.js. It converts spoken audio to text across multiple languages, detects emotional tone, and allows users to transform the output into formal, casual, or neutral phrasing using AI.",
@@ -166,9 +164,8 @@ export const projects = [
     title: "AI-Powered Code Review Platform",
     featured: false,
 
-    year: "2024",
     shortDescription: "An interactive code reviewer built with React and Monaco Editor featuring automated AI feedback.",
-    description: 
+    description:
       "I built this platform to automate code reviews using Monaco Editor and AI models. It accepts code snippets, scores code quality, and provides actionable feedback. It also features a fallback system between Gemini and Mistral APIs to ensure continuous service.",
     features: [
       "Code editor interface powered by Monaco Editor",
@@ -214,7 +211,6 @@ export const projects = [
     id: "4",
     title: "Real-Time Multiplayer Chess Game",
     featured: false,
-    year: "2026",
     shortDescription: "A real-time multiplayer chess game with live matchmaking and server-side move validation.",
     description:
       "A multiplayer chess game built using Node.js and Socket.IO. It supports real-time matchmaking, private game rooms, and uses chess.js on the server to validate every move before updating the board to prevent client-side modifications.",

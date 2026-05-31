@@ -150,7 +150,6 @@ export const ProjectDetail = () => {
           </motion.div>
 
           <FeaturesChallenges project={project} />
-          {/* <Testimonial testimonial={project.testimonial} /> */}
           <VideoDemo project={project} />
 
           <ShowcaseContent
@@ -161,6 +160,8 @@ export const ProjectDetail = () => {
             setCurrentImageIndex={setCurrentImageIndex}
             openLightbox={openLightbox}
           />
+          <Testimonial testimonial={project.testimonial} />
+
 
           <TechStack tech={project.tech} />
           <PerformanceNote note={project.performanceNote} />
