@@ -82,7 +82,9 @@ export const projects = [
           "https://res.cloudinary.com/dyfjy8kmv/image/upload/v1765220081/Project1A_om4mrq.png",
           "https://res.cloudinary.com/dyfjy8kmv/image/upload/v1765220083/Project1B_jghrsf.png",
           "https://res.cloudinary.com/dyfjy8kmv/image/upload/v1765220082/Project1C_rsaxfo.png",
+          "https://res.cloudinary.com/dyfjy8kmv/image/upload/v1782862059/Screenshot_2026-07-01_042758_torpaq.png",
           "https://res.cloudinary.com/dyfjy8kmv/image/upload/v1765220081/Project1D_piiuss.png",
+          "https://res.cloudinary.com/dyfjy8kmv/image/upload/v1782862109/Screenshot_2026-07-01_043530_mou5bf.png",
           "https://res.cloudinary.com/dyfjy8kmv/image/upload/v1765220081/Project1E_ihqbi9.png",
         ],
       },
@@ -94,6 +96,7 @@ export const projects = [
           "https://res.cloudinary.com/dyfjy8kmv/image/upload/v1765220081/Project1F_ge3bg4.png",
           "https://res.cloudinary.com/dyfjy8kmv/image/upload/v1765220082/Project1G_l6rhho.png",
           "https://res.cloudinary.com/dyfjy8kmv/image/upload/v1765220082/Project1H_gqudkj.png",
+          "https://res.cloudinary.com/dyfjy8kmv/image/upload/v1765220082/Project1I_yinbuj.png",
         ],
       },
       {
@@ -101,7 +104,6 @@ export const projects = [
         content:
           "Admins oversee platform operations, manage users, approve instructor applications, and monitor performance and transactions. They ensure the platform runs smoothly.",
         images: [
-          "https://res.cloudinary.com/dyfjy8kmv/image/upload/v1765220082/Project1I_yinbuj.png",
           "https://res.cloudinary.com/dyfjy8kmv/image/upload/v1765220083/Project1K_zj9dye.png",
           "https://res.cloudinary.com/dyfjy8kmv/image/upload/v1765220083/Project1L_lxsh9c.png",
         ],
