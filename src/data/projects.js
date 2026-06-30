@@ -53,18 +53,22 @@ export const projects = [
 
     shortDescription: "A full-stack learning platform with role-based dashboards for students, teachers, and admins.",
     description:
-      "Mentora is a Learning Management System I built using the MERN stack. It includes dedicated dashboards for students to track progress, teachers to manage courses and create quizzes, and admins to oversee platform activity.",
+      "Mentora is a comprehensive Learning Management System built using the MERN stack. Beyond standard course management, the platform features an AI Tutor for intelligent assistance, gamification elements like leaderboards to boost engagement, and interactive tools including a live Code Sandbox and Lecture Chat. It also boasts a robust quiz infrastructure and secure payment processing to deliver a premium, full-featured educational experience.",
     features: [
       "Dedicated student, teacher, and admin dashboards",
-      "Course creator supporting quizzes and assignments",
-      "Secure payment checkout integration",
-      "Visual progress trackers and course analytics",
+      "AI Tutor integration offering intelligent assistance to students",
+      "Gamified learning experience with leaderboards and activity tracking",
+      "Interactive tools including a Code Sandbox, Lecture Chat, and dynamic Video Player",
+      "Comprehensive quiz infrastructure with detailed summaries and result displays",
+      "Robust commenting system for discussion tracking",
+      "Secure payment checkout integration via Stripe",
       "Cloud-based file storage using Cloudinary"
     ],
     challenges: [
-      "Designing a relational MongoDB schema to link courses, enrollments, and user progress",
-      "Handling real-time state synchronization for active quiz attempts",
-      "Integrating third-party secure APIs for payments and media hosting"
+      "Designing a relational MongoDB schema to link courses, enrollments, user progress, and gamification activity logs",
+      "Handling real-time state synchronization for active quiz attempts and live lecture chats",
+      "Integrating third-party secure APIs for payments, media hosting, and AI services",
+      "Structuring complex UI components like the interactive code sandbox and dynamic video player"
     ],
     demoUrl: "https://mentora-lms.onrender.com/",
     githubUrl: "https://github.com/SimerdeepSingh4/Mentora-LMS-",
@@ -120,6 +124,7 @@ export const projects = [
       "MongoDB",
       "JWT",
       "Cloudinary",
+      "Google Gemini"
     ],
     thumbnail: "https://res.cloudinary.com/dyfjy8kmv/image/upload/v1766273589/Mentora_Thumbnail_ujmqgk.png",
   },
