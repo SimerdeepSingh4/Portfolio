@@ -66,10 +66,10 @@ export const projects = [
       "Handling real-time state synchronization for active quiz attempts",
       "Integrating third-party secure APIs for payments and media hosting"
     ],
-    demoUrl: "#",
+    demoUrl: "https://mentora-lms.onrender.com/",
     githubUrl: "https://github.com/SimerdeepSingh4/Mentora-LMS-",
     links: [
-      { label: "Live Demo", url: "#" },
+      { label: "Live Demo", url: "https://mentora-lms.onrender.com/" },
       { label: "GitHub", url: "https://github.com/SimerdeepSingh4/Mentora-LMS-" }
     ],
     videoUrl: "https://www.youtube.com/embed/HVTNYHJv_FI?si=dNcgc6hexCAfoSAG",
