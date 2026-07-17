@@ -1,4 +1,5 @@
 export const tagIcons = {
+  "Chrome Extension API": "https://upload.wikimedia.org/wikipedia/commons/8/87/Google_Chrome_icon_%282011%29.png?_=20151104231050",
   "Redis": "https://uxwing.com/wp-content/themes/uxwing/download/brands-and-social-media/redis-icon.png",
   "Context API": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg",
   "React-Rnd": "https://raw.githubusercontent.com/bokuweb/react-rnd/refs/heads/master/logo.png",
@@ -35,4 +36,6 @@ export const tagIcons = {
   "Model Context Protocol (MCP)": "https://registry.npmmirror.com/@lobehub/icons-static-png/latest/files/light/mcp.png",
   "Framer Motion": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRPznwv7OeqDgGjrlZfT28XyX4J9oJyZ9TYwg&s",
   "Sanity CMS": "https://cmscritic.com/ms-content/uploads/2025/05/sanity-logo-icon.png?format=auto&width=256",
+  "Lucide React" : "https://avatars.githubusercontent.com/u/66879934?v=4",
+  "Zustand" : "https://user-images.githubusercontent.com/958486/218346783-72be5ae3-b953-4dd7-b239-788a882fdad6.svg"
 };

@@ -708,5 +708,64 @@ export const projects = [
       title: "⚡ Performance Note",
       description: "If movies fail to load and you see a “Failed to fetch movies” error, try accessing the site using a VPN. This can happen because the TMDB API doesn’t work on some networks."
     }
+  },
+  {
+    id: "15",
+    title: "MediaPeek Chrome Extension",
+    featured: false,
+    shortDescription: "A modern, high-performance media scanner and gallery Chrome Extension built with React 19, Zustand, and Tailwind CSS 4.",
+    description:
+      "MediaPeek is a Google Chrome Extension (Manifest V3) designed to scan active webpages and build an interactive visual media grid. It allows users to search, filter by extensions, preview images/videos/audio, and perform bulk downloads seamlessly.",
+    features: [
+      "Multi-Media Scanner: Scans the active tab's DOM and background styles for images, video, and audio sources",
+      "Dynamic Filter Bar: Real-time filtering by media types (Images, Videos, Audio) and dynamically computed file format extension pills",
+      "Scroll-based Lazy Rendering: Custom IntersectionObserver sentinel pagination loading items in chunks of 18",
+      "Responsive Fluid Grid: Auto-adjusting CSS Grid that scales dynamically across different screen sizes",
+      "High-Fidelity Lightbox: Modal providing keyboard controls (ArrowLeft / ArrowRight to navigate, Escape to close)",
+      "Background Service Worker: Connects to the chrome.downloads API for concurrent and sequenced downloading",
+      "Sandbox Mode: Dev server fallback utilizing high-fidelity mock data when run outside the Chrome extension context"
+    ],
+    challenges: [
+      "Managing high-frequency rendering and visual DOM bloat on pages with hundreds of assets via custom React.memo prop checks",
+      "Architecting cross-context communication and message passing between content scripts, service workers, and the React popup",
+      "Aligning responsive fluid layouts within the tight physical dimensions of Chrome popup windows"
+    ],
+    demoUrl: "#",
+    githubUrl: "https://github.com/SimerdeepSingh4/MediaPeek",
+    links: [
+      { label: "GitHub", url: "https://github.com/SimerdeepSingh4/MediaPeek" }
+    ],
+    tech: [
+      "React",
+      "Zustand",
+      "Vite",
+      "Tailwind CSS",
+      "Lucide React",
+      "Chrome Extension API"
+    ],
+    thumbnail: "https://res.cloudinary.com/dyfjy8kmv/image/upload/v1784249722/MediaPeek_thumbnail_b6yghf.png",
+    sections: [
+      {
+        title: "Extension Interface",
+        content: "A beautiful popup layout featuring glassmorphism elements, live text search, dynamic media category tabs, and real-time extension filters computed from active assets.",
+        images: [
+          "https://res.cloudinary.com/dyfjy8kmv/image/upload/v1784249941/MediaPeek-main_fsotrt.png"
+        ]
+      },
+      {
+        title: "Webpage Scanner",
+        content: "A lightweight scanning process that extracts all visible images, background images declared in styles, HTML5 video sources, and audio links from the active tab's DOM structure.",
+        images: [
+          "https://res.cloudinary.com/dyfjy8kmv/image/upload/v1784249090/MediaPeek-1_qttwyo.png"
+        ]
+      },
+      {
+        title: "Interactive Preview Lightbox",
+        content: "An immersive preview modal for full-size visual inspection, detailed audio listening, and video playing, complete with fluid arrow-key slide navigation and hotkeys.",
+        images: [
+          "https://res.cloudinary.com/dyfjy8kmv/image/upload/v1784249090/MediaPeek-2_if8swd.png"
+        ]
+      }
+    ]
   }
 ];
